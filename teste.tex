@@ -1,5 +1,6 @@
 \documentclass[a4paper,12pt]{article}
 \usepackage[brazilian]{babel}
+\usepackage[section]{placeins}
 \usepackage[utf8]{inputenc}
 \usepackage[T1]{fontenc}
 \usepackage{indentfirst} %Margem no primeiro paragrafo
@@ -19,15 +20,15 @@
 \graphicspath{ {figuras/} }
 
 \newcommand{\anmvc} {
-	ASP.NET MVC 5
+	\sigla{ASP.NET MVC} 5
 }
 
 \newcommand{\spring} {
-	Java\textbackslash Spring MVC
+	\lang{Java}\textbackslash \est{Spring} \sigla{MVC}
 }
 
 \newcommand{\mysql} {
-	MySQL
+	\est{MySQL}
 }
 
 \newcommand{\figura}[2] {
@@ -39,10 +40,38 @@
 	\FloatBarrier
 }
 
-\newcommand{\foreign}[1] {
+\newcommand{\est}[1] {
 	\textit{#1}
 }
 
+\newcommand{\classe}[1] {
+	\textit{#1}
+}
+
+\newcommand{\arquivo}[1] {
+	\textit{#1}
+}
+
+\newcommand{\sigla}[1] {
+	\textit{#1}
+}
+
+\newcommand{\lang}[1] {
+	\textit{#1}
+}
+
+\newcommand{\groovycode}[1] {
+	\inputminted{groovy}{#1}
+	%\lstinputlisting[language=Java, caption=#2, breaklines=true, basicstyle=\ttfamily\fontsize{9}{9}]{#1}
+}
+
+\newcommand{\javacode}[1] {
+	\inputminted{java}{#1}
+}
+
+\newcommand{\sharpcode}[1] {
+	\inputminted[csharp]{#1}
+}
 
 \begin{document}
 \title{Comparação de desenvolvimento de aplicações web com ASP.NET MVC 5 e Spring MVC 4}
@@ -54,41 +83,41 @@
 
 \section{Configuração de ambiente de desenvolvimento}
 
-Neste capitulo é demonstrado o preparo do ambiente de desenvolvimento num computador rodando o sistema operacional Windows 8.1 de 64 bits. Primeiramente instala-se um sistema gerenciador de banco de dados para trabalhar tanto com a plataforma \spring quanto com a plataforma \anmvc.  O banco de dados usado será o MySQL Community Server versão 5.6.22 (a versão mais atual até o momento de criação desta monografia). Como ambiente de programação em Java, será usado o Eclipse Luna para desenvolvedores J2EE, o Gradle como build tool e o Apache Tomcat como container J2EE. Para desenvolver em C\#, será usado o Visual Studio 2013 Community. Considerando que o leitor já possui entendimentos sobre informática necessários para instalar programas no Windows, as instruções de instalação serão sucintas.
+Neste capitulo será demonstrado o preparo do ambiente de desenvolvimento em um computador rodando o sistema operacional \est{Windows} 8.1 de 64 \est{bits}. Primeiramente, instala-se um sistema gerenciador de banco de dados para trabalhar tanto com a plataforma \spring quanto com a plataforma \anmvc.  O banco de dados usado será o \est{MySQL Community Server} versão 5.6.22 (a versão mais atual até o momento de criação desta monografia). A \est{Integrated Development Environment} (\sigla{IDE}) utilizada  para escrever código em \lang{Java}, será o \est{Eclipse Luna}. O \est{Gradle} será usado como \est{build tool} e o \est{Apache Tomcat} como \est{container} \est{Java Enterprise Edition} (\sigla{JEE}). Para desenvolver em \lang{C\#}, será usado o \est{Visual Studio 2013 Community}. Considerando que o leitor já possui entendimentos sobre informática necessários para instalar programas no \est{Windows}, as instruções de instalação serão sucintas. 
 
 \subsection{Instalação do MySQL}
 
-O download do instalador do MySQL Community é feito no seguinte endereço \url{https://dev.mysql.com/downloads/windows/installer/5.6.html}. O instalador está disponível duas versões, web installer e off-line installer. O web installer é um arquivo pequeno que quando executado irá baixar os arquivos do MySQL para a máquina, o off-line installer já é maior e vem com todos os arquivos de instalação do MySQL. Qualquer que seja o método de instalação escolhido, eles terão as mesmas opções.
+O download do instalador do MySQL Community foi feito no seguinte endereço \url{https://dev.mysql.com/downloads/windows/installer/}5.6.html. O instalador está disponível duas versões, web installer e off-line installer. O web installer é um arquivo pequeno que quando executado irá baixar os arquivos do MySQL para a máquina, o off-line installer  é maior e vem com todos os arquivos necessários para a  instalação do MySQL. Qualquer que seja o método de instalação escolhido, eles terão as mesmas opções.
 
-Executando o instalador, é escolhida a opção Custom e na árvore de opções que aparecerá na tela a seguir, são escolhidos o MySQL Server, o MySQL Workbench, o Connector/J (para Java) e o Connector/NET (para .NET), de acordo com a figura 1. Pode acontecer do instalador pedir para instalar o Microsoft Visual C++ 2013 como dependência do MySQL Workbench, se isso acontecer, o próprio instalador proverá um botão para instalar essa dependência.
+Executando o instalador, é escolhida a opção Custom e na árvore de opções que aparecerá na tela a seguir, são escolhidos o MySQL Server, o MySQL Workbench, o Connector/J (para Java) e o Connector/NET (para .NET), como mostrado na figura 1. Pode acontecer do instalador pedir para instalar o Microsoft Visual C++ 2013 como dependência do MySQL Workbench, se isso acontecer, o próprio instalador proverá um botão para instalar essa dependência.
 
 \figura{mysqlinstaller1.jpg}{Opções de instalação do \mysql}
 
-Concluída a instalação, é hora de configurar o serviço do MySQL. Deixa-se selecionado o tipo de configuração como Development Machine e as configurações de rede padrão (protocolo TCP/IP, porta 3306). Quando pedir a senha do usuário Root, será usada “1234”, é uma senha fraca que não se recomenda usar em ambiente de produção, mas serve para propósito de exemplo. Finaliza-se a configuração deixando marcados os restantes das opções de configuração como padrão do instalador.
+Concluída a instalação, é hora de configurar o serviço do MySQL. Deixa-se selecionado o tipo de configuração como Development Machine e as configurações de rede padrão (protocolo TCP/IP, porta 3306). Quando for necessária a senha do usuário Root, será usada “1234”, é uma senha fraca que não se recomenda usar em ambiente de produção, mas serve para propósito de exemplo. Finaliza-se a configuração deixando marcados os restantes das opções de configuração como padrão do instalador.
 
-Para testar se tudo ocorreu bem, o desenvolvedor pode executar o MySQL Workbench ao final da instalação e tentar se conectar à instancia do MySQL.
+Com o objetivo de testar o sucesso da instalação, o desenvolvedor pode executar o MySQL Workbench, como ilustrado na figura 2,  e tentar se conectar à instancia do MySQL.
 
-\figura{mysqlinstaller2.jpg}{O \mysql \foreign{Workbench}}
+\figura{mysqlinstaller2.jpg}{O \mysql \est{Workbench}}
 
 Para mais informações sobre o MySQL, visite a página oficial do projeto, \url{https://www.mysql.com/}.
 
 \subsection{Preparando o ambiente Java}
 
-Para desenvolver em Java, será usado Eclipse Luna e o Java development kit 8 (as versões mais recentes no momento em que esse texto está sendo escrito). Será usado o Gradle como build tool através de um plugin do Eclipse e servidor web usado será o Apache Tomcat.
+Para desenvolver em Java, será utilizado o  Eclipse Luna e o Java Development Kit 8 (JDK 8). Será usado o Gradle como build tool através de um plugin do Eclipse e o servidor web utilizado será o Apache Tomcat.
 
-\subsubsection{Instalando o JDK 8}
+\subsubsection{Instalando JDK 8}
 
-O instalador do JDK 8 pode ser baixado no endereço \url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}. Existem diversas versões para diversos sistemas operacionais, será usado nesse trabalho a versão para Windows de 64 bits.
+O instalador do JDK 8 pode ser adquirido no endereço \url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}. Existem diversas versões para diversos sistemas operacionais, será usado nesse trabalho a versão para Windows de 64 bits. 
 
-Para instalar o JDK, é executado o arquivo de instalação e seguidas as suas instruções. A única configuração possível durante a instalação é a mudança da pasta de destino do JDK, mas será mantido o diretório padrão mostrado na figura abaixo.
+Para fazer a instalação do JDK, foi executado o arquivo de instalação seguindo  as suas instruções. A única configuração possível durante a instalação é a mudança da sua pasta de destino, mas será mantido o diretório padrão como mostrado na figura 3.
 
 \figura{jdk81.jpg}{O instalador do JDK 8}
 
-Terminada a instalação, é necessário configurar a variável PATH para que o sistema encontre os arquivos do Java. Essas opções de configuração estão no painel de controle do Windows, no caminho Sistema/Configurações avançadas do sistema/Variáveis de ambiente. Na janela de variáveis do sistema, é editada a variável PATH. Se adiciona o caminho onde o JDK foi instalado acrescido da pasta bin (C:\textbackslash Program Files\textbackslash Java\textbackslash jdk\textmd{1.8.0\_25}\textbackslash bin) como mostrado na figura abaixo.
+Terminada a instalação, é necessário configurar a variável PATH para que o sistema encontre os arquivos do Java. Essas opções de configuração estão no painel de controle do Windows, no caminho Sistema/Configurações avançadas do sistema/Variáveis de ambiente. Na janela de variáveis do sistema, é editada a variável PATH. Se adiciona o caminho onde o JDK foi instalado acrescido da pasta bin (C:\textbackslash Program Files\textbackslash Java\textbackslash jdk\textmd{1.8.0\_25}\textbackslash bin) como mostrado na figura 4.
 
 \figura{path1.png}{Configurando a variável PATH}
 
-Para testar se tudo foi instalado corretamente, abre-se uma janela do prompt de comando e digita-se o comando “java –version” (sem aspas). Se não existir problemas, será exibida na tela o número da versão do JDK instalado. Se isso não acontecer, é aconselhável desinstalar o JDK e repetir o processo de instalação.
+Para testar se tudo foi instalado corretamente, abre-se uma janela do prompt de comando e digita-se o comando “java –version” (sem aspas). Se não existir problemas, será exibida na tela o número da versão do JDK instalado. Caso isso não aconteça, é aconselhável desinstalar o JDK e repetir o processo de instalação. 
 
 \subsubsection{Instalando o Eclipse Luna} 
 
@@ -160,7 +189,5 @@ As pastas “src/main/java” e “src/main/resources” devem armazenar, respec
 
 O arquivo build.gradle é o arquivo de definição de projeto do Gradle. Nele podem ser criados scripts para controlar a construção de artefatos, baixar bibliotecas de terceiros, configurar testes unitários e realizar várias outras tarefas. Os scripts do Gradle são escritos em Groovy, outra linguagem compatível com a JVM.
 
-%\lstinputlisting[language=Java, caption=Arquivo build.gradle, breaklines=true, basicstyle=\ttfamily\fontsize{9}{9}]{code/3.1.build.gradle.txt}
-\groovycode{code/buildgradle}
-
+\groovycode{code/buildgradle.txt}
 \end{document}

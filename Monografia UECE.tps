@@ -12,15 +12,18 @@ MaxPos.y=-1
 NormalPos.left=4
 NormalPos.top=26
 NormalPos.right=1562
-NormalPos.bottom=540
+NormalPos.bottom=539
 Class=LaTeXView
 Document=Monografia UECE.tex
 
 [Frame0_View0,0]
-TopLine=204
-Cursor=14667
+TopLine=0
+Cursor=526
 
 [SessionInfo]
 FrameCount=1
 ActiveFrame=0
+
+[Bookmarks]
+Monografia UECE.tex=43 
 
