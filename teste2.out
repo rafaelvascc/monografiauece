@@ -1,0 +1,15 @@
+\BOOKMARK [1][-]{section.1}{Introdu\347\343o}{}% 1
+\BOOKMARK [1][-]{section.2}{Configura\347\343o de ambiente de desenvolvimento}{}% 2
+\BOOKMARK [2][-]{subsection.2.1}{Instala\347\343o do MySQL}{section.2}% 3
+\BOOKMARK [2][-]{subsection.2.2}{Preparando o ambiente Java}{section.2}% 4
+\BOOKMARK [3][-]{subsubsection.2.2.1}{Instalando JDK 8}{subsection.2.2}% 5
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Instalando o Eclipse Luna}{subsection.2.2}% 6
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Instalando o plugin do Gradle}{subsection.2.2}% 7
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Instalando o Apache Tomcat 8 como servidor de desenvolvimento do Eclipse}{subsection.2.2}% 8
+\BOOKMARK [2][-]{subsection.2.3}{Instalando o Visual Studio Community 2013}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.4}{Conclus\343o}{section.2}% 10
+\BOOKMARK [1][-]{section.3}{Criando projetos web no padr\343o MVC}{}% 11
+\BOOKMARK [2][-]{subsection.3.1}{Criando um projeto do Gradle no Eclipse}{section.3}% 12
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Adicionando o projeto ao Tomcat}{subsection.3.1}% 13
+\BOOKMARK [3][-]{subsubsection.3.1.2}{Adicionando depend\352ncias ao projeto}{subsection.3.1}% 14
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Configurando a aplica\347\343o web}{subsection.3.1}% 15

@@ -8,15 +8,21 @@
 \usepackage[left=3cm,top=3cm,right=2cm,bottom=2cm]{geometry}
 \usepackage{graphicx} %figuras
 \usepackage{helvet} %fonte arial
+\usepackage{caption}
 \usepackage{setspace}
 \usepackage{xspace}
 \usepackage{xcolor}
+\usepackage{newfloat}
 \usepackage{listings}
 \usepackage{minted}
 \setlength{\parskip}{1em}
 \renewcommand{\familydefault}{\sfdefault}
-\renewcommand{\lstlistingname}{Código Fonte}% Listing -> Algorithm
-\renewcommand{\lstlistlistingname}{Lista de Códigos Fonte}
+\renewcommand{\listingscaption}{\textmd{Quadro}}
+
+\newenvironment{simple}%
+{\noindent}%
+{\par\noindent}
+
 \graphicspath{ {figuras/} }
 
 \newcommand{\anmvc} {
@@ -24,7 +30,7 @@
 }
 
 \newcommand{\spring} {
-	\lang{Java}\textbackslash \est{Spring} \sigla{MVC}
+	\lang{Java}/\est{Spring} \sigla{MVC}
 }
 
 \newcommand{\mysql} {
@@ -32,7 +38,7 @@
 }
 
 \newcommand{\figura}[2] {
-	\begin{figure}[ht]
+	\begin{figure}[H]
 		\centering
 		\includegraphics{#1}
 		\caption{#2}
@@ -60,19 +66,32 @@
 	\textit{#1}
 }
 
+\newcommand{\lib}[1] {
+	\textit{#1}
+}
+
 \newcommand{\groovycode}[2] {
-	%\begin{listing}[H]
-		\inputminted{groovy}{#1}
-		%\caption{#2}
-	%\end{listing}
+	\begin{simple}
+	\inputminted[fontsize=\footnotesize]{groovy}{#1}
+	\captionof{listing}{#2}
+	\end{simple}
+	\FloatBarrier
 }
 
-\newcommand{\javacode}[1] {
-	\inputminted{java}{#1}
+\newcommand{\javacode}[2] {
+	\begin{simple}
+	\inputminted[fontsize=\footnotesize]{java}{#1}
+	\captionof{listing}{#2}
+	\end{simple}
+	\FloatBarrier
 }
 
-\newcommand{\sharpcode}[1] {
-	\inputminted[csharp]{#1}
+\newcommand{\sharpcode}[2] {
+	\begin{simple}
+	\inputminted[fontsize=\footnotesize]{csharp}{#1}
+	\captionof{listing}{#2}
+	\end{simple}
+	\FloatBarrier
 }
 
 \begin{document}
@@ -191,5 +210,74 @@ As pastas “src/main/java” e “src/main/resources” devem armazenar, respec
 
 O arquivo build.gradle é o arquivo de definição de projeto do Gradle. Nele podem ser criados scripts para controlar a construção de artefatos, adquirir bibliotecas de terceiros, configurar testes unitários e realizar várias outras tarefas. Os scripts do Gradle são escritos em Groovy, outra linguagem compatível com a máquina virtual Java. 
 
-\groovycode{code/buildgradle.txt, O arquivo build.gradle}
+\groovycode{code/buildgradle.txt}{O arquivo build.gradle}
+
+A estrutura do projeto e o arquivo gradle.build gerados devem ser modificados para servir à uma aplicação web. Será adicionada uma nova pasta, chamada de WebContent, para armazenar conteúdo especifico para web (páginas jsp/html, arquivos javascript e css). Dentro dela deve ser criada uma pasta chamada WEB-INF para armazenar páginas jsp. Por padrão, usuários de sistemas web Java Enterprise Edition não possuem acesso direto à pasta WEB-INF, então é um lugar seguro para armazenar páginas. Na figura 12 pode ser observada a estrutura do projeto com a pasta WEB-INF.
+
+\figura{prrojetocomweninf.png}{Estrutura do projeto com a pasta WebContent}
+
+Em seguida, é necessário modificar o arquivo gradle.build. O Gradle dispõe de vários plugins que facilitam seu uso em diversas situações e servem a propósitos específicos. Para gerar arquivos .war (artefatos de aplicações web) e informar ao Gradle que a pasta WebContent armazenará o conteúdo especifico para web, será utilizado o plugin chamado war. Para fazer com que o Eclipse veja o projeto como um projeto para web que possa ser enviado para o Tomcat, será utilizado o plugin eclipse-wtp. O início do arquivo gradle.build deverá ficar como no exemplo mostrado no quadro 2.
+
+\groovycode{code/newgradle.txt}{Arquivo gradle.build com novos plugins}
+
+Com tudo devidamente configurado, é necessário atualizar o tipo de projeto para que o Eclipse o veja como um projeto de uma aplicação web. Pressionando Ctrl+Alt+Shift+R o Eclipse abrirá uma caixa de texto onde poderão ser executadas tarefas (tasks) do Gradle. Uma dessas tarefas é o comando “eclipse” que gera arquivos adicionais para que o projeto possa ser detectado como uma aplicação web. O comando é executado como na figura 13 e o Eclipse agora poderá publicar a aplicação no Tomcat. gradlecommand.png
+
+\figura{gradlecommand.png}{Gradle Task Quick Launcher}
+
+Após executar esse comando, a estrutura do projeto mudará um pouco. As pastas destinadas a conter código Java e bibliotecas usadas no projeto serão movidas para uma pasta chamada Java Resources.
+
+\subsubsection{Adicionando o projeto ao Tomcat}
+
+Para adicionar uma aplicação web ao servidor Tomcat configurado no eclipse, na aba servers dá-se um duplo clique no servidor para abrir suas configurações, e na aba “modules” clica-se no botão “Add Web Module”. Escolhido o projeto web que se deseja adicionar, o caminho da aplicação pode ser configurado. A figura 14 ilustra esse procedimento. Com a configuração padrão do Tomcat, a aplicação estará disponível no endereço com o seguinte formato: \url{http://<endereço-ip>:8080/<caminho da aplicação>}. Esse endereço será referenciado no restante do trabalho como raiz da aplicação.
+
+Iniciando o Tomcat, clicando nos botões “Start the server” ou “Start the server in debug mode”, e acessando o endereço da aplicação, será mostrado uma página de erro 404. Isso acontece porque ainda não existem as configurações do servlet padrão, do Spring MVC e ainda não foi criado nenhum controller e nenhuma view. Nesse capítulo ainda será demonstrado como configurar o servlet padrão e o Spring MVC, no capitulo 3 será demonstrado como se criam controllers e views. tomcatproject.png
+
+\figura{tomcatproject.png}{Adicionando um projeto web ao Tomcat}
+
+\subsubsection{Adicionando dependências ao projeto}
+
+Abaixo estão listadas as bibliotecas que serão usadas ao projeto \spring. O Gradle pode adquirir essas bibliotecas e suas dependências do repositório central do Maven.
+
+\begin{itemize}
+  \item \lib{Java Servlet API 3.1.0} - Biblioteca base para programar em Java para web usando servlets.
+  \item \lib{Spring Web MVC 4.1.4 RELEASE} - Biblioteca para criar um projeto MVC com Spring.
+  \item \lib{Spring Transaction 4.1.4 RELEASE} - Gerenciador de transações com o banco de dados.
+  \item \lib{Spring Object/Relational Mapping 4.1.4 RELEASE} - Gerenciador de entidades e mapeamento objeto/relacional.
+  \item \lib{Jackson Databind 2.5.1} - Serializa e de serializa objetos Java no formato JSON.
+  \item \lib{MySQL Java Connector 5.1.34} - Comunicação com o banco de dados MySQL.
+  \item \lib{Hibernate JPA Support 4.3.8 Final} - Adaptador do Hibernate para padrões Java Persistence API.
+  \item \lib{Hibernate Validator Engine 5.1.3 Final} - Biblioteca para validar dados de entidades.
+  \item \lib{Hibernate c3p0 Integration 4.3.8} - Gerenciador de conexões com o banco de dados.
+\end{itemize}
+
+Os detalhes sobre as funcionalidades das bibliotecas de comunicação com o banco de dados e mapeamento objeto/relacional serão abordados no capítulo 6. 
+
+Para fazer com que o Gradle adquira as bibliotecas necessárias e suas dependências, a seção “dependencies” do arquivo build.gradle é alterada como mostra o quadro 3.
+
+\groovycode{code/gradledependencies.txt}{Adicionando dependências ao projeto}
+
+Com o arquivo gradle.build alterado e salvo, o comando para baixar as dependências para o projeto estará localizado no menu de contexto do projeto (clicando com o botão direito do mouse sobre ele) no caminho Gradle/Refresh Dependencies, que pode ser observado na figura 15. O Gradle irá adquirir todas as bibliotecas especificadas no arquivo build.gradle e suas dependências automaticamente. O Spring MVC, por exemplo, depende do Spring Core para funcionar e o Hibernate JPA Support precisa do Hibernate Core. Todas as dependências do projeto ficam visíveis na seção Libraries/Gradle Dependencies.
+
+\figura{refreshdependencies.png}{Atualizando dependências de um projeto Gradle}
+
+\subsubsection{Configurando a aplicação web}
+
+Existem duas maneiras de se configurar uma aplicação Java, usando arquivos XML ou escrevendo a configuração em Java. Nos exemplos dessa seção, será usada a segunda opção.
+
+Os atquivos de configura são armazenados em um pacote chamado br.uece.webCrud.config. Dentro desse pacote são criadas duas classes, AppInitializer e SpringMvcConfig, como mostra a figura 15. 
+
+\figura{configpackage.png}{Estrutura do projeto \spring com pacote para arquivos de configuração}
+
+A primeira configuração que deve ser feita é usar a classe DispatcherServlet como o servlet padrão e configurar o contexto da aplicação (configurações especificas do Spring Framework). Servlets são classes Java que processam requisições para aplicação, elas podem servir páginas para o usuário, retornar objetos JSON, redirecionar requisições para outros servlets, ETC. Para mais informações sobre servlets recomenda-se o livro Murach’s Java Servlets and JSP.
+
+A classe AppInitializer herda da interface WebApplicationInitializer. Para inicializar a aplicação, o Spring Framework irá procura classes que herdam dessa interface   dentro dos pacotes. O conteúdo da classe deve ficar como no quadro 5.
+
+A interface WebApplicationInitializer possui a assinatura de apenas um método, onStartup. Na implementação desse método é escrito código para configurar tanto o contexto da aplicação quando o servlet primário.
+
+Primeiro é criado um objeto do tipo AnnotationConfigWebApplicationContext e é usado o seu método register para a adicionar a classe SpringMvcConfig como uma classe de configuração do Spring. A classe AnnotationConfigWebApplicationContext habilita o uso de anotações Java para configurar demais classes, o conteúdo da classe SpringMvcConfig será exposto mais adiante.
+
+É criado então um servlet do tipo DispatcherServlet que recebe o contexto como parâmetro e  é usada a classe ServletRegistration para registrar o servlet à aplicação. O método addMapping recebe como parâmetro o caractere “/”, isso quer dizer que esse servlet será usado para todas a páginas web e demais caminhos dentro da aplicação. O método setLoadOnStartup recebe como parâmetro o valor 1, para configurar nosso servlet como o primeiro que o servidor deve usar.
+
+\javacode{code/AppInitializer.txt}{Classe AppInitializer}
+
 \end{document}
