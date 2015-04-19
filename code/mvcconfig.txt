@@ -1,0 +1,111 @@
+package br.uece.webCrud.web.config;
+import java.beans.PropertyVetoException;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.Properties;
+import org.springframework.context.annotation.Bean;
+import org.springframework.context.annotation.ComponentScan;
+import org.springframework.context.annotation.Configuration;
+import org.springframework.http.MediaType;
+import org.springframework.orm.jpa.JpaTransactionManager;
+import org.springframework.orm.jpa.LocalContainerEntityManagerFactoryBean;
+import org.springframework.orm.jpa.vendor.HibernateJpaVendorAdapter;
+import org.springframework.transaction.annotation.EnableTransactionManagement;
+import org.springframework.web.servlet.ViewResolver;
+import org.springframework.web.servlet.config.annotation.ContentNegotiationConfigurer;
+import org.springframework.web.servlet.config.annotation.DefaultServletHandlerConfigurer;
+import org.springframework.web.servlet.config.annotation.EnableWebMvc;
+import org.springframework.web.servlet.config.annotation.WebMvcConfigurerAdapter;
+import org.springframework.web.servlet.view.ContentNegotiatingViewResolver;
+import org.springframework.web.servlet.view.InternalResourceViewResolver;
+import com.mchange.v2.c3p0.ComboPooledDataSource;
+
+@Configuration
+@EnableWebMvc
+@EnableTransactionManagement
+@ComponentScan({"br.uece.webCrud.controller", "br.uece.webCrud.service", "br.uece.webCrud.repository", "br.uece.webCrud.model"})
+public class SpringMvcConfig extends WebMvcConfigurerAdapter {
+	private final String DATABASE_DRIVER = "com.mysql.jdbc.Driver";
+	private final String DATABASE_URL = "jdbc:mysql://localhost/web_crud_java";
+	private final String DATABASE_USER = "root";
+	private final String DATABASE_PASSWORD = "1234";
+	private final String JPA_DATABASE_CONSTRUCTION = "create";
+	private final String JPA_DATABASE_DIALECT = "org.hibernate.dialect.MySQL5Dialect";
+	private final String JPA_DEFAULT_SCHEMA = "web_crud_java";
+	
+	@Override
+	public void configureDefaultServletHandling(DefaultServletHandlerConfigurer configurer) {
+		configurer.enable();
+	}
+	
+	@Override
+	public void configureContentNegotiation(ContentNegotiationConfigurer configurer) 
+	{
+		configurer.mediaType("html", MediaType.TEXT_HTML).mediaType("json", MediaType.APPLICATION_JSON);
+	};	
+	
+	@Bean
+	public InternalResourceViewResolver internalResourceViewResolver()
+	{
+		InternalResourceViewResolver irvr = new InternalResourceViewResolver();
+		irvr.setPrefix("/WEB-INF/");
+		irvr.setSuffix(".jsp");
+		
+		return irvr;
+	}
+	
+	@Bean
+	public ContentNegotiatingViewResolver contentNegotiatingiewResolver()
+	{				
+		List<ViewResolver> viewResolverList = new ArrayList<ViewResolver>();
+		viewResolverList.add(internalResourceViewResolver());
+		
+		ContentNegotiatingViewResolver cnvr =  new ContentNegotiatingViewResolver();
+		cnvr.setViewResolvers(viewResolverList);
+				
+		return cnvr;
+	}
+	
+	//Database beans
+	@Bean
+	public ComboPooledDataSource mySqlDataSource() throws PropertyVetoException
+	{
+		ComboPooledDataSource cpds = new ComboPooledDataSource();
+		cpds.setDriverClass(DATABASE_DRIVER);
+		cpds.setJdbcUrl(DATABASE_URL);
+		cpds.setUser(DATABASE_USER);
+		cpds.setPassword(DATABASE_PASSWORD);		
+		return cpds;
+	}
+	
+	@Bean
+	public LocalContainerEntityManagerFactoryBean entityManagerFactory() throws PropertyVetoException
+	{
+		LocalContainerEntityManagerFactoryBean emf = new LocalContainerEntityManagerFactoryBean();
+		HibernateJpaVendorAdapter hjva = new HibernateJpaVendorAdapter();
+		emf.setJpaVendorAdapter(hjva);
+		emf.setPackagesToScan("br.uece.webCrud.model");
+		emf.setDataSource(mySqlDataSource());
+		emf.setJpaProperties(this.jpaProperties());		
+		return emf;
+	}
+	
+	@Bean
+	public JpaTransactionManager transactionManager() throws PropertyVetoException
+	{
+		JpaTransactionManager jtm = new JpaTransactionManager();
+		jtm.setEntityManagerFactory(entityManagerFactory().getObject());
+		return jtm;
+	}
+	
+	private Properties jpaProperties()
+	{
+		Properties p = new Properties();
+		p.setProperty("hibernate.show_sql", "true");
+		p.setProperty("hibernate.format_sql", "true");
+		p.setProperty("hibernate.hbm2ddl.auto", JPA_DATABASE_CONSTRUCTION);
+		p.setProperty("hibernate.default_schema", JPA_DEFAULT_SCHEMA);
+		p.setProperty("hibernate.dialect", JPA_DATABASE_DIALECT);
+		return p;		
+	}
+}

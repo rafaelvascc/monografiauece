@@ -37,11 +37,12 @@
 	\est{MySQL}
 }
 
-\newcommand{\figura}[2] {
+\newcommand{\figura}[3] {
 	\begin{figure}[H]
 		\centering
 		\includegraphics{#1}
 		\caption{#2}
+		\label{#3}
 	\end{figure}
 	\FloatBarrier
 }
@@ -68,28 +69,35 @@
 
 \newcommand{\lib}[1] {
 	\textit{#1}
+} 
+
+\newcommand{\annotation}[1] {
+	\textit{#1}
 }
 
-\newcommand{\groovycode}[2] {
+\newcommand{\groovycode}[3] {
 	\begin{simple}
 	\inputminted[fontsize=\footnotesize]{groovy}{#1}
 	\captionof{listing}{#2}
+	\label{#3}
 	\end{simple}
 	\FloatBarrier
 }
 
-\newcommand{\javacode}[2] {
+\newcommand{\javacode}[3] {
 	\begin{simple}
 	\inputminted[fontsize=\footnotesize]{java}{#1}
 	\captionof{listing}{#2}
+	\label{#3}
 	\end{simple}
 	\FloatBarrier
 }
 
-\newcommand{\sharpcode}[2] {
+\newcommand{\sharpcode}[3] {
 	\begin{simple}
 	\inputminted[fontsize=\footnotesize]{csharp}{#1}
 	\captionof{listing}{#2}
+	\label{#3}
 	\end{simple}
 	\FloatBarrier
 }
@@ -110,15 +118,15 @@ Neste capitulo será demonstrado o preparo do ambiente de desenvolvimento em um 
 
 O download do instalador do MySQL Community foi feito no seguinte endereço \url{https://dev.mysql.com/downloads/windows/installer/}5.6.html. O instalador está disponível duas versões, web installer e off-line installer. O web installer é um arquivo pequeno que quando executado irá baixar os arquivos do MySQL para a máquina, o off-line installer  é maior e vem com todos os arquivos necessários para a  instalação do MySQL. Qualquer que seja o método de instalação escolhido, eles terão as mesmas opções.
 
-Executando o instalador, é escolhida a opção Custom e na árvore de opções que aparecerá na tela a seguir, são escolhidos o MySQL Server, o MySQL Workbench, o Connector/J (para Java) e o Connector/NET (para .NET), como mostrado na figura 1. Pode acontecer do instalador pedir para instalar o Microsoft Visual C++ 2013 como dependência do MySQL Workbench, se isso acontecer, o próprio instalador proverá um botão para instalar essa dependência.
+Executando o instalador, é escolhida a opção Custom e na árvore de opções que aparecerá na tela a seguir, são escolhidos o MySQL Server, o MySQL Workbench, o Connector/J (para Java) e o Connector/NET (para .NET), como mostrado na figura~\ref{fig:sql1}. Pode acontecer do instalador pedir para instalar o Microsoft Visual C++ 2013 como dependência do MySQL Workbench, se isso acontecer, o próprio instalador proverá um botão para instalar essa dependência.
 
-\figura{mysqlinstaller1.jpg}{Opções de instalação do \mysql}
+\figura{mysqlinstaller1.jpg}{Opções de instalação do \mysql}{fig:sql1}
 
 Concluída a instalação, é hora de configurar o serviço do MySQL. Deixa-se selecionado o tipo de configuração como Development Machine e as configurações de rede padrão (protocolo TCP/IP, porta 3306). Quando for necessária a senha do usuário Root, será usada “1234”, é uma senha fraca que não se recomenda usar em ambiente de produção, mas serve para propósito de exemplo. Finaliza-se a configuração deixando marcados os restantes das opções de configuração como padrão do instalador.
 
-Com o objetivo de testar o sucesso da instalação, o desenvolvedor pode executar o MySQL Workbench, como ilustrado na figura 2,  e tentar se conectar à instancia do MySQL.
+Com o objetivo de testar o sucesso da instalação, o desenvolvedor pode executar o MySQL Workbench, como ilustrado na figura~\ref{fig:sql2},  e tentar se conectar à instancia do MySQL.
 
-\figura{mysqlinstaller2.jpg}{O \mysql \est{Workbench}}
+\figura{mysqlinstaller2.jpg}{O \mysql \est{Workbench}}{fig:sql2}
 
 Para mais informações sobre o MySQL, visite a página oficial do projeto, \url{https://www.mysql.com/}.
 
@@ -130,13 +138,13 @@ Para desenvolver em Java, será utilizado o  Eclipse Luna e o Java Development K
 
 O instalador do JDK 8 pode ser adquirido no endereço \url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}. Existem diversas versões para diversos sistemas operacionais, será usado nesse trabalho a versão para Windows de 64 bits. 
 
-Para fazer a instalação do JDK, foi executado o arquivo de instalação seguindo  as suas instruções. A única configuração possível durante a instalação é a mudança da sua pasta de destino, mas será mantido o diretório padrão como mostrado na figura 3.
+Para fazer a instalação do JDK, foi executado o arquivo de instalação seguindo  as suas instruções. A única configuração possível durante a instalação é a mudança da sua pasta de destino, mas será mantido o diretório padrão como mostrado na figura~\ref{fig:jdk1}.
 
-\figura{jdk81.jpg}{O instalador do JDK 8}
+\figura{jdk81.jpg}{O instalador do JDK 8}{fig:jdk1}
 
-Terminada a instalação, é necessário configurar a variável PATH para que o sistema encontre os arquivos do Java. Essas opções de configuração estão no painel de controle do Windows, no caminho Sistema/Configurações avançadas do sistema/Variáveis de ambiente. Na janela de variáveis do sistema, é editada a variável PATH. Se adiciona o caminho onde o JDK foi instalado acrescido da pasta bin (C:\textbackslash Program Files\textbackslash Java\textbackslash jdk\textmd{1.8.0\_25}\textbackslash bin) como mostrado na figura 4.
+Terminada a instalação, é necessário configurar a variável PATH para que o sistema encontre os arquivos do Java. Essas opções de configuração estão no painel de controle do Windows, no caminho Sistema/Configurações avançadas do sistema/Variáveis de ambiente. Na janela de variáveis do sistema, é editada a variável PATH. Se adiciona o caminho onde o JDK foi instalado acrescido da pasta bin (C:\textbackslash Program Files\textbackslash Java\textbackslash jdk\textmd{1.8.0\_25}\textbackslash bin) como mostrado na figura~\ref{fig:path}.
 
-\figura{path1.png}{Configurando a variável PATH}
+\figura{path1.png}{Configurando a variável PATH}{fig:path}
 
 Para testar se tudo foi instalado corretamente, abre-se uma janela do prompt de comando e digita-se o comando “java –version” (sem aspas). Se não existir problemas, será exibida na tela o número da versão do JDK instalado. Caso isso não aconteça, é aconselhável desinstalar o JDK e repetir o processo de instalação. 
 
@@ -144,9 +152,9 @@ Para testar se tudo foi instalado corretamente, abre-se uma janela do prompt de 
 
 O Eclipse Luna para Desenvolvedores Java EE é encontrado no endereço \url{https://www.eclipse.org/downloads/}. Terminando o download, a pasta “eclipse” pode ser descompactada para qualquer diretório do computador. Coloca-se um atalho na sua área de trabalho para o executável do Eclipse (eclipse.exe) para facilitar o acesso.
 
-Na primeira vez que o Eclipse é executado será exibida uma janela para configurar o Workspace padrão (uma pasta onde serão guardados projetos e configurações), como está ilustrado na figura 5.
+Na primeira vez que o Eclipse é executado será exibida uma janela para configurar o Workspace padrão (uma pasta onde serão guardados projetos e configurações), como está ilustrado na figura~\ref{fig:eclipse1}.
 
-\figura{eclipse1.png}{Eclipse recém instalado}
+\figura{eclipse1.png}{Eclipse recém instalado}{fig:eclipse1}
 
 \subsubsection{Instalando o plugin do Gradle} 
 
@@ -154,9 +162,9 @@ O Gradle é a build tool que será utilizada nos exemplos do projeto \spring. El
 
 No Eclipse Marketplace (repositório de plugins do Eclipse), faz-se uma pesquisa por “Gradle” na barra de buscas, entre os resultados está o Gradle IDE Pack. Esse plugin será usado nos exemplos desse trabalho. O Eclipse pede confirmação para instalação de todos os pacotes necessários, todos são selecionados e instalados. Aceita-se os termos de uso do Gradle e ao aparecer uma janela de alerta confirmando a instalação, clica-se em OK. Quando a instalação terminar, o Eclipse é reiniciado.
 
-Para verificar se o plugin foi instalado com sucesso, a pasta Gradle deve aparecer na arvore de tipos de projetos, no menu de novos projetos, como pode ser observado na figura 6.
+Para verificar se o plugin foi instalado com sucesso, a pasta Gradle deve aparecer na arvore de tipos de projetos, no menu de novos projetos, como pode ser observado na figura~\ref{fig:gradle1}.
 
-\figura{plugin1.png}{Instalando o plugin do Gradle}
+\figura{plugin1.png}{Instalando o plugin do Gradle}{fig:gradle1}
 
 \subsubsection{Instalando o Apache Tomcat 8 como servidor de desenvolvimento do Eclipse} 
 
@@ -164,21 +172,21 @@ O Java Enterprise Edition é um conjunto de especificações que precisam ser im
 
 O instalador do Tomcat 8 pode ser encontrado no endereço \url{https://tomcat.apache.org/download-80.cgi}. Para os exemplos, usa-se a distribuição para Windows de 64 bits no formato zip. A pasta apache-tomcat-8.0.15 pode ser descompactada para qualquer diretório no disco rígido (como exemplo será usada a raiz do disco C:).  
 
-Na aba “Servers” do Eclipse possui um link auto descritivo para adicionar um novo servidor. Clicando no link e expandindo pasta “Apache”, é escolhido o Tomcat 8 na árvore de opções, o que pode ser observado na figura 7. Na janela seguinte, em “Tomcat installtion directory”, o botão “browse...” é usado para escolher o caminho de instalação do Tomcat (C:\textbackslash apache-tomcat-\textmd{8.0.15} no nosso exemplo). Clicando no botão “Finish”, o Tomcat está pronto para uso com o Eclipse. 
+Na aba “Servers” do Eclipse possui um link auto descritivo para adicionar um novo servidor. Clicando no link e expandindo pasta “Apache”, é escolhido o Tomcat 8 na árvore de opções, o que pode ser observado na figura~\ref{fig:tomcat1}. Na janela seguinte, em “Tomcat installtion directory”, o botão “browse...” é usado para escolher o caminho de instalação do Tomcat (C:\textbackslash apache-tomcat-\textmd{8.0.15} no nosso exemplo). Clicando no botão “Finish”, o Tomcat está pronto para uso com o Eclipse. 
 
-\figura{tomcat1.png}{Janela pra adicionar servidores no Eclipse}
+\figura{tomcat1.png}{Janela pra adicionar servidores no Eclipse}{fig:tomcat1}
 
 \subsection{Instalando o Visual Studio Community 2013} 
 
-O instalador do Visual Studio Community 2013 pode ser encontrado no endereço \url{http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx}. Na figura 8 temos uma ilustração do instalador em questão. Esse é um instalador online, ele irá baixar os arquivos do Visual Studio e opcionais selecionados à medida que a instalação for progredindo. Uma imagem do DVD de instalação offline também está disponível na sessão de downloads do site \url{http://www.visualstudio.com}.
+O instalador do Visual Studio Community 2013 pode ser encontrado no endereço \url{http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx}. Na figura~\ref{fig:vs1} temos uma ilustração do instalador em questão. Esse é um instalador online, ele irá baixar os arquivos do Visual Studio e opcionais selecionados à medida que a instalação for progredindo. Uma imagem do DVD de instalação offline também está disponível na sessão de downloads do site \url{http://www.visualstudio.com}.
 
-\figura{vs1.png}{Instalador do Visual Studio Community 2013}
+\figura{vs1.png}{Instalador do Visual Studio Community 2013}{fig:vs1}
 
 Clicando no botão “Next”, a próxima tela que o instalador irá exibir uma lista de componentes opcionais como o kit de desenvolvimento do Windows Phone 8 e do Silverlight. Desses componentes opcionais, é aconselhável instalar pelo menos o Microsoft Web Developer Tools para facilitar o desenvolvimento de aplicações web.
 
-Após a instalação, o desenvolvedor pode utilizar sua conta da Microsoft como perfil no Visual Studio e publicar suas aplicações no Microsoft Azure, porém isso é opcional. Quando se executa o Visual Studio pela primeira vez, ilustrado na figura 9, o desenvolvedor pode escolher as opções de desenvolvimento e um esquema de cores que irá usar. Como exemplo, é escolhida a opção de desenvolvimento "Web Development”.
+Após a instalação, o desenvolvedor pode utilizar sua conta da Microsoft como perfil no Visual Studio e publicar suas aplicações no Microsoft Azure, porém isso é opcional. Quando se executa o Visual Studio pela primeira vez, ilustrado na figura~\ref{fig:vs2}, o desenvolvedor pode escolher as opções de desenvolvimento e um esquema de cores que irá usar. Como exemplo, é escolhida a opção de desenvolvimento "Web Development”.
 
-\figura{vs2.png}{Tela inicial do Visual Studio Community 2013}
+\figura{vs2.png}{Tela inicial do Visual Studio Community 2013}{fig:vs2}
 
 O Visual Studio possui sua própria ferramenta de geração de builds (MsBuild), gerenciador de pacotes para obter bibliotecas de terceiros (Nuget) e um servidor de desenvolvimento minimalista baseado no Internet Information Services (servidor web do Windows Server) para executar e depurar aplicações web.  
 
@@ -198,41 +206,41 @@ Nesse capitulo será mostrado como criar um novo projeto para uma aplicação we
 
 \subsection{Criando um projeto do Gradle no Eclipse}
 
-O modelo de projeto usado nos exemplos desse trabalho será o Gradle Project. Esse modelo de projeto está localizado na pasta Gradle na arvore de novos projetos do Eclipse. Na figura 10 podemos observar a localização do modelo e a criação do novo projeto.
+O modelo de projeto usado nos exemplos desse trabalho será o Gradle Project. Esse modelo de projeto está localizado na pasta Gradle na arvore de novos projetos do Eclipse. Na figura~\ref{fig:gradleproject} pode-se observar a localização do modelo e a criação do novo projeto.
 
-\figura{gradleproject1.png}{Criando um projeto do Gradle}
+\figura{gradleproject1.png}{Criando um projeto do Gradle}{fig:gradleproject}
 
-Será criado um projeto com a estrutura mostrada na figura 11.
+Será criado um projeto com a estrutura mostrada na figura~\ref{fig:gradletree}.
 
-\figura{gradleproject1.png}{Estrutura inicial de um projeto do Gradle}
+\figura{gradleproject1.png}{Estrutura inicial de um projeto do Gradle}{fig:gradletree}
 
 As pastas “src/main/java” e “src/main/resources” devem armazenar, respectivamente, código fonte Java e recursos utilizados na aplicação.  As pastas “src/test/java” e “src/test/resources” são utilizadas para testes unitários. As pastas de testes não serão utilizadas nos nossos exemplos e serão removidas. A pasta build é para onde irão todos os artefatos gerados pelo projeto.
 
-O arquivo build.gradle é o arquivo de definição de projeto do Gradle. Nele podem ser criados scripts para controlar a construção de artefatos, adquirir bibliotecas de terceiros, configurar testes unitários e realizar várias outras tarefas. Os scripts do Gradle são escritos em Groovy, outra linguagem compatível com a máquina virtual Java. 
+O arquivo build.gradle, exibido no quadro~\ref{lst:1}, é o arquivo de definição de projeto do Gradle. Nele podem ser criados scripts para controlar a construção de artefatos, adquirir bibliotecas de terceiros, configurar testes unitários e realizar várias outras tarefas. Os scripts do Gradle são escritos em Groovy, outra linguagem compatível com a máquina virtual Java. 
 
-\groovycode{code/buildgradle.txt}{O arquivo build.gradle}
+\groovycode{code/buildgradle.txt}{O arquivo build.gradle}{lst:1}
 
-A estrutura do projeto e o arquivo gradle.build gerados devem ser modificados para servir à uma aplicação web. Será adicionada uma nova pasta, chamada de WebContent, para armazenar conteúdo especifico para web (páginas jsp/html, arquivos javascript e css). Dentro dela deve ser criada uma pasta chamada WEB-INF para armazenar páginas jsp. Por padrão, usuários de sistemas web Java Enterprise Edition não possuem acesso direto à pasta WEB-INF, então é um lugar seguro para armazenar páginas. Na figura 12 pode ser observada a estrutura do projeto com a pasta WEB-INF.
+A estrutura do projeto e o arquivo gradle.build gerados devem ser modificados para servir à uma aplicação web. Será adicionada uma nova pasta, chamada de WebContent, para armazenar conteúdo especifico para web (páginas jsp/html, arquivos javascript e css). Dentro dela deve ser criada uma pasta chamada WEB-INF para armazenar páginas jsp. Por padrão, usuários de sistemas web Java Enterprise Edition não possuem acesso direto à pasta WEB-INF, então é um lugar seguro para armazenar páginas. Na figura~\ref{fig:12} pode ser observada a estrutura do projeto com a pasta WEB-INF.
 
-\figura{prrojetocomweninf.png}{Estrutura do projeto com a pasta WebContent}
+\figura{prrojetocomweninf.png}{Estrutura do projeto com a pasta WebContent}{fig:12}
 
-Em seguida, é necessário modificar o arquivo gradle.build. O Gradle dispõe de vários plugins que facilitam seu uso em diversas situações e servem a propósitos específicos. Para gerar arquivos .war (artefatos de aplicações web) e informar ao Gradle que a pasta WebContent armazenará o conteúdo especifico para web, será utilizado o plugin chamado war. Para fazer com que o Eclipse veja o projeto como um projeto para web que possa ser enviado para o Tomcat, será utilizado o plugin eclipse-wtp. O início do arquivo gradle.build deverá ficar como no exemplo mostrado no quadro 2.
+Em seguida, é necessário modificar o arquivo gradle.build. O Gradle dispõe de vários plugins que facilitam seu uso em diversas situações e servem a propósitos específicos. Para gerar arquivos .war (artefatos de aplicações web) e informar ao Gradle que a pasta WebContent armazenará o conteúdo especifico para web, será utilizado o plugin chamado war. Para fazer com que o Eclipse veja o projeto como um projeto para web que possa ser enviado para o Tomcat, será utilizado o plugin eclipse-wtp. O início do arquivo gradle.build deverá ficar como no exemplo do quadro~\ref{fig:lst:2}.
 
-\groovycode{code/newgradle.txt}{Arquivo gradle.build com novos plugins}
+\groovycode{code/newgradle.txt}{Arquivo gradle.build com novos plugins}{lst:2}
 
-Com tudo devidamente configurado, é necessário atualizar o tipo de projeto para que o Eclipse o veja como um projeto de uma aplicação web. Pressionando Ctrl+Alt+Shift+R o Eclipse abrirá uma caixa de texto onde poderão ser executadas tarefas (tasks) do Gradle. Uma dessas tarefas é o comando “eclipse” que gera arquivos adicionais para que o projeto possa ser detectado como uma aplicação web. O comando é executado como na figura 13 e o Eclipse agora poderá publicar a aplicação no Tomcat. gradlecommand.png
+Com tudo devidamente configurado, é necessário atualizar o tipo de projeto para que o Eclipse o veja como um projeto de uma aplicação web. Pressionando Ctrl+Alt+Shift+R o Eclipse abrirá uma caixa de texto onde poderão ser executadas tarefas (tasks) do Gradle. Uma dessas tarefas é o comando “eclipse” que gera arquivos adicionais para que o projeto possa ser detectado como uma aplicação web. O comando é executado como na figura~\ref{fig:13} e o Eclipse agora poderá publicar a aplicação no Tomcat. gradlecommand.png
 
-\figura{gradlecommand.png}{Gradle Task Quick Launcher}
+\figura{gradlecommand.png}{Gradle Task Quick Launcher}{fig:13}
 
 Após executar esse comando, a estrutura do projeto mudará um pouco. As pastas destinadas a conter código Java e bibliotecas usadas no projeto serão movidas para uma pasta chamada Java Resources.
 
 \subsubsection{Adicionando o projeto ao Tomcat}
 
-Para adicionar uma aplicação web ao servidor Tomcat configurado no eclipse, na aba servers dá-se um duplo clique no servidor para abrir suas configurações, e na aba “modules” clica-se no botão “Add Web Module”. Escolhido o projeto web que se deseja adicionar, o caminho da aplicação pode ser configurado. A figura 14 ilustra esse procedimento. Com a configuração padrão do Tomcat, a aplicação estará disponível no endereço com o seguinte formato: \url{http://<endereço-ip>:8080/<caminho da aplicação>}. Esse endereço será referenciado no restante do trabalho como raiz da aplicação.
+Para adicionar uma aplicação web ao servidor Tomcat configurado no eclipse, na aba servers dá-se um duplo clique no servidor para abrir suas configurações, e na aba “modules” clica-se no botão “Add Web Module”. Escolhido o projeto web que se deseja adicionar, o caminho da aplicação pode ser configurado. A figura~\ref{fig:14} ilustra esse procedimento. Com a configuração padrão do Tomcat, a aplicação estará disponível no endereço com o seguinte formato: \url{http://<endereço-ip>:8080/<caminho da aplicação>}. Esse endereço será referenciado no restante do trabalho como raiz da aplicação.
 
 Iniciando o Tomcat, clicando nos botões “Start the server” ou “Start the server in debug mode”, e acessando o endereço da aplicação, será mostrado uma página de erro 404. Isso acontece porque ainda não existem as configurações do servlet padrão, do Spring MVC e ainda não foi criado nenhum controller e nenhuma view. Nesse capítulo ainda será demonstrado como configurar o servlet padrão e o Spring MVC, no capitulo 3 será demonstrado como se criam controllers e views. tomcatproject.png
 
-\figura{tomcatproject.png}{Adicionando um projeto web ao Tomcat}
+\figura{tomcatproject.png}{Adicionando um projeto web ao Tomcat}{fig:14}
 
 \subsubsection{Adicionando dependências ao projeto}
 
@@ -252,25 +260,25 @@ Abaixo estão listadas as bibliotecas que serão usadas ao projeto \spring. O Gr
 
 Os detalhes sobre as funcionalidades das bibliotecas de comunicação com o banco de dados e mapeamento objeto/relacional serão abordados no capítulo 6. 
 
-Para fazer com que o Gradle adquira as bibliotecas necessárias e suas dependências, a seção “dependencies” do arquivo build.gradle é alterada como mostra o quadro 3.
+Para fazer com que o Gradle adquira as bibliotecas necessárias e suas dependências, a seção “dependencies” do arquivo build.gradle é alterada como mostra o quadro~\ref{lst:3}.
 
-\groovycode{code/gradledependencies.txt}{Adicionando dependências ao projeto}
+\groovycode{code/gradledependencies.txt}{Adicionando dependências ao projeto}{lst:3}
 
-Com o arquivo gradle.build alterado e salvo, o comando para baixar as dependências para o projeto estará localizado no menu de contexto do projeto (clicando com o botão direito do mouse sobre ele) no caminho Gradle/Refresh Dependencies, que pode ser observado na figura 15. O Gradle irá adquirir todas as bibliotecas especificadas no arquivo build.gradle e suas dependências automaticamente. O Spring MVC, por exemplo, depende do Spring Core para funcionar e o Hibernate JPA Support precisa do Hibernate Core. Todas as dependências do projeto ficam visíveis na seção Libraries/Gradle Dependencies.
+Com o arquivo gradle.build alterado e salvo, o comando para baixar as dependências para o projeto estará localizado no menu de contexto do projeto (clicando com o botão direito do mouse sobre ele) no caminho Gradle/Refresh Dependencies, que pode ser observado na figura~\ref{fig:15}. O Gradle irá adquirir todas as bibliotecas especificadas no arquivo build.gradle e suas dependências automaticamente. O Spring MVC, por exemplo, depende do Spring Core para funcionar e o Hibernate JPA Support precisa do Hibernate Core. Todas as dependências do projeto ficam visíveis na seção Libraries/Gradle Dependencies.
 
-\figura{refreshdependencies.png}{Atualizando dependências de um projeto Gradle}
+\figura{refreshdependencies.png}{Atualizando dependências de um projeto Gradle}{fig:15}
 
 \subsubsection{Configurando a aplicação web}
 
 Existem duas maneiras de se configurar uma aplicação Java, usando arquivos XML ou escrevendo a configuração em Java. Nos exemplos dessa seção, será usada a segunda opção.
 
-Os atquivos de configura são armazenados em um pacote chamado br.uece.webCrud.config. Dentro desse pacote são criadas duas classes, AppInitializer e SpringMvcConfig, como mostra a figura 15. 
+Os arquivos de configuração são armazenados em um pacote chamado br.uece.webCrud.config. Dentro desse pacote são criadas duas classes, AppInitializer e SpringMvcConfig, como mostra a figura~\ref{fig:16}. 
 
-\figura{configpackage.png}{Estrutura do projeto \spring com pacote para arquivos de configuração}
+\figura{configpackage.png}{Estrutura do projeto \spring com pacote para arquivos de configuração}{fig:16}
 
 A primeira configuração que deve ser feita é usar a classe DispatcherServlet como o servlet padrão e configurar o contexto da aplicação (configurações especificas do Spring Framework). Servlets são classes Java que processam requisições para aplicação, elas podem servir páginas para o usuário, retornar objetos JSON, redirecionar requisições para outros servlets, ETC. Para mais informações sobre servlets recomenda-se o livro Murach’s Java Servlets and JSP.
 
-A classe AppInitializer herda da interface WebApplicationInitializer. Para inicializar a aplicação, o Spring Framework irá procura classes que herdam dessa interface   dentro dos pacotes. O conteúdo da classe deve ficar como no quadro 5.
+A classe AppInitializer herda da interface WebApplicationInitializer. Para inicializar a aplicação, o Spring Framework irá procura classes que herdam dessa interface   dentro dos pacotes. O conteúdo da classe deve estar como no quadro~\ref{lst:4}.
 
 A interface WebApplicationInitializer possui a assinatura de apenas um método, onStartup. Na implementação desse método é escrito código para configurar tanto o contexto da aplicação quando o servlet primário.
 
@@ -278,6 +286,51 @@ Primeiro é criado um objeto do tipo AnnotationConfigWebApplicationContext e é 
 
 É criado então um servlet do tipo DispatcherServlet que recebe o contexto como parâmetro e  é usada a classe ServletRegistration para registrar o servlet à aplicação. O método addMapping recebe como parâmetro o caractere “/”, isso quer dizer que esse servlet será usado para todas a páginas web e demais caminhos dentro da aplicação. O método setLoadOnStartup recebe como parâmetro o valor 1, para configurar nosso servlet como o primeiro que o servidor deve usar.
 
-\javacode{code/AppInitializer.txt}{Classe AppInitializer}
+\javacode{code/AppInitializer.txt}{Classe AppInitializer}{lst:4}
+
+Vários objetos que fazem parte da estrutura da aplicação (também conhecidos como Spring Beans) serão configurados na classe SpringMvcConfig, como mostra o quadro~\ref{fig:lst:6}. A anotação @Bean do Spring Framework decora métodos na classe SpringMvcConfig que retornam objetos que são usados no núcleo da aplicação e definem seu contexto.
+
+A classe SpringMvcConfig começa decorada com as seguintes anotações:
+
+\begin{itemize}
+  \item \annotation{@Configuration} - Define a classe como uma classe de configuração do Spring Framework.
+  \item \annotation{@EnableWebMvc} - Habilita o Spring MVC.
+  \item \annotation{@EnableTransactionManagement} - Habilita o controle automático de transações com o banco de dados pelo Spring Framework.
+  \item \annotation{@ComponentScan} - Configura os nomes de pacotes onde o Spring IoC Container deve procurar classes decoradas a anotação \annotation{@Component} e suas especializações, como \annotation{@Repository}, \annotation{@Service} e \annotation{@Controller} (Mais detalhes sobre essas anotações em capítulos posteriores).  
+\end{itemize}
+
+\javacode{code/mvcconfig.txt}{Classe SpringMvcConfig}{lst:6}
+
+A classe começa definindo várias propriedades que serão usadas para conexão como o banco de dados, como o driver a ser utilizado, localização, nome do banco, usuário e senha. Outras propriedades armazenam configurações do JPA (implementadas pelo Hibernate), como qual dialeto do SQL usar para gerar consultas no banco (dialeto do MySql 5), qual a ação executar na configuração hibernate.hbm2ddl.auto (“create” para criar o banco de dados e gerar tabelas a partir de classes decoradas com a anotação @Entity) e qual o esquema padrão a ser usado nas consultas (normalmente o mesmo nome do banco de dados no MySql)
+
+A classe SpringMvcConfig herda da classe WebMvcConfigurerAdapter para ter acesso a alguns métodos que facilitam a configuração da aplicação. Esses métodos decorados com @Override configuram o uso do Servlet Handler padrão do Spring e os como a aplicação deve servir diferentes tipos de conteúdo ao usuário.
+
+Os dois primeiros métodos decorados com @Bean retornam objetos com informações de onde e como encontrar as views da aplicação. O InternalResourceViewResolver armazena configurações sobre em que diretório estão as views (WEB-INF) e suas extensões (.jsp). Assim é dito ao Spring Framework para procurar páginas .jsp dentro do caminho /WebContent/WEB-INF.
+
+O Segundo método configura o ContentNegotiatorViewResolver, uma classe de uso interno do Spring que resolve views baseadas no cabeçalho das requisições HTTP. Note que ele recebe uma coleção de ViewResolvers como parâmetro e foi adicionado o InternalResourceViewResolver do método anterior nessa lista.
+
+Os três últimos métodos decorados com a anotação @Bean retornam objetos relacionados ao uso do banco de dados e manipulação de entidades. O primeiro deles retorna um objeto do tipo ComboPooledDatasource que recebe vários parâmetros para se conectar ao banco de dados e servir como fonte de dados para a aplicação. 
+
+O segundo método cria um objeto LocalContainerEntityManagerFactoryBean que gerenciará a criação de uma implementação da interface EntityManager. Implementações de EntityManager são usadas nos repositórios para persistir objetos e consultar o banco de dados. Entre os parâmetros que o LocalContainerEntityManagerFactoryBean recebe estão um adaptador para o uso do Hibernate, o nome do pacote onde serão criadas entidades entidades e o ComboPooledDatasource configurado anteriormente para ser usado como fonte de dados. Ele também recebe um objeto do tipo Properties contendo várias configurações do Java Persistence API (JPA). Para informações mais detalhadas sobre o JPA, recomenda-se o livro Pro JPA 2.0, 2ª edição, da editora Appress.
+
+O último método retorna um objeto JpaTansactionManager. Esse objeto será o responsável por gerenciar as transações com o banco de dados. Ele recebe a instancia do objeto LocalContainerEntityManagerFactoryBean configurado anteriormente como parâmetro.
+
+\subsubsection{Criando um projeto \anmvc no Visual Studio 2013}
+
+O link “new project...”, na tela inicial do Visual Studio Community 2013, mostra um menu com diversos modelos para criação de projetos. Para o projeto desse trabalho, será usando o "ASP.NET Web Application" o menu “Visual C\#”.
+
+Um projeto no Visual Studio faz parte de uma Solução. Uma solução além de ser uma coleção de projetos, contém informações de dependências e configurações. A figura~\ref{fig:17} ilustra a criação de um novo projeto. Os arquivos de solução junto com os de projeto são os equivalentes no Visual Studio aos arquivos de projeto do Eclipse e o arquivo gradle.build. vsnewproject.png
+
+\figura{vsnewproject.png}{Criando um novo projeto no Visual Studio Community 2013}{fig:17}
+
+O nome da solução de exemplo será “NetWebCrud”. O Visual Studio automaticamente dá o mesmo nome da solução para o primeiro projeto criado. O local de armazenamento dos arquivos também pode ser configurado nessa tela. Clicando no botão “OK”, aparecerá o menu mostrado na figura~\ref{fig:18}.
+
+\figura{vsnewproject2.png}{Opções de um novo projeto web no Visual Studio}{fig:18}
+
+Existem várias opções de projetos para web. Para um projeto MVC contendo apenas o mínimo necessário para seu funcionamento, será escolhido o modelo “Empty” e é marcada a opção MVC. O serviço Microsoft Azure não será utilizado, então a opção “Host in the Cloud” é desmarcada. Clicando em OK, o Visual Studio irá gerar um projeto com a estrutura mostrada pela figura~\ref{fig:19}.
+
+\figura{19.png}{Estrutura de um projeto \anmvc}{fig:19}
+
+
 
 \end{document}
