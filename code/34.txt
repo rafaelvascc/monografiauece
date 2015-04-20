@@ -1,0 +1,7 @@
+namespace NetWebCrud.Models.Entities
+{
+    public class BaseEntity
+    {
+        public int Id { set; get; }
+    }
+}

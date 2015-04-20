@@ -16,6 +16,8 @@
 \usepackage{listings}
 \usepackage{minted}
 \setlength{\parskip}{1em}
+\usepackage{titlesec}
+\setcounter{secnumdepth}{4}
 \renewcommand{\familydefault}{\sfdefault}
 \renewcommand{\listingscaption}{\textmd{Quadro}}
 
@@ -135,8 +137,10 @@
 \date{January 5, 2011}
 \maketitle
 
+\newpage
 \section{Introdução}
 
+\newpage
 \section{Configuração de ambiente de desenvolvimento}
 
 Neste capitulo será demonstrado o preparo do ambiente de desenvolvimento em um computador rodando o sistema operacional \est{Windows} 8.1 de 64 \est{bits}. Primeiramente, instala-se um sistema gerenciador de banco de dados para trabalhar tanto com a plataforma \spring quanto com a plataforma \anmvc.  O banco de dados usado será o \est{MySQL Community Server} versão 5.6.22 (a versão mais atual até o momento de criação desta monografia). A \est{Integrated Development Environment} (\sigla{IDE}) utilizada  para escrever código em \lang{Java}, será o \est{Eclipse Luna}. O \est{Gradle} será usado como \est{build tool} e o \est{Apache Tomcat} como \est{container} \est{Java Enterprise Edition} (\sigla{JEE}). Para desenvolver em \lang{C\#}, será usado o \est{Visual Studio 2013 Community}. Considerando que o leitor já possui entendimentos sobre informática necessários para instalar programas no \est{Windows}, as instruções de instalação serão sucintas. 
@@ -227,6 +231,7 @@ A vantagem do ambiente .NET é a facilidade de obter todo o software necessário
 
 No próximo capitulo será demonstrado como criar um projeto de uma aplicação web nas duas plataformas.
 
+\newpage
 \section{Criando projetos web no padrão MVC}
 
 Nesse capitulo será mostrado como criar um novo projeto para uma aplicação web que utiliza o padrão MVC nas plataformas \spring e \anmvc. Para Java serão usadas as bibliotecas Spring Framework, que cuidará da arquitetura MVC e injeção de dependências, e o Hibernate, que cuidará da persistência e acesso a dados. Na plataforma .NET será utilizado o ASP.NET MVC 5, que cuida de toda estrutura de uma aplicação web MVC, o Entity Framework 6 para acesso a dados e o Ninject para injeção de dependências.
@@ -424,6 +429,7 @@ As vantagens de criação de um novo projeto ASP.NET MVC no Visual Studio são o
 
 No próximo capitulo será mostrado como criar controllers e views nos dois tipos de projetos.
 
+\newpage
 \section{Criando controllers e views}
 
 Um controller é uma classe que  recebe requisições, processa informações (ou chama outras classes processa-las) e devolve um resultado ao usuário. Resultados comuns são páginas da web e objetos JSON ou XML para processamento no navegador (usando Javascript). Views, no contexto de uma aplicação web, são as próprias páginas que serão exibidas ao usuário.
@@ -636,6 +642,7 @@ A view engine JSTL utiliza uma sintaxe parecida com o HTML, se integrando melhor
 
 No próximo capitulo serão abordados a criação de classes de negócio/serviços e injeção de dependências. 
 
+\newpage
 \section{Classes de serviços e injeção de dependências}
 
 Uma aplicação 3-tier típica se divide em 3 camadas, apresentação, negócios/serviços e persistência de dados. A camada de serviços é onde se escreve o código que representa regras de negócio das aplicações, enquanto a camada de persistência é responsável por guardar os dados da aplicação para uso posterior. É importante que essas camadas estejam fracamente acopladas, pois o desenvolvedor pode, por exemplo, aproveitar as classes de negócio que ele escreveu para uma aplicação web em uma aplicação para celular.
@@ -737,5 +744,70 @@ O Spring é superior ao ASP.NET MVC 5 em se tratando de injeção de dependênci
 Na próxima versão do ASP.NET, também chamada de vNext, será adicionado um IoC container nativo. Até o momento em que este trabalho está sendo escrito, o vNext está em fase de testes público e pode passar por mudanças, então o uso do IoC container da próxima versão não foi considerado.
 
 No próximo capítulo será abordada a criação do banco de dados a partir de entidades de negócio e acesso a dados usando repositórios do Spring e a classe DbContext do Entity Framework.
+
+\newpage
+\section{Entidades e repositórios}
+
+Entidades são classes que representam os objetos de negócio, a classe Person utilizada até agora é um exemplo de entidade. Em ambos os projetos, essa classe será usada para gerar uma tabela no banco de dados e substituir as listas em memória que foram usadas até então. Essa técnica é chamada de mapeamento objeto/relacional, pois mapeia propriedades de objetos para tabelas e colunas no banco de dados relacional. Nos exemplos desse capitulo serão usados o Hibernate no projeto Java/Spring e o Entity Framework no projeto ASP.NET MVC como bibliotecas para mapeamento objeto/relacional.
+
+Além de a classe Person, nesse capitulo será criada a classe Contact que conterá o e-mail e o telefone de uma pessoa. Essa classe terá um relacionamento de um para um com a classe Person e irá gerar uma chave estrangeira no banco de dados.
+
+Com as entidades prontas, serão feitos repositórios para persistir as entidades no banco de dados. Será feito um repositório genérico e um repositório especifico para cada classe.
+
+\subsection{Entidades}
+
+As seções a seguir irão mostrar como utilizar uma classe para gerar tabelas no banco de dados. Entidades precisam de um identificador único para ser sua chave primária no banco de dados, essa propriedade será chamada Id e será do tipo inteiro.
+
+Como serão usadas duas entidades nesse capitulo e ambas precisam do identificador único, será criada uma classe base com essa propriedade em comum chamada BaseEntity. O intuito da criação dessa classe é mostrar como é possível o uso de herança nas entidades. As classes Person e Contact irão ser especializações de BaseEntity.
+
+\subsubsection{Java}
+
+Entidades no projeto Java/Spring são criadas no pacote br.uece.webCrud.model. A classe BaseEntity é criada como mostra o quadro~\ref{lst:32}.
+
+\javacode{code/32.txt}{Classe BaseEntity no projeto Java}{lst:32}
+
+A classe BaseEntity é decorada com a anotação @MappedSuperclass que diz ao Hibernate que entidades que sejam suas subclasses devem levar em consideração as propriedades herdadas no mapeamento objeto/relacional. A propriedade id é decorada com as anotações @Id, que configura o Hibernate para usá-la como chave primária e única, e @GeneratedValue, que delega ao banco de dados a lógica de geração do valor da chave.
+
+A classe Person então é modificada como no quadro~\ref{lst:33}.
+
+\javacode{code/33.txt}{Classe Person herda de BaseEntity}{lst:33}
+
+A classe Person agora é subclasse de BaseEntity e está decorada com a anotação @Entity. A anotação @Entity diz ao Hibernate que essa classe deve ser mapeada para uma tabela e as propriedades da classe para as colunas da tabela.
+
+Por padrão o Hibernate procura por uma tabela com o mesmo nome da classe e colunas com o mesmo nome das propriedades para realizar o mapeamento, mas esse comportamento pode ser modificado com as anotações @Table, @Column, @Transient e muitas outras. A propriedade name por exemplo, está decorada com a anotação @Column especificando que aquela propriedade não pode ser nula no banco de dados e a propriedade birthDate está decorada com a anotação @Temporal especificando que a coluna no banco deve ser do tipo Date.
+
+Na seção 3.1.3, durante a configuração do projeto, a propriedade hibernate.hbm2ddl.auto foi configurada com o valor “create”, assim o Hibernate irá criar as tabelas no banco de dados de acordo com as configurações de classes decoradas com a anotação @Entity. Outros valores para essa configuração podem ser “update”, para atualizar a estrutura das tabelas sem perder dados, e “validate”, para apenas verificar se o mapeamento objeto/relacional está consistente. O Hibernate cria tabelas, mas não cria o banco de dados, para que a criação de tabelas funcione é necessário que o banco de dados já exista. O Hibernate cria as tabelas no momento em que a aplicação é iniciada.
+
+\subsubsection{.NET}
+
+Entidades no projeto ASP.NET MVC são criadas na pasta Model/Entities. Considere que a classe Person é movida para essa pasta. O quadro~\ref{lst:34} mostra a classe BaseEntity do projeto ASP.NET MVC.
+
+\javacode{code/34.txt}{Classe BaseEntity no projeto ASP.NET}{lst:34}
+
+Uma convenção do Entity Framework é que se uma classe tiver uma propriedade chamada Id de tipo numérico ou guid (tipo de identificar único), essa propriedade será usada como chave primária. Assim nenhuma configuração adicional é necessária.
+
+Assim como no projeto Java, a classe Person do projeto ASP.NET MVC é modificada para ser subclasse de BaseEntity, como mostrado no quadro~\ref{lst:35}.
+
+\javacode{code/35.txt}{Classe Person no projeto ASP.NET agora herda de BaseEntity}{lst:35}
+
+Assim como no projeto Java, entidades do Entity Framework podem ser decoradas com anotações que controlam como as tabelas serão geradas. No exemplo acima a anotação Required também diz que a coluna correspondente à propriedade Name não pode aceitar valores nulos.
+
+\paragraph{Criando o contexto do banco de dados}
+
+Não existe configuração na classe acima que indique que ela é uma entidade e que deve ser usada no mapeamento objeto/relacional. Esse papel é da classe DbContext do Entity Framework. A classe DbContext representa o banco de dados como um todo. Para criar o banco de dados a partir das entidades, o desenvolvedor deve criar uma classe que herde de DbContext e tenha propriedades do tipo DbSet como a classe NetWebCrudContext no exemplo do quadro~\ref{lst:36}. 
+
+\javacode{code/36.txt}{Classe NetWebCrudContext representa o contexto do banco de dados}{lst:36}
+
+A classe NetWebCrudContext possui um DbSet de objetos do tipo Person que representa a tabela que será gerada no banco de dados. Para utilizar o banco, o desenvolvedor deve criar uma instância do contexto e fazer consultas aos DbSets usando LINQ (Language Integrated Query). O LINQ é uma linguagem para realizar consultas em coleções do .NET Framework. Usado em DbSets, ele gera consultas SQL automaticamente para manipular o banco de dados. Consultas com LINQ serão abordadas na seção 6.4.
+
+O construtor de NetWebCrudContext executa o construtor de DbContext recebendo como parâmetro o nome da connection string que contém informações de conexão com o banco. Ele recebe o nome da connection string NetWebCrudContext, a mesma que foi configurada no arquivo Web.xml na seção 3.2.2.
+
+O construtor do contexto do banco de dados também é usado para configurar o tipo de inicialização do banco. O construtor de NetWebCrudContext utiliza como inicializador a classe DropCreateDatabaseIfModelChanges, então se qualquer entidade for modificada, o banco de dados será totalmente reconstruído e todos os dados perdidos. Existem outras classes que podem ser usadas como inicializadores como CreateDatabaseIfNotExists, para criar o banco apenas uma vez, e DropCreateDatabaseAways para sempre recriar o banco de dados quando a aplicação iniciar. O desenvolvedor pode estender esses inicializadores ou construir um completamente novo que implemente a interface IDatabaseInitializer.
+
+O Entity Framework não atualiza automaticamente a estrutura do banco de dados sem perder informações, para isso é necessário utilizar o Entity Framework Migrations. Essa funcionalidade permite utilizar as linguagens C\# ou VB.NET para executar scripts no banco de dados e atualizar sua estrutura. O Entity Framework Migrations não é abordado nesse trabalho, para mais informações recomenda-se consultar a documentação do Entity Framework.
+
+O método OnModelCreating é usado para configurar diversos aspectos da criação do banco de dados.  No exemplo do quadro~\ref{lst:36}, a convenção de pluralizar o nome das tabelas é removida.
+
+Diferente do Hibernate que cria ou atualiza o banco de dados quando a aplicação é iniciada, o Entity Framework cria o banco de dados na primeira vez em que o contexto do Entity Framework é instanciado. 
 
 \end{document}
