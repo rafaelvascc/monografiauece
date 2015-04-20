@@ -1,0 +1,38 @@
+package br.uece.webCrud.controller;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.ModelAttribute;
+import org.springframework.web.bind.annotation.RequestMapping;
+import org.springframework.web.bind.annotation.RequestMethod;
+import org.springframework.web.servlet.ModelAndView;
+import br.uece.webCrud.model.Person;
+import br.uece.webCrud.service.PersonService;
+
+@Controller
+@RequestMapping("/person")
+public class PersonController {
+
+	@Autowired
+	private PersonService personService;
+		
+	@RequestMapping("/list")
+	public ModelAndView listPage()
+	{
+		ModelAndView result = new ModelAndView("person/list");
+		result.addObject("personsList", personService.getAll());
+		return result;
+	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.GET)
+	public String addPage()
+	{
+		return "person/add";
+	}
+	
+	@RequestMapping(value = "/add", method = RequestMethod.POST)
+	public String addPost(@ModelAttribute Person person)
+	{
+		personService.add(person);
+		return "redirect:/person/list";
+	}
+}

@@ -1,0 +1,16 @@
+public class Foo {
+	private Bar bar;	
+	public Foo(Bar bar) {
+		bar = bar;
+	}	
+	public Bar getBar() {
+		return bar;
+	}
+}
+public class App {
+	public static void main(String[] args) {
+		Bar bar = new BarImpl();
+		Foo foo = new Foo(bar);
+		foo.getBar().sayHello();
+	}
+}

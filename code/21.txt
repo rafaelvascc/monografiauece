@@ -1,0 +1,33 @@
+@using NetWebCrud.Models
+@model List<Person>
+
+@{
+    Layout = null;
+}
+<!DOCTYPE html>
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>List Persons</title>
+</head>
+<body>
+    <h1>Person List</h1>
+    <a href="add">Add Person</a>
+    <table>
+        <thead>
+            <tr>
+                <th>Name</th>
+                <th>Birth Date</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach(var person in Model) {
+                <tr>
+                    <td>@person.Name</td>
+                    <td>@person.BirthDate</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+</body>
+</html>

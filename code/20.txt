@@ -1,0 +1,5 @@
+[HttpGet]
+public ActionResult List()
+{
+	return View(Persons);
+}

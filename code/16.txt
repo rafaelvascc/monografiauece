@@ -1,0 +1,8 @@
+@RequestMapping(value = "/getOne", method = RequestMethod.GET)
+public @ResponseBody Person getOne()
+{
+	Person p = new Person();
+	p.setName("Teste");
+	p.setBirthDate(new Date());
+	return p;
+}

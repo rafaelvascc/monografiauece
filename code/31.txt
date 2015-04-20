@@ -1,0 +1,27 @@
+namespace NetWebCrud.Controllers
+{
+    public class PersonController : Controller
+    {
+        [Inject]
+        public IPersonService PersonService { set; private get; }
+
+        [HttpGet]
+        public ActionResult Add()
+        {
+            return View();
+        }        
+
+        [HttpPost]
+        public ActionResult Add(Person person)
+        {
+            PersonService.Add(person);
+            return RedirectToAction("List");
+        }
+
+        [HttpGet]
+        public ActionResult List()
+        {
+            return View(PersonService.GetAll());
+        }
+    }
+}

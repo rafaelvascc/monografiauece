@@ -1,0 +1,19 @@
+private IList<Person> Persons 
+{
+	get 
+	{
+		var persons = HttpContext.Application["persons"];
+		if (persons == null)
+		{
+			HttpContext.Application["persons"] = persons = new List<Person>();
+		}
+		return (IList<Person>)persons;
+	}        
+}
+
+[HttpPost]
+public ActionResult Add(Person person)
+{
+	persons.Add(person);
+	return RedirectToAction("List");
+}
