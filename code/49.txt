@@ -1,0 +1,64 @@
+using NetWebCrud.Models.Context;
+using NetWebCrud.Models.Entities;
+using Ninject;
+using System;
+using System.Collections.Generic;
+using System.Data;
+using System.Data.Entity;
+using System.Linq;
+using System.Web;
+
+namespace NetWebCrud.Models.Repositories
+{
+    public abstract class GenericRepository<T> : 
+				IGenericRepository<T> where T : BaseEntity
+    {
+        [Inject]
+        public NetWebCrudContext context { set; protected get; }
+
+        protected DbSet<T> EntitySet
+        {
+            get { return context.Set<T>(); } 
+        }
+
+        public T GetById(int Id)
+        {
+            return EntitySet.Where<T>(e => e.Id == Id).SingleOrDefault();
+        }
+
+        public IList<T> GetAll()
+        {
+            return EntitySet.ToList<T>();
+        }
+
+        public T Save(T entity)
+        {
+            EntitySet.Add(entity);
+            context.SaveChanges();
+            return entity;
+        }
+
+        public T Update(T entity)
+        {
+            EntitySet.Attach(entity);
+            context.Entry(entity).State = EntityState.Modified;
+            context.SaveChanges();
+            return entity;
+        }
+
+        public void Delete(int Id)
+        {
+            var entity = GetById(Id);
+            if (entity != null)
+            {
+                EntitySet.Remove(entity);
+                context.SaveChanges();
+            }
+        }
+
+        public DbContextTransaction GetTransaction()
+        {
+            return context.Database.BeginTransaction();
+        }
+    }
+}

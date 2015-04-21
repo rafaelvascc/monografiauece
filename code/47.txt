@@ -1,0 +1,44 @@
+package br.uece.webCrud.service;
+import java.util.List;
+import javax.transaction.Transactional;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.stereotype.Service;
+import br.uece.webCrud.model.Person;
+import br.uece.webCrud.repository.PersonRepository;
+
+@Service
+@Transactional
+public class PersonServiceImpl implements PersonService {
+
+	@Autowired
+	private PersonRepository pr;
+
+	@Override
+	public List<Person> getAll() {
+		return pr.getAll();
+	}
+
+	@Override
+	public Person add(Person p) {
+		if (pr.existsWithName(p)) {
+			throw new RuntimeException("Person already exists.");
+		}
+		
+		return pr.add(p);
+	}
+
+	@Override
+	public Person getById(int id) {
+		return pr.getById(id);
+	}
+
+	@Override
+	public Person update(Person p) {
+		return pr.update(p);
+	}
+
+	@Override
+	public void delete(int id) {
+		pr.delete(id);
+	}
+}

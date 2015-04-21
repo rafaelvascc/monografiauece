@@ -1,0 +1,12 @@
+namespace NetWebCrud.Models.Entities
+{
+    public class Person : BaseEntity
+    {
+        [Required]
+        public string Name { set; get; }
+        public DateTime BirthDate { set; get; }
+        public int? ContactId { set; get; }
+
+        public virtual Contact Contact { set; get; }
+    }
+}

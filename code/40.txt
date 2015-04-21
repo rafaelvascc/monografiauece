@@ -1,0 +1,8 @@
+namespace NetWebCrud.Models.Entities
+{
+    public class Contact : BaseEntity
+    {
+        public String Phone { set; get; }
+        public String Email { set; get; }
+    }
+}

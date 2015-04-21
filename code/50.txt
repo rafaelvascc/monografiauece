@@ -1,0 +1,18 @@
+using NetWebCrud.Models.Entities;
+using System;
+
+namespace NetWebCrud.Models.Repositories
+{
+    public interface IPersonRepository : IGenericRepository<Person>
+    {
+        bool ExistsWithName(Person p);
+    }
+}
+using NetWebCrud.Models.Entities;
+
+namespace NetWebCrud.Models.Repositories
+{
+    public interface IContactRepository : IGenericRepository<Contact>
+    {
+    }
+}

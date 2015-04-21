@@ -1,0 +1,7 @@
+private static void RegisterServices(IKernel kernel)
+{
+	kernel.Bind<IPersonService>().To<PersonService>().InRequestScope();            
+	kernel.Bind<IPersonRepository>().To<PersonRepository>().InRequestScope();         
+	kernel.Bind<IContactRepository>().To<ContactRepository>().InRequestScope();
+	kernel.Bind<DbContext>().ToSelf().InRequestScope();
+}
