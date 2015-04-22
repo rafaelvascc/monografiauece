@@ -140,6 +140,25 @@
 \newpage
 \section{Introdução}
 
+\subsection{Objetivo}
+Este trabalho tem como objetivo comparar a criação de um projeto de uma aplicação entre duas tecnologias, Java utilizando o Spring Framework e Hibernate, e o ASP.NET MVC 5 e Entity Framework utilizando C\#. Será usado como exemplo um projeto de uma aplicação web de 3 camadas (apresentação, serviços e persistência) que utiliza o padrão Model View Controller (MVC).
+
+Como abordagem utilizada, primeiramente será comparada a configuração de ambiente e a criação e configuração de um projeto usando as duas tecnologias. Será comparado como se criar controllers, views, classes de serviço, repositórios e injeção de dependências. Serão utilizados exemplos em código. Ao final de cada capitulo a subseção de conclusões irá destacar as vantagens e desvantagens de cada tecnologia, focando na escrita de código.
+
+\subsection{Estado da arte}
+
+TODO
+
+\subsection{Resumo dos resultados alcançados}
+
+Ambas as tecnologias possuem seus pontos fortes e fracos. De modo geral, o uso de Java com o Spring Framework proporciona melhor controle do projeto ao desenvolvedor e a liberdade de utilizar uma gama maior de bibliotecas para configurar seu projeto. MAs essa liberdade tem um custo, o desenvolvedor de modo geral, precisa escrever mais código de configuração e pesquisar como os componentes escolhidos interagem para que o projeto seja bem sucedido.
+
+A tecnologia ASP.NET MVC é mais fechada (apesar do seu código ser aberto), existem muitas convenções que o desenvolvedor deve obedecer e não existe muita margem para configuração, tudo é mais padronizado. A vantagem disso é que o desenvolvedor se preocupa menos em como vai configurar sua aplicação, tudo já foi pensado para ele. Com o ASP.NET MVC o desenvolvedor usa o tempo que configuraria uma aplicação para escrever código que realmente agrega valor ao produto.
+
+\subsection{Publico alvo}
+
+Esse trabalho pode beneficiar gerentes de projetos e lideres técnicos à escolher qual das duas tecnologias usar para iniciar um novo projeto. Estudantes interessados em começar a desenvolver para a web também podem se beneficiar desse trabalho e aprender o básico sobre as duas tecnologias.
+
 \newpage
 \section{Configuração de ambiente de desenvolvimento}
 
@@ -320,7 +339,7 @@ Primeiro é criado um objeto do tipo AnnotationConfigWebApplicationContext e é 
 
 \javacode{code/AppInitializer.txt}{Classe AppInitializer}{lst:4}
 
-Vários objetos que fazem parte da estrutura da aplicação (também conhecidos como Spring Beans) serão configurados na classe SpringMvcConfig, como mostra o quadro~\ref{fig:lst:6}. A anotação @Bean do Spring Framework decora métodos na classe SpringMvcConfig que retornam objetos que são usados no núcleo da aplicação e definem seu contexto.
+Vários objetos que fazem parte da estrutura da aplicação (também conhecidos como Spring Beans) serão configurados na classe SpringMvcConfig, como mostra o quadro~\ref{lst:mvcconfig}. A anotação @Bean do Spring Framework decora métodos na classe SpringMvcConfig que retornam objetos que são usados no núcleo da aplicação e definem seu contexto.
 
 A classe SpringMvcConfig começa decorada com as seguintes anotações:
 
@@ -331,7 +350,7 @@ A classe SpringMvcConfig começa decorada com as seguintes anotações:
   \item \annotation{@ComponentScan} - Configura os nomes de pacotes onde o Spring IoC Container deve procurar classes decoradas a anotação \annotation{@Component} e suas especializações, como \annotation{@Repository}, \annotation{@Service} e \annotation{@Controller} (Mais detalhes sobre essas anotações em capítulos posteriores).  
 \end{itemize}
 
-\javacode{code/mvcconfig.txt}{Classe SpringMvcConfig}{lst:6}
+\javacode{code/mvcconfig.txt}{Classe SpringMvcConfig}{lst:mvcconfig}
 
 A classe começa definindo várias propriedades que serão usadas para conexão como o banco de dados, como o driver a ser utilizado, localização, nome do banco, usuário e senha. Outras propriedades armazenam configurações do JPA (implementadas pelo Hibernate), como qual dialeto do SQL usar para gerar consultas no banco (dialeto do MySql 5), qual a ação executar na configuração hibernate.hbm2ddl.auto (“create” para criar o banco de dados e gerar tabelas a partir de classes decoradas com a anotação @Entity) e qual o esquema padrão a ser usado nas consultas (normalmente o mesmo nome do banco de dados no MySql)
 
@@ -411,7 +430,7 @@ A instalação do Ninject Mvc 5 adiciona o arquivo NinJectWebCommon.cs à pasta 
 
 \subsubsection{Adicionando informações de conexão com o banco de dados}
 
-O acesso ao banco de dados é configurado no arquivo Web.config na raiz do projeto. Para adicionar informações de conexão com o banco MySql, é adicionada a tag connectionStrings como no exemplo mostrado no quadro~ref{lst:6}.
+O acesso ao banco de dados é configurado no arquivo Web.config na raiz do projeto. Para adicionar informações de conexão com o banco MySql, é adicionada a tag connectionStrings como no exemplo mostrado no quadro~\ref{lst:6}.
 
 \xmlcode{code/6.txt}{Adicionando configurações de conexão ao Web.xml}{lst:6}
 
