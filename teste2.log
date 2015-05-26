@@ -1,4 +1,4 @@
-This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.15)  22 APR 2015 20:59
+This is pdfTeX, Version 3.1415926-2.5-1.40.14 (MiKTeX 2.9 64-bit) (preloaded format=pdflatex 2015.4.15)  26 MAY 2015 19:54
 entering extended mode
 **teste2.tex
 (D:\Projetos\monografiauece\teste2.tex
@@ -509,99 +509,40 @@ File: listings.cfg 2013/08/26 1.5b listings configuration
 ))
 Package: listings 2013/08/26 1.5b (Carsten Heinz)
 
-("C:\Program Files\MiKTeX 2.9\tex\latex\minted\minted.sty"
-Package: minted 2011/09/17 v1.7 Yet another Pygments shim for LaTeX
-
-("C:\Program Files\MiKTeX 2.9\tex\latex\fancyvrb\fancyvrb.sty"
-Package: fancyvrb 2008/02/07
-
-Style option: `fancyvrb' v2.7a, with DG/SPQR fixes, and firstline=lastline fix 
-<2008/02/07> (tvz)
-\FV@CodeLineNo=\count111
-\FV@InFile=\read1
-\FV@TabBox=\box28
-\c@FancyVerbLine=\count112
-\FV@StepNumber=\count113
-\FV@OutFile=\write3
-) ("C:\Program Files\MiKTeX 2.9\tex\latex\float\float.sty"
-Package: float 2001/11/08 v1.3d Float enhancements (AL)
-\c@float@type=\count114
-\float@exts=\toks19
-\float@box=\box29
-\@float@everytoks=\toks20
-\@floatcapt=\box30
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\base\ifthen.sty"
-Package: ifthen 2001/05/26 v1.1c Standard LaTeX ifthen package (DPC)
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\tools\calc.sty"
-Package: calc 2007/08/22 v4.3 Infix arithmetic (KKT,FJ)
-\calc@Acount=\count115
-\calc@Bcount=\count116
-\calc@Adimen=\dimen129
-\calc@Bdimen=\dimen130
-\calc@Askip=\skip44
-\calc@Bskip=\skip45
-LaTeX Info: Redefining \setlength on input line 76.
-LaTeX Info: Redefining \addtolength on input line 77.
-\calc@Ccount=\count117
-\calc@Cskip=\skip46
-)
-("C:\Program Files\MiKTeX 2.9\tex\latex\ifplatform\ifplatform.sty"
-Package: ifplatform 2010/10/22 v0.4 Testing for the operating system
-
-("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\catchfile.sty"
-Package: catchfile 2011/03/01 v1.6 Catch the contents of a file (HO)
-))
-\minted@bgbox=\box31
-\minted@code=\write4
-\@float@every@listing=\toks21
-\c@listing=\count118
-)
-runsystem(del teste2.aex)...executed.
-
-runsystem(for ^%i in (pygmentize.exe pygmentize.bat pygmentize.cmd) do set >tes
-te2.aex <nul: /p x=^%~$PATH:i>>teste2.aex)...executed.
-
-\@appexistsfile=\read2
-runsystem(del teste2.aex)...executed.
-
-
-file deleted
 ("C:\Program Files\MiKTeX 2.9\tex\latex\titlesec\titlesec.sty"
 Package: titlesec 2011/12/15 v2.10.0 Sectioning titles
-\ttl@box=\box32
-\beforetitleunit=\skip47
-\aftertitleunit=\skip48
-\ttl@plus=\dimen131
-\ttl@minus=\dimen132
-\ttl@toksa=\toks22
-\titlewidth=\dimen133
-\titlewidthlast=\dimen134
-\titlewidthfirst=\dimen135
+\ttl@box=\box28
+\beforetitleunit=\skip44
+\aftertitleunit=\skip45
+\ttl@plus=\dimen129
+\ttl@minus=\dimen130
+\ttl@toksa=\toks19
+\titlewidth=\dimen131
+\titlewidthlast=\dimen132
+\titlewidthfirst=\dimen133
 )
 (D:\Projetos\monografiauece\teste2.aux)
-LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 134.
-LaTeX Font Info:    ... okay on input line 134.
-LaTeX Font Info:    Try loading font information for T1+phv on input line 134.
+LaTeX Font Info:    Checking defaults for OML/cmm/m/it on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for T1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OT1/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMS/cmsy/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for OMX/cmex/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for U/cmr/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Checking defaults for PD1/pdf/m/n on input line 113.
+LaTeX Font Info:    ... okay on input line 113.
+LaTeX Font Info:    Try loading font information for T1+phv on input line 113.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\t1phv.fd"
 File: t1phv.fd 2001/06/04 scalable font definitions for T1/phv.
 )
-\AtBeginShipoutBox=\box33
-Package hyperref Info: Link coloring OFF on input line 134.
+\AtBeginShipoutBox=\box29
+Package hyperref Info: Link coloring OFF on input line 113.
 
 ("C:\Program Files\MiKTeX 2.9\tex\latex\hyperref\nameref.sty"
 Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
@@ -609,14 +550,14 @@ Package: nameref 2012/10/27 v2.43 Cross-referencing by name of section
 ("C:\Program Files\MiKTeX 2.9\tex\generic\oberdiek\gettitlestring.sty"
 Package: gettitlestring 2010/12/03 v1.4 Cleanup title references (HO)
 )
-\c@section@level=\count119
+\c@section@level=\count111
 )
-LaTeX Info: Redefining \ref on input line 134.
-LaTeX Info: Redefining \pageref on input line 134.
-LaTeX Info: Redefining \nameref on input line 134.
+LaTeX Info: Redefining \ref on input line 113.
+LaTeX Info: Redefining \pageref on input line 113.
+LaTeX Info: Redefining \nameref on input line 113.
 
 (D:\Projetos\monografiauece\teste2.out) (D:\Projetos\monografiauece\teste2.out)
-\@outlinefile=\write5
+\@outlinefile=\write3
 *geometry* driver: auto-detecting
 *geometry* detected driver: pdftex
 *geometry* verbose mode - [ preamble ] result:
@@ -653,1081 +594,520 @@ LaTeX Info: Redefining \nameref on input line 134.
 
 ("C:\Program Files\MiKTeX 2.9\tex\context\base\supp-pdf.mkii"
 [Loading MPS to PDF converter (version 2006.09.02).]
-\scratchcounter=\count120
-\scratchdimen=\dimen136
-\scratchbox=\box34
-\nofMPsegments=\count121
-\nofMParguments=\count122
-\everyMPshowfont=\toks23
-\MPscratchCnt=\count123
-\MPscratchDim=\dimen137
-\MPnumerator=\count124
-\makeMPintoPDFobject=\count125
-\everyMPtoPDFconversion=\toks24
+\scratchcounter=\count112
+\scratchdimen=\dimen134
+\scratchbox=\box30
+\nofMPsegments=\count113
+\nofMParguments=\count114
+\everyMPshowfont=\toks20
+\MPscratchCnt=\count115
+\MPscratchDim=\dimen135
+\MPnumerator=\count116
+\makeMPintoPDFobject=\count117
+\everyMPtoPDFconversion=\toks21
 )
 Package caption Info: Begin \AtBeginDocument code.
-Package caption Info: float package is loaded.
 Package caption Info: listings package is loaded.
 Package caption Info: End \AtBeginDocument code.
-\c@lstlisting=\count126
-runsystem(pygmentize -S default -f latex > teste2.pyg)...executed.
-
- (D:\Projetos\monografiauece\teste2.pyg)
+\c@lstlisting=\count118
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <14.4> on input line 139.
+(Font)              <14.4> on input line 118.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <7> on input line 139.
+(Font)              <7> on input line 118.
  [1
 
 {C:/ProgramData/MiKTeX/2.9/pdftex/config/pdftex.map}]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <17.28> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 141.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 120.
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 143.
-LaTeX Font Info:    Try loading font information for OMS+phv on input line 149.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 122.
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 124.
+LaTeX Font Info:    Try loading font information for OMS+phv on input line 129.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsphv.fd"
+
+("C:\Program Files\MiKTeX 2.9\tex\latex\psnfss\omsphv.fd"
 File: omsphv.fd 
 )
 LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <12> not available
-(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 149.
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 129.
+ [2] [3] [4]
+LaTeX Font Info:    Try loading font information for T1+cmtt on input line 170.
 
-[2] [3]
-LaTeX Font Info:    Font shape `T1/phv/m/it' in size <12> not available
-(Font)              Font shape `T1/phv/m/sl' tried instead on input line 180.
-LaTeX Font Info:    Try loading font information for T1+cmtt on input line 184.
 
- ("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
+("C:\Program Files\MiKTeX 2.9\tex\latex\base\t1cmtt.fd"
 File: t1cmtt.fd 1999/05/25 v2.5h Standard LaTeX font definitions
 )
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <12> on input line 184.
+(Font)              <12> on input line 170.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <8> on input line 184.
+(Font)              <8> on input line 170.
 LaTeX Font Info:    External font `cmex10' loaded for size
-(Font)              <6> on input line 184.
+(Font)              <6> on input line 170.
 
-<figuras/mysqlinstaller1.jpg, id=253, 449.42906pt x 338.01282pt>
+<figuras/mysqlinstaller1.jpg, id=258, 449.42906pt x 338.01282pt>
 File: figuras/mysqlinstaller1.jpg Graphic file (type jpg)
 
 <use figuras/mysqlinstaller1.jpg>
-Package pdftex.def Info: figuras/mysqlinstaller1.jpg used on input line 188.
+Package pdftex.def Info: figuras/mysqlinstaller1.jpg used on input line 174.
 (pdftex.def)             Requested size: 449.42795pt x 338.01198pt.
- [4]
-<figuras/mysqlinstaller2.jpg, id=262, 452.4403pt x 340.27126pt>
+ [5]
+<figuras/mysqlinstaller2.jpg, id=266, 452.4403pt x 340.27126pt>
 File: figuras/mysqlinstaller2.jpg Graphic file (type jpg)
 
 <use figuras/mysqlinstaller2.jpg>
-Package pdftex.def Info: figuras/mysqlinstaller2.jpg used on input line 194.
+Package pdftex.def Info: figuras/mysqlinstaller2.jpg used on input line 180.
 (pdftex.def)             Requested size: 452.43921pt x 340.27042pt.
- [5 <D:/Projetos/monografiauece/figuras/mysqlinstaller1.jpg>]
+ [6 <D:/Projetos/monografiauece/figuras/mysqlinstaller1.jpg>]
 LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <12> not available
-(Font)              Font shape `T1/phv/b/n' tried instead on input line 202.
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 188.
 
-Overfull \hbox (4.45392pt too wide) in paragraph at lines 204--205
+Overfull \hbox (4.45392pt too wide) in paragraph at lines 190--191
 $\T1/cmtt/m/n/12 technetwork / java / javase / downloads / jdk8-[]downloads-[]2
 133151 . html$[]\T1/phv/m/n/12 . Exis-tem di-ver-
  []
 
-<figuras/jdk81.jpg, id=271, 433.62pt x 331.99031pt>
+<figuras/jdk81.jpg, id=275, 433.62pt x 331.99031pt>
 File: figuras/jdk81.jpg Graphic file (type jpg)
  <use figuras/jdk81.jpg>
-Package pdftex.def Info: figuras/jdk81.jpg used on input line 208.
+Package pdftex.def Info: figuras/jdk81.jpg used on input line 194.
 (pdftex.def)             Requested size: 433.61894pt x 331.98949pt.
 
-[6 <D:/Projetos/monografiauece/figuras/mysqlinstaller2.jpg>]
-<figuras/path1.png, id=280, 255.95625pt x 299.61937pt>
+[7 <D:/Projetos/monografiauece/figuras/mysqlinstaller2.jpg>]
+<figuras/path1.png, id=285, 255.95625pt x 299.61937pt>
 File: figuras/path1.png Graphic file (type png)
  <use figuras/path1.png>
-Package pdftex.def Info: figuras/path1.png used on input line 212.
+Package pdftex.def Info: figuras/path1.png used on input line 198.
 (pdftex.def)             Requested size: 255.95561pt x 299.61864pt.
 
-[7 <D:/Projetos/monografiauece/figuras/jdk81.jpg>]
-<figuras/eclipse1.png, id=289, 415.5525pt x 274.02374pt>
+[8 <D:/Projetos/monografiauece/figuras/jdk81.jpg>]
+<figuras/eclipse1.png, id=293, 415.5525pt x 274.02374pt>
 File: figuras/eclipse1.png Graphic file (type png)
 
 <use figuras/eclipse1.png>
-Package pdftex.def Info: figuras/eclipse1.png used on input line 222.
+Package pdftex.def Info: figuras/eclipse1.png used on input line 208.
 (pdftex.def)             Requested size: 415.55148pt x 274.02307pt.
- [8 <D:/Projetos/monografiauece/figuras/path1.png>]
-<figuras/plugin1.png, id=298, 397.485pt x 355.3275pt>
+ [9 <D:/Projetos/monografiauece/figuras/path1.png>]
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <12> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 210.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <12> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 210.
+
+<figuras/plugin1.png, id=302, 397.485pt x 355.3275pt>
 File: figuras/plugin1.png Graphic file (type png)
 
 <use figuras/plugin1.png>
-Package pdftex.def Info: figuras/plugin1.png used on input line 232.
+Package pdftex.def Info: figuras/plugin1.png used on input line 218.
 (pdftex.def)             Requested size: 397.48402pt x 355.32661pt.
- [9 <D:/Projetos/monografiauece/figuras/eclipse1.png>] <figuras/tomcat1.png, id
-=307, 385.44pt x 329.73187pt>
+ [10 <D:/Projetos/monografiauece/figuras/eclipse1.png>] <figuras/tomcat1.png, i
+d=312, 385.44pt x 329.73187pt>
 File: figuras/tomcat1.png Graphic file (type png)
 
 <use figuras/tomcat1.png>
-Package pdftex.def Info: figuras/tomcat1.png used on input line 242.
+Package pdftex.def Info: figuras/tomcat1.png used on input line 228.
 (pdftex.def)             Requested size: 385.43906pt x 329.73105pt.
- [10 <D:/Projetos/monografiauece/figuras/plugin1.png>] <figuras/vs1.png, id=317
-, 263.48438pt x 367.3725pt>
+ [11 <D:/Projetos/monografiauece/figuras/plugin1.png>]
+LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/it' tried instead on input line 230.
+LaTeX Font Info:    Font shape `T1/phv/b/it' in size <14.4> not available
+(Font)              Font shape `T1/phv/b/sl' tried instead on input line 230.
+<figuras/vs1.png, id=322, 263.48438pt x 367.3725pt>
 File: figuras/vs1.png Graphic file (type png)
  <use figuras/vs1.png>
-Package pdftex.def Info: figuras/vs1.png used on input line 248.
+Package pdftex.def Info: figuras/vs1.png used on input line 234.
 (pdftex.def)             Requested size: 263.48372pt x 367.37158pt.
 
-[11 <D:/Projetos/monografiauece/figuras/tomcat1.png>]
-<figuras/vs2.png, id=324, 429.85594pt x 235.63031pt>
+[12 <D:/Projetos/monografiauece/figuras/tomcat1.png>]
+<figuras/vs2.png, id=329, 429.85594pt x 235.63031pt>
 File: figuras/vs2.png Graphic file (type png)
  <use figuras/vs2.png>
-Package pdftex.def Info: figuras/vs2.png used on input line 254.
+Package pdftex.def Info: figuras/vs2.png used on input line 240.
 (pdftex.def)             Requested size: 429.85489pt x 235.62973pt.
 
-[12 <D:/Projetos/monografiauece/figuras/vs1.png>] [13 <D:/Projetos/monografiaue
-ce/figuras/vs2.png>] [14]
-<figuras/gradleproject1.png, id=340, 429.10312pt x 161.85469pt>
+[13 <D:/Projetos/monografiauece/figuras/vs1.png>] [14 <D:/Projetos/monografiaue
+ce/figuras/vs2.png>] [15]
+<figuras/gradleproject1.png, id=345, 429.10312pt x 161.85469pt>
 File: figuras/gradleproject1.png Graphic file (type png)
 
 <use figuras/gradleproject1.png>
-Package pdftex.def Info: figuras/gradleproject1.png used on input line 277.
+Package pdftex.def Info: figuras/gradleproject1.png used on input line 263.
 (pdftex.def)             Requested size: 429.10207pt x 161.85428pt.
 File: figuras/gradleproject1.png Graphic file (type png)
  <use figuras/gradleproject1.png>
-Package pdftex.def Info: figuras/gradleproject1.png used on input line 281.
+Package pdftex.def Info: figuras/gradleproject1.png used on input line 267.
 (pdftex.def)             Requested size: 429.10207pt x 161.85428pt.
- [15 <D:/Projetos/monografiauece/figuras/gradleproject1.png>]
-runsystem(pygmentize -l groovy -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/buildgradle.txt)...execute
-d.
+ [16 <D:/Projetos/monografiauece/figuras/gradleproject1.png>]
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+Package hyperref Info: bookmark level for unknown lstlisting defaults to 0 on i
+nput line 273.
 
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 287.
-See the caption package documentation for explanation.
-
-Package hyperref Info: bookmark level for unknown listing defaults to 0 on inpu
-t line 287.
-[16] <figuras/prrojetocomweninf.png, id=356, 158.09062pt x 92.59593pt>
+(D:\Projetos\monografiauece\code/buildgradle.txt
+LaTeX Font Info:    External font `cmex10' loaded for size
+(Font)              <5> on input line 8.
+) [17]
+<figuras/prrojetocomweninf.png, id=391, 158.09062pt x 92.59593pt>
 File: figuras/prrojetocomweninf.png Graphic file (type png)
 
 <use figuras/prrojetocomweninf.png>
-Package pdftex.def Info: figuras/prrojetocomweninf.png used on input line 291.
+Package pdftex.def Info: figuras/prrojetocomweninf.png used on input line 277.
 (pdftex.def)             Requested size: 158.09023pt x 92.59569pt.
 
-
-LaTeX Warning: Reference `fig:lst:2' on page 17 undefined on input line 293.
-
-runsystem(pygmentize -l groovy -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/newgradle.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 295.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (27.6067pt too wide) in paragraph at lines 297--298
+(D:\Projetos\monografiauece\code/newgradle.txt)
+Overfull \hbox (27.6067pt too wide) in paragraph at lines 283--284
 \T1/phv/m/n/12 que o Eclipse o veja como um pro-jeto de uma apli-ca-ção web. Pr
 es-si-o-nando Ctrl+Alt+Shift+R
  []
 
-<figuras/gradlecommand.png, id=358, 293.59688pt x 59.47218pt>
+[18 <D:/Projetos/monografiauece/figuras/prrojetocomweninf.png>]
+<figuras/gradlecommand.png, id=406, 293.59688pt x 59.47218pt>
 File: figuras/gradlecommand.png Graphic file (type png)
 
 <use figuras/gradlecommand.png>
-Package pdftex.def Info: figuras/gradlecommand.png used on input line 299.
+Package pdftex.def Info: figuras/gradlecommand.png used on input line 285.
 (pdftex.def)             Requested size: 293.59615pt x 59.47203pt.
- [17 <D:/Projetos/monografiauece/figuras/prrojetocomweninf.png> <D:/Projetos/mo
-nografiauece/figuras/gradlecommand.png>]
-<figuras/tomcatproject.png, id=368, 426.09187pt x 320.69812pt>
+
+<figuras/tomcatproject.png, id=409, 426.09187pt x 320.69812pt>
 File: figuras/tomcatproject.png Graphic file (type png)
 
 <use figuras/tomcatproject.png>
-Package pdftex.def Info: figuras/tomcatproject.png used on input line 309.
+Package pdftex.def Info: figuras/tomcatproject.png used on input line 295.
 (pdftex.def)             Requested size: 426.09082pt x 320.69733pt.
- [18 <D:/Projetos/monografiauece/figuras/tomcatproject.png>]
-runsystem(pygmentize -l groovy -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/gradledependencies.txt)...
-executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 331.
-See the caption package documentation for explanation.
-
-[19] <figuras/refreshdependencies.png, id=383, 320.69812pt x 285.31593pt>
+ [19 <D:/Projetos/monografiauece/figuras/gradlecommand.png>] [20 <D:/Projetos/m
+onografiauece/figuras/tomcatproject.png>]
+(D:\Projetos\monografiauece\code/gradledependencies.txt) [21]
+<figuras/refreshdependencies.png, id=441, 320.69812pt x 285.31593pt>
 File: figuras/refreshdependencies.png Graphic file (type png)
 
 <use figuras/refreshdependencies.png>
-Package pdftex.def Info: figuras/refreshdependencies.png used on input line 335
+Package pdftex.def Info: figuras/refreshdependencies.png used on input line 321
 .
 (pdftex.def)             Requested size: 320.69733pt x 285.31523pt.
 
-Overfull \hbox (70.33598pt too wide) in paragraph at lines 341--342
-[]\T1/phv/m/n/12 Os ar-qui-vos de con-fi-gu-ra-ção são ar-ma-ze-na-dos em um pa
--cote cha-mado br.uece.webCrud.config.
- []
-
-
-Overfull \hbox (1.33226pt too wide) in paragraph at lines 341--342
+Overfull \hbox (1.33226pt too wide) in paragraph at lines 327--328
 \T1/phv/m/n/12 Den-tro desse pa-cote são cri-a-das duas clas-ses, Ap-pI-ni-ti-a
 -li-zer e SpringMvc-Con-fig, como
  []
 
-<figuras/configpackage.png, id=385, 179.92218pt x 178.41656pt>
+<figuras/configpackage.png, id=443, 179.92218pt x 178.41656pt>
 File: figuras/configpackage.png Graphic file (type png)
 
 <use figuras/configpackage.png>
-Package pdftex.def Info: figuras/configpackage.png used on input line 343.
+Package pdftex.def Info: figuras/configpackage.png used on input line 329.
 (pdftex.def)             Requested size: 179.92174pt x 178.4161pt.
- [20 <D:/Projetos/monografiauece/figuras/refreshdependencies.png>]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/AppInitializer.txt)...execut
-ed.
+ [22 <D:/Projetos/monografiauece/figuras/refreshdependencies.png>] [23 <D:/Proj
+etos/monografiauece/figuras/configpackage.png>]
+(D:\Projetos\monografiauece\code/AppInitializer.txt
+LaTeX Font Info:    Font shape `T1/phv/bx/n' in size <10> not available
+(Font)              Font shape `T1/phv/b/n' tried instead on input line 1.
+)
+Overfull \hbox (19.68608pt too wide) in paragraph at lines 343--344
+\T1/phv/m/n/12 qua-dro []5[]. A ano-ta-ção @Bean do Spring Fra-mework de-cora m
+é-to-dos na classe SpringMvc-
+ []
 
- (D:\Projetos\monografiauece\teste2.out.pyg
-LaTeX Font Info:    Font shape `T1/cmtt/bx/n' in size <10> not available
-(Font)              Font shape `T1/cmtt/m/n' tried instead on input line 2.
- [21 <D:/Projetos/monografiauece/figuras/configpackage.png>])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 355.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/mvcconfig.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [22] [23])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 368.
-See the caption package documentation for explanation.
-
-[24]
-LaTeX Font Info:    Font shape `T1/phv/bx/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/it' tried instead on input line 384.
-LaTeX Font Info:    Font shape `T1/phv/b/it' in size <14.4> not available
-(Font)              Font shape `T1/phv/b/sl' tried instead on input line 384.
- [25] <figuras/vsnewproject.png, id=421, 426.84468pt x 210.7875pt>
+[24] (D:\Projetos\monografiauece\code/mvcconfig.txt [25] [26]
+LaTeX Font Info:    Font shape `T1/phv/m/it' in size <10> not available
+(Font)              Font shape `T1/phv/m/sl' tried instead on input line 69.
+ [27]) [28]
+[29] <figuras/vsnewproject.png, id=614, 426.84468pt x 210.7875pt>
 File: figuras/vsnewproject.png Graphic file (type png)
 
 <use figuras/vsnewproject.png>
-Package pdftex.def Info: figuras/vsnewproject.png used on input line 390.
+Package pdftex.def Info: figuras/vsnewproject.png used on input line 376.
 (pdftex.def)             Requested size: 426.84364pt x 210.78699pt.
-
-<figuras/vsnewproject2.png, id=423, 426.84468pt x 318.43968pt>
+ [30]
+<figuras/vsnewproject2.png, id=621, 426.84468pt x 318.43968pt>
 File: figuras/vsnewproject2.png Graphic file (type png)
 
 <use figuras/vsnewproject2.png>
-Package pdftex.def Info: figuras/vsnewproject2.png used on input line 394.
+Package pdftex.def Info: figuras/vsnewproject2.png used on input line 380.
 (pdftex.def)             Requested size: 426.84364pt x 318.4389pt.
- [26 <D:/Projetos/monografiauece/figuras/vsnewproject.png>] <figuras/19.png, id
-=430, 194.22563pt x 231.86626pt>
+ [31 <D:/Projetos/monografiauece/figuras/vsnewproject.png>] <figuras/19.png, id
+=629, 194.22563pt x 231.86626pt>
 File: figuras/19.png Graphic file (type png)
 
 <use figuras/19.png>
-Package pdftex.def Info: figuras/19.png used on input line 398.
+Package pdftex.def Info: figuras/19.png used on input line 384.
 (pdftex.def)             Requested size: 194.22514pt x 231.86568pt.
- [27 <D:/Projetos/monografiauece/figuras/vsnewproject2.png>] [28 <D:/Projetos/m
+ [32 <D:/Projetos/monografiauece/figuras/vsnewproject2.png>] [33 <D:/Projetos/m
 onografiauece/figuras/19.png>]
-<figuras/20.png, id=441, 290.58563pt x 232.61906pt>
+<figuras/20.png, id=640, 290.58563pt x 232.61906pt>
 File: figuras/20.png Graphic file (type png)
  <use figuras/20.png>
-Package pdftex.def Info: figuras/20.png used on input line 423.
+Package pdftex.def Info: figuras/20.png used on input line 409.
 (pdftex.def)             Requested size: 290.58492pt x 232.61848pt.
 
-<figuras/21.png, id=443, 426.09187pt x 146.79843pt>
+[34] <figuras/21.png, id=647, 426.09187pt x 146.79843pt>
 File: figuras/21.png Graphic file (type png)
  <use figuras/21.png>
-Package pdftex.def Info: figuras/21.png used on input line 427.
+Package pdftex.def Info: figuras/21.png used on input line 413.
 (pdftex.def)             Requested size: 426.09082pt x 146.79807pt.
 
-[29 <D:/Projetos/monografiauece/figuras/20.png>]
-<figuras/22.png, id=451, 432.86719pt x 197.98969pt>
+<figuras/22.png, id=649, 432.86719pt x 197.98969pt>
 File: figuras/22.png Graphic file (type png)
  <use figuras/22.png>
-Package pdftex.def Info: figuras/22.png used on input line 438.
+Package pdftex.def Info: figuras/22.png used on input line 424.
 (pdftex.def)             Requested size: 432.86612pt x 197.9892pt.
 
-<figuras/23.png, id=453, 150.5625pt x 40.65187pt>
+[35 <D:/Projetos/monografiauece/figuras/20.png> <D:/Projetos/monografiauece/fig
+uras/21.png>] <figuras/23.png, id=657, 150.5625pt x 40.65187pt>
 File: figuras/23.png Graphic file (type png)
- <use figuras/23.png>
-Package pdftex.def Info: figuras/23.png used on input line 444.
+
+<use figuras/23.png>
+Package pdftex.def Info: figuras/23.png used on input line 430.
 (pdftex.def)             Requested size: 150.56212pt x 40.65176pt.
- [30 <D:/Projetos/monografiauece/figuras/21.png> <D:/Projetos/monografiauece/fi
-guras/22.png>]
-runsystem(pygmentize -l xml -f latex -F tokenmerge             -P "verboptions=
- ,fontsize=\footnotesize " -o teste2.out.pyg code/6.txt)...executed.
 
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 450.
-See the caption package documentation for explanation.
-
-[31 <D:/Projetos/monografiauece/figuras/23.png>] [32]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/7.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg [33])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 481.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/8.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 485.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/9.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [34])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 491.
-See the caption package documentation for explanation.
-
-<figuras/24.png, id=486, 115.93312pt x 108.405pt>
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+)
+(D:\Projetos\monografiauece\code/6.txt [36 <D:/Projetos/monografiauece/figuras/
+22.png> <D:/Projetos/monografiauece/figuras/23.png>]) [37] [38]
+(D:\Projetos\monografiauece\code/7.txt [39])
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstmisc.sty"
+File: lstmisc.sty 2013/08/26 1.5b (Carsten Heinz)
+)
+(D:\Projetos\monografiauece\code/8.txt [40])
+(D:\Projetos\monografiauece\code/9.txt) [41]
+<figuras/24.png, id=755, 115.93312pt x 108.405pt>
 File: figuras/24.png Graphic file (type png)
  <use figuras/24.png>
-Package pdftex.def Info: figuras/24.png used on input line 499.
+Package pdftex.def Info: figuras/24.png used on input line 485.
 (pdftex.def)             Requested size: 115.93283pt x 108.40472pt.
-runsystem(pygmentize -l jsp -f latex -F tokenmerge             -P "verboptions=
- ,fontsize=\footnotesize " -o teste2.out.pyg code/10.txt)...executed.
 
-
-(D:\Projetos\monografiauece\teste2.out.pyg [35 <D:/Projetos/monografiauece/figu
-ras/24.png>])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 503.
-See the caption package documentation for explanation.
-
-<figuras/25.png, id=495, 426.84468pt x 196.48407pt>
+("C:\Program Files\MiKTeX 2.9\tex\latex\listings\lstlang1.sty"
+File: lstlang1.sty 2013/08/26 1.5b listings language file
+)
+(D:\Projetos\monografiauece\code/10.txt [42 <D:/Projetos/monografiauece/figuras
+/24.png>]) <figuras/25.png, id=773, 426.84468pt x 196.48407pt>
 File: figuras/25.png Graphic file (type png)
- <use figuras/25.png>
-Package pdftex.def Info: figuras/25.png used on input line 511.
+
+<use figuras/25.png>
+Package pdftex.def Info: figuras/25.png used on input line 497.
 (pdftex.def)             Requested size: 426.84364pt x 196.48358pt.
-
-[36 <D:/Projetos/monografiauece/figuras/25.png>]
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/11.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 517.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/12.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [37])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 523.
-See the caption package documentation for explanation.
-
-<figuras/26.png, id=511, 257.46187pt x 95.6072pt>
+ [43 <D:/Projetos/monografiauece/figuras/25.png>]
+(D:\Projetos\monografiauece\code/11.txt) [44]
+(D:\Projetos\monografiauece\code/12.txt
+LaTeX Font Info:    Font shape `OMS/phv/m/n' in size <10> not available
+(Font)              Font shape `OMS/cmsy/m/n' tried instead on input line 14.
+) [45]
+<figuras/26.png, id=845, 257.46187pt x 95.6072pt>
 File: figuras/26.png Graphic file (type png)
  <use figuras/26.png>
-Package pdftex.def Info: figuras/26.png used on input line 529.
+Package pdftex.def Info: figuras/26.png used on input line 515.
 (pdftex.def)             Requested size: 257.46123pt x 95.60695pt.
 
-<figuras/27.png, id=513, 121.20282pt x 70.01157pt>
+<figuras/27.png, id=847, 121.20282pt x 70.01157pt>
 File: figuras/27.png Graphic file (type png)
  <use figuras/27.png>
-Package pdftex.def Info: figuras/27.png used on input line 533.
+Package pdftex.def Info: figuras/27.png used on input line 519.
 (pdftex.def)             Requested size: 121.20251pt x 70.01138pt.
 
-[38 <D:/Projetos/monografiauece/figuras/26.png>]
-runsystem(pygmentize -l html -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/13.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 539.
-See the caption package documentation for explanation.
-
-<figuras/28.png, id=522, 133.24782pt x 91.84312pt>
+[46 <D:/Projetos/monografiauece/figuras/26.png> <D:/Projetos/monografiauece/fig
+uras/27.png>] (D:\Projetos\monografiauece\code/13.txt)
+<figuras/28.png, id=856, 133.24782pt x 91.84312pt>
 File: figuras/28.png Graphic file (type png)
  <use figuras/28.png>
-Package pdftex.def Info: figuras/28.png used on input line 543.
+Package pdftex.def Info: figuras/28.png used on input line 529.
 (pdftex.def)             Requested size: 133.24748pt x 91.84288pt.
 
-[39 <D:/Projetos/monografiauece/figuras/27.png>]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/14.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 555.
-See the caption package documentation for explanation.
-
-[40 <D:/Projetos/monografiauece/figuras/28.png>]
-<figuras/29.png, id=537, 426.84468pt x 296.60812pt>
+[47 <D:/Projetos/monografiauece/figuras/28.png>]
+(D:\Projetos\monografiauece\code/14.txt) [48]
+<figuras/29.png, id=903, 426.84468pt x 296.60812pt>
 File: figuras/29.png Graphic file (type png)
  <use figuras/29.png>
-Package pdftex.def Info: figuras/29.png used on input line 563.
+Package pdftex.def Info: figuras/29.png used on input line 549.
 (pdftex.def)             Requested size: 426.84364pt x 296.60739pt.
 
-<figuras/30.png, id=541, 227.34938pt x 152.82094pt>
+[49 <D:/Projetos/monografiauece/figuras/29.png>]
+<figuras/30.png, id=913, 227.34938pt x 152.82094pt>
 File: figuras/30.png Graphic file (type png)
  <use figuras/30.png>
-Package pdftex.def Info: figuras/30.png used on input line 569.
+Package pdftex.def Info: figuras/30.png used on input line 555.
 (pdftex.def)             Requested size: 227.34882pt x 152.82054pt.
 
-[41 <D:/Projetos/monografiauece/figuras/29.png>]
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/15.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 577.
-See the caption package documentation for explanation.
-
-[42 <D:/Projetos/monografiauece/figuras/30.png>]
-<figuras/31.png, id=555, 347.04657pt x 137.01187pt>
+(D:\Projetos\monografiauece\code/15.txt [50 <D:/Projetos/monografiauece/figuras
+/30.png>]) <figuras/31.png, id=936, 347.04657pt x 137.01187pt>
 File: figuras/31.png Graphic file (type png)
- <use figuras/31.png>
-Package pdftex.def Info: figuras/31.png used on input line 583.
+
+<use figuras/31.png>
+Package pdftex.def Info: figuras/31.png used on input line 569.
 (pdftex.def)             Requested size: 347.04572pt x 137.01154pt.
-
-[43 <D:/Projetos/monografiauece/figuras/31.png>]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/16.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 599.
-See the caption package documentation for explanation.
-
-<figuras/32.png, id=564, 267.24844pt x 108.405pt>
+ [51 <D:/Projetos/monografiauece/figuras/31.png>]
+(D:\Projetos\monografiauece\code/16.txt)
+<figuras/32.png, id=949, 267.24844pt x 108.405pt>
 File: figuras/32.png Graphic file (type png)
  <use figuras/32.png>
-Package pdftex.def Info: figuras/32.png used on input line 603.
+Package pdftex.def Info: figuras/32.png used on input line 589.
 (pdftex.def)             Requested size: 267.24779pt x 108.40472pt.
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/17.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg [44 <D:/Projetos/monografiauece/figu
-ras/32.png>])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 611.
-See the caption package documentation for explanation.
-
-<figuras/33.png, id=574, 261.97874pt x 130.23656pt>
+ [52]
+(D:\Projetos\monografiauece\code/17.txt)
+<figuras/33.png, id=965, 261.97874pt x 130.23656pt>
 File: figuras/33.png Graphic file (type png)
  <use figuras/33.png>
-Package pdftex.def Info: figuras/33.png used on input line 615.
+Package pdftex.def Info: figuras/33.png used on input line 601.
 (pdftex.def)             Requested size: 261.9781pt x 130.23624pt.
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/18.txt)...executed.
 
-
-(D:\Projetos\monografiauece\teste2.out.pyg [45 <D:/Projetos/monografiauece/figu
-ras/33.png>])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 627.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l jsp -f latex -F tokenmerge             -P "verboptions=
- ,fontsize=\footnotesize " -o teste2.out.pyg code/19.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 633.
-See the caption package documentation for explanation.
-
-[46] <figuras/34.png, id=589, 134.75343pt x 142.28156pt>
+[53 <D:/Projetos/monografiauece/figuras/32.png>]
+(D:\Projetos\monografiauece\code/18.txt [54 <D:/Projetos/monografiauece/figuras
+/33.png>]) (D:\Projetos\monografiauece\code/19.txt [55])
+<figuras/34.png, id=1028, 134.75343pt x 142.28156pt>
 File: figuras/34.png Graphic file (type png)
  <use figuras/34.png>
-Package pdftex.def Info: figuras/34.png used on input line 641.
+Package pdftex.def Info: figuras/34.png used on input line 627.
 (pdftex.def)             Requested size: 134.7531pt x 142.2812pt.
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/20.txt)...executed.
 
-
-(D:\Projetos\monografiauece\teste2.out.pyg [47 <D:/Projetos/monografiauece/figu
-ras/34.png>])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 649.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/21.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 653.
-See the caption package documentation for explanation.
-
-[48] <figuras/35.png, id=604, 179.92218pt x 130.98938pt>
+[56] (D:\Projetos\monografiauece\code/20.txt)
+(D:\Projetos\monografiauece\code/21.txt [57 <D:/Projetos/monografiauece/figuras
+/34.png>]) [58] <figuras/35.png, id=1096, 179.92218pt x 130.98938pt>
 File: figuras/35.png Graphic file (type png)
- <use figuras/35.png>
-Package pdftex.def Info: figuras/35.png used on input line 661.
-(pdftex.def)             Requested size: 179.92174pt x 130.98904pt.
 
-[49 <D:/Projetos/monografiauece/figuras/35.png>] [50]
-Overfull \hbox (65.75388pt too wide) in paragraph at lines 694--695
+<use figuras/35.png>
+Package pdftex.def Info: figuras/35.png used on input line 647.
+(pdftex.def)             Requested size: 179.92174pt x 130.98904pt.
+ [59 <D:/Projetos/monografiauece/figuras/35.png>] [60]
+Overfull \hbox (65.75388pt too wide) in paragraph at lines 680--681
 []\T1/phv/m/n/12 No pro-jeto Java, a in-ter-face e classe con-creta se-rão cri-
 a-das no pa-cote br.uece.webCrud.service.
  []
 
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/22.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 696.
-See the caption package documentation for explanation.
-
-[51]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/23.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
+[61] (D:\Projetos\monografiauece\code/22.txt)
+(D:\Projetos\monografiauece\code/23.txt [62])
+(D:\Projetos\monografiauece\code/24.txt [63])
+(D:\Projetos\monografiauece\code/25.txt [64])
+(D:\Projetos\monografiauece\code/26.txt [65])
+(D:\Projetos\monografiauece\code/27.txt [66]) [67]
+(D:\Projetos\monografiauece\code/28.txt [68]) [69]
+(D:\Projetos\monografiauece\code/29.txt [70]
+Overfull \hbox (48.76102pt too wide) in paragraph at lines 32--33
+[][][][][] 
+ []
 
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 700.
-See the caption package documentation for explanation.
-
-[52]
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/24.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
+Overfull \hbox (8.7604pt too wide) in paragraph at lines 32--33
+[][] 
+ []
 
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 710.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/25.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [53])
-runsystem(del teste2.out.pyg)...executed.
+Overfull \hbox (2.76035pt too wide) in paragraph at lines 32--33
+[][] 
+ []
 
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 714.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/26.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [54])
-runsystem(del teste2.out.pyg)...executed.
+Overfull \hbox (32.76065pt too wide) in paragraph at lines 32--33
+[][] 
+ []
 
 
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 724.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/27.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
+Overfull \hbox (2.76035pt too wide) in paragraph at lines 32--33
+[][] 
+ []
 
 
+Overfull \hbox (2.76035pt too wide) in paragraph at lines 32--33
+[][] 
+ []
 
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 730.
-See the caption package documentation for explanation.
-
-[55]
-
-LaTeX Warning: Reference `28' on page 56 undefined on input line 744.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/28.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [56])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 746.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/29.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [57])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 756.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/30.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 760.
-See the caption package documentation for explanation.
-
-[58]
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/31.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 768.
-See the caption package documentation for explanation.
-
-[59] [60]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/32.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg [61])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 801.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/33.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [62])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 807.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (31.29187pt too wide) in paragraph at lines 813--814
+) (D:\Projetos\monografiauece\code/30.txt [71])
+(D:\Projetos\monografiauece\code/31.txt [72]) [73] [74] [75]
+(D:\Projetos\monografiauece\code/32.txt)
+(D:\Projetos\monografiauece\code/33.txt [76]) [77]
+Overfull \hbox (31.29187pt too wide) in paragraph at lines 799--800
 []\T1/phv/m/n/12 Na se-ção 3.1.3, du-rante a con-fi-gu-ra-ção do pro-jeto, a pr
 o-pri-e-dade hi-ber-nate.hbm2ddl.auto
  []
 
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/34.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 819.
-See the caption package documentation for explanation.
-
-[63]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/35.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 825.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (1.39964pt too wide) in paragraph at lines 831--832
+(D:\Projetos\monografiauece\code/34.txt) [78]
+(D:\Projetos\monografiauece\code/35.txt)
+Overfull \hbox (1.39964pt too wide) in paragraph at lines 817--818
 [] []|\T1/phv/b/n/12 6.1.2.1 Cri-ando o con-texto do banco de da-dos[] \T1/phv/
 m/n/12 Não existe con-fi-gu-ra-ção na classe
  []
 
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/36.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [64])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 833.
-See the caption package documentation for explanation.
-
-[65]
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/37.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 849.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/38.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [66])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 859.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (5.45676pt too wide) in paragraph at lines 863--864
+(D:\Projetos\monografiauece\code/36.txt [79]) [80] [81]
+(D:\Projetos\monografiauece\code/37.txt)
+(D:\Projetos\monografiauece\code/38.txt [82]) [83]
+Overfull \hbox (5.45676pt too wide) in paragraph at lines 849--850
 []\T1/phv/m/n/12 Além da ano-ta-ção @One-To-One, o JPA pos-sui as ano-ta-ções @
 One-To-Many, @Many-
  []
 
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/39.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [67])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 867.
-See the caption package documentation for explanation.
-
-[68] <figuras/36.png, id=729, 231.11343pt x 199.49532pt>
+(D:\Projetos\monografiauece\code/39.txt [84]) [85]
+<figuras/36.png, id=1680, 231.11343pt x 199.49532pt>
 File: figuras/36.png Graphic file (type png)
  <use figuras/36.png>
-Package pdftex.def Info: figuras/36.png used on input line 873.
+Package pdftex.def Info: figuras/36.png used on input line 859.
 (pdftex.def)             Requested size: 231.11287pt x 199.49481pt.
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/40.txt)...executed.
 
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 879.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/41.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [69 <D:/Projetos/monografiauece/figu
-ras/36.png>])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 883.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/42.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [70])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 891.
-See the caption package documentation for explanation.
-
-<figuras/37.png, id=746, 191.9672pt x 229.60782pt>
+(D:\Projetos\monografiauece\code/40.txt)
+(D:\Projetos\monografiauece\code/41.txt [86 <D:/Projetos/monografiauece/figuras
+/36.png>]) (D:\Projetos\monografiauece\code/42.txt [87])
+<figuras/37.png, id=1726, 191.9672pt x 229.60782pt>
 File: figuras/37.png Graphic file (type png)
  <use figuras/37.png>
-Package pdftex.def Info: figuras/37.png used on input line 895.
+Package pdftex.def Info: figuras/37.png used on input line 881.
 (pdftex.def)             Requested size: 191.96672pt x 229.60725pt.
 
-[71 <D:/Projetos/monografiauece/figuras/37.png>]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/43.txt)...executed.
-
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 909.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/44.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [72])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 911.
-See the caption package documentation for explanation.
-
-[73]
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/45.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 927.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/46.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [74])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 929.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l java -f latex -F tokenmerge             -P "verboptions
-= ,fontsize=\footnotesize " -o teste2.out.pyg code/47.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [75])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 933.
-See the caption package documentation for explanation.
-
-
-Overfull \hbox (3.10074pt too wide) in paragraph at lines 939--940
+[88] [89 <D:/Projetos/monografiauece/figuras/37.png>]
+(D:\Projetos\monografiauece\code/43.txt)
+(D:\Projetos\monografiauece\code/44.txt [90]) [91] [92]
+(D:\Projetos\monografiauece\code/45.txt)
+(D:\Projetos\monografiauece\code/46.txt [93])
+(D:\Projetos\monografiauece\code/47.txt [94]) [95]
+Overfull \hbox (3.10074pt too wide) in paragraph at lines 925--926
 []\T1/phv/m/n/12 Como o re-la-ci-o-na-mento de Per-son com Con-tact con-fi-gu-r
 ado com Cas-ca-deType.ALL
  []
 
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/48.txt)...executed.
+(D:\Projetos\monografiauece\code/48.txt)
+(D:\Projetos\monografiauece\code/49.txt [96] [97]) [98] [99]
+(D:\Projetos\monografiauece\code/50.txt)
+(D:\Projetos\monografiauece\code/51.txt [100])
+(D:\Projetos\monografiauece\code/52.txt) [101]
+(D:\Projetos\monografiauece\code/53.txt [102]) [103] [104] [105] [106] [107]
+Package atveryend Info: Empty hook `BeforeClearDocument' on input line 999.
 
-(D:\Projetos\monografiauece\teste2.out.pyg [76])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 945.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/49.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [77])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 947.
-See the caption package documentation for explanation.
-
-[78]
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/50.txt)...executed.
-
- (D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 963.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/51.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [79])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 965.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/52.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg)
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 969.
-See the caption package documentation for explanation.
-
-runsystem(pygmentize -l csharp -f latex -F tokenmerge             -P "verboptio
-ns= ,fontsize=\footnotesize " -o teste2.out.pyg code/53.txt)...executed.
-
-(D:\Projetos\monografiauece\teste2.out.pyg [80] [81])
-runsystem(del teste2.out.pyg)...executed.
-
-
-
-Package caption Warning: The option `hypcap=true' will be ignored for this
-(caption)                particular \caption on input line 975.
-See the caption package documentation for explanation.
-
-[82] [83]
-Package atveryend Info: Empty hook `BeforeClearDocument' on input line 1013.
- [84]
-Package atveryend Info: Empty hook `AfterLastShipout' on input line 1013.
+[108]
+Package atveryend Info: Empty hook `AfterLastShipout' on input line 999.
  (D:\Projetos\monografiauece\teste2.aux)
-Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 1013.
-Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 1013.
-
-Package rerunfilecheck Info: File `teste2.out' has not changed.
-(rerunfilecheck)             Checksum: 3F265325E7BF1B231A10C4C1421D312F;4408.
+Package atveryend Info: Executing hook `AtVeryEndDocument' on input line 999.
+Package atveryend Info: Executing hook `AtEndAfterFileList' on input line 999.
 
 
-LaTeX Warning: There were undefined references.
+Package rerunfilecheck Warning: File `teste2.out' has changed.
+(rerunfilecheck)                Rerun to get outlines right
+(rerunfilecheck)                or use package `bookmark'.
 
-Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 1013.
+Package rerunfilecheck Info: Checksums for `teste2.out':
+(rerunfilecheck)             Before: 9346B0DF1147F8BA573FE7D75E125B48;4421
+(rerunfilecheck)             After:  F197E6E5E12EC35E6535C54B4679CA12;4426.
+Package atveryend Info: Empty hook `AtVeryVeryEnd' on input line 999.
  ) 
 Here is how much of TeX's memory you used:
- 10948 strings out of 493921
- 162877 string characters out of 3147279
- 254721 words of memory out of 3000000
- 13722 multiletter control sequences out of 15000+200000
- 38088 words of font info for 50 fonts, out of 3000000 for 9000
+ 12977 strings out of 493921
+ 188232 string characters out of 3147279
+ 335758 words of memory out of 3000000
+ 14459 multiletter control sequences out of 15000+200000
+ 47216 words of font info for 55 fonts, out of 3000000 for 9000
  841 hyphenation exceptions out of 8191
- 36i,7n,40p,1003b,569s stack positions out of 5000i,500n,10000p,200000b,50000s
+ 36i,6n,55p,988b,2070s stack positions out of 5000i,500n,10000p,200000b,50000s
 {C:/Program Files/MiKTeX 2.9/fonts/enc/dvips/fontname/8r.enc}{C:/Program File
 s/MiKTeX 2.9/fonts/enc/dvips/cm-super/cm-super-t1.enc}<C:/Program Files/MiKTeX 
 2.9/fonts/type1/public/amsfonts/cm/cmsy10.pfb><C:/Program Files/MiKTeX 2.9/font
-s/type1/public/cm-super/sfit1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/p
-ublic/cm-super/sftt1000.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/public/cm-
-super/sftt1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvb8a
-.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvbo8a.pfb><C:/Prog
-ram Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/Program Files/MiKT
-eX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
-Output written on teste2.pdf (84 pages, 1863829 bytes).
+s/type1/public/cm-super/sftt1200.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/u
+rw/helvetic/uhvb8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uh
+vbo8a.pfb><C:/Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvr8a.pfb><C:/
+Program Files/MiKTeX 2.9/fonts/type1/urw/helvetic/uhvro8a.pfb>
+Output written on teste2.pdf (108 pages, 2015623 bytes).
 PDF statistics:
- 913 PDF objects out of 1000 (max. 8388607)
- 234 named destinations out of 1000 (max. 500000)
+ 2509 PDF objects out of 2984 (max. 8388607)
+ 1506 named destinations out of 1728 (max. 500000)
  645 words of extra memory for PDF output out of 10000 (max. 10000000)
 
