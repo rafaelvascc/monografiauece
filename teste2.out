@@ -6,20 +6,20 @@
 \BOOKMARK [2][-]{subsection.1.5}{Metodologia de pesquisa}{section.1}% 6
 \BOOKMARK [1][-]{section.2}{Configura\347\343o de ambiente de desenvolvimento}{}% 7
 \BOOKMARK [2][-]{subsection.2.1}{Instala\347\343o do MySQL}{section.2}% 8
-\BOOKMARK [2][-]{subsection.2.2}{Preparando o ambiente Java}{section.2}% 9
+\BOOKMARK [2][-]{subsection.2.2}{Preparando o ambiente \040Java}{section.2}% 9
 \BOOKMARK [3][-]{subsubsection.2.2.1}{Instalando JDK 8}{subsection.2.2}% 10
-\BOOKMARK [3][-]{subsubsection.2.2.2}{Instalando o Eclipse Luna}{subsection.2.2}% 11
-\BOOKMARK [3][-]{subsubsection.2.2.3}{Instalando o plugin do \040Gradle }{subsection.2.2}% 12
-\BOOKMARK [3][-]{subsubsection.2.2.4}{Instalando o Apache Tomcat 8 como servidor de desenvolvimento do Eclipse}{subsection.2.2}% 13
-\BOOKMARK [2][-]{subsection.2.3}{Instalando o \040Visual Studio Community 2013 }{section.2}% 14
+\BOOKMARK [3][-]{subsubsection.2.2.2}{Instalando o \040Eclipse Luna}{subsection.2.2}% 11
+\BOOKMARK [3][-]{subsubsection.2.2.3}{Instalando o \040plugin do \040Gradle}{subsection.2.2}% 12
+\BOOKMARK [3][-]{subsubsection.2.2.4}{Instalando o \040Apache Tomcat 8 como servidor de desenvolvimento do \040Eclipse}{subsection.2.2}% 13
+\BOOKMARK [2][-]{subsection.2.3}{Instalando o \040Visual Studio Community 2013}{section.2}% 14
 \BOOKMARK [2][-]{subsection.2.4}{Conclus\343o}{section.2}% 15
-\BOOKMARK [1][-]{section.3}{Criando projetos web no padr\343o MVC}{}% 16
-\BOOKMARK [2][-]{subsection.3.1}{Criando um projeto do \040Gradle \040no Eclipse}{section.3}% 17
-\BOOKMARK [3][-]{subsubsection.3.1.1}{Adicionando o projeto ao Tomcat}{subsection.3.1}% 18
+\BOOKMARK [1][-]{section.3}{Criando projetos web no padr\343o \040MVC}{}% 16
+\BOOKMARK [2][-]{subsection.3.1}{Criando um projeto do \040Gradle no \040Eclipse}{section.3}% 17
+\BOOKMARK [3][-]{subsubsection.3.1.1}{Adicionando o projeto ao \040Tomcat}{subsection.3.1}% 18
 \BOOKMARK [3][-]{subsubsection.3.1.2}{Adicionando depend\352ncias ao projeto}{subsection.3.1}% 19
-\BOOKMARK [3][-]{subsubsection.3.1.3}{Configurando a aplica\347\343o web}{subsection.3.1}% 20
-\BOOKMARK [2][-]{subsection.3.2}{Criando um projeto \040 ASP.NET MVC \0405 no Visual Studio 2013}{section.3}% 21
-\BOOKMARK [3][-]{subsubsection.3.2.1}{Adicionando depend\352ncias usando o NuGet}{subsection.3.2}% 22
+\BOOKMARK [3][-]{subsubsection.3.1.3}{Configurando a aplica\347\343o \040web}{subsection.3.1}% 20
+\BOOKMARK [2][-]{subsection.3.2}{Criando um projeto \040 ASP.NET MVC 5 no \040Visual Studio Community 2013}{section.3}% 21
+\BOOKMARK [3][-]{subsubsection.3.2.1}{Adicionando depend\352ncias usando o \040NuGet}{subsection.3.2}% 22
 \BOOKMARK [3][-]{subsubsection.3.2.2}{Adicionando informa\347\365es de conex\343o com o banco de dados}{subsection.3.2}% 23
 \BOOKMARK [2][-]{subsection.3.3}{Conclus\343o}{section.3}% 24
 \BOOKMARK [1][-]{section.4}{Criando controllers e views}{}% 25
