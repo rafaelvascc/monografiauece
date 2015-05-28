@@ -14,6 +14,7 @@
 \usepackage{xcolor}
 \usepackage{newfloat}
 \usepackage{listings}
+\usepackage{microtype}
 \setlength{\parskip}{1em}
 \usepackage{titlesec}
 \setcounter{secnumdepth}{4}
@@ -765,232 +766,232 @@ No próximo capítulo é abordada a criação do banco de dados a partir de enti
 \newpage
 \section{Entidades e repositórios}
 
-Entidades são classes que representam os objetos de negócio, a classe Person utilizada até agora é um exemplo de entidade. Em ambos os projetos, essa classe será usada para gerar uma tabela no banco de dados e substituir as listas em memória que foram usadas até então. Essa técnica é chamada de mapeamento objeto/relacional, pois mapeia propriedades de objetos para tabelas e colunas no banco de dados relacional. Nos exemplos desse capitulo serão usados o Hibernate no projeto Java/Spring e o Entity Framework no projeto ASP.NET MVC como bibliotecas para mapeamento objeto/relacional.
+Entidades são classes que representam os objetos de negócio, a classe \classe{Person} utilizada até agora é um exemplo de entidade. Em ambos os projetos, essa classe é usada para gerar uma tabela no banco de dados e substituir as listas em memória que foram usadas até então. Essa técnica é chamada de mapeamento objeto/relacional, pois mapeia propriedades de objetos para tabelas e colunas no banco de dados relacional. Nos exemplos desse capitulo são usados o \est{Hibernate} no projeto \est{Java/Spring} e o \est{Entity Framework} no projeto \est{ASP.NET MVC} como bibliotecas para mapeamento objeto/relacional.
 
-Além de a classe Person, nesse capitulo será criada a classe Contact que conterá o e-mail e o telefone de uma pessoa. Essa classe terá um relacionamento de um para um com a classe Person e irá gerar uma chave estrangeira no banco de dados.
+Além de a classe \classe{Person}, nesse capitulo é criada a classe \classe{Contact} que conterá o \est{e-mail} e o telefone de uma pessoa. Essa classe terá um relacionamento de um para um com a classe \classe{Person} e irá gerar uma chave estrangeira no banco de dados.
 
-Com as entidades prontas, serão feitos repositórios para persistir as entidades no banco de dados. Será feito um repositório genérico e um repositório especifico para cada classe.
+Com as entidades prontas, são feitos repositórios para persisti-las no banco de dados. Será feito um repositório genérico e um repositório especifico para cada classe.
 
 \subsection{Entidades}
 
-As seções a seguir irão mostrar como utilizar uma classe para gerar tabelas no banco de dados. Entidades precisam de um identificador único para ser sua chave primária no banco de dados, essa propriedade será chamada Id e será do tipo inteiro.
+As seções a seguir mostram como utilizar uma classe para gerar tabelas no banco de dados. Entidades precisam de um identificador único para ser sua chave primária, essa propriedade será chamada \est{Id} e será do tipo inteiro.
 
-Como serão usadas duas entidades nesse capitulo e ambas precisam do identificador único, será criada uma classe base com essa propriedade em comum chamada BaseEntity. O intuito da criação dessa classe é mostrar como é possível o uso de herança nas entidades. As classes Person e Contact irão ser especializações de BaseEntity.
+Como são usadas duas entidades nesse capitulo e ambas precisam do identificador único, é criada uma classe base com essa propriedade em comum chamada \classe{BaseEntity}. O intuito da criação dessa classe é mostrar como é possível o uso de herança nas entidades. As classes \classe{Person} e \classe{Contact} são especializações de \classe{BaseEntity}.
 
 \subsubsection{Java}
 
-Entidades no projeto Java/Spring são criadas no pacote br.uece.webCrud.model. A classe BaseEntity é criada como mostra o quadro~\ref{lst:32}.
+Entidades no projeto \est{Java/Spring} são criadas no pacote \pacote{br.uece.webCrud.model}. A classe \classe{BaseEntity} é criada como mostra o quadro~\ref{lst:32}.
 
-\javacode{code/32.txt}{Classe BaseEntity no projeto Java}{lst:32}
+\javacode{code/32.txt}{Classe \classe{BaseEntity} no projeto \lang{Java}}{lst:32}
 
-A classe BaseEntity é decorada com a anotação @MappedSuperclass que diz ao Hibernate que entidades que sejam suas subclasses devem levar em consideração as propriedades herdadas no mapeamento objeto/relacional. A propriedade id é decorada com as anotações @Id, que configura o Hibernate para usá-la como chave primária e única, e @GeneratedValue, que delega ao banco de dados a lógica de geração do valor da chave.
+A classe \classe{BaseEntity} é decorada com a anotação \annotation{@MappedSuperclass} que diz ao \est{Hibernate} que entidades que sejam suas subclasses devem levar em consideração as propriedades herdadas no mapeamento objeto/relacional. A propriedade \est{id} é decorada com as anotações \annotation{@Id}, que configura o \est{Hibernate} para usá-la como chave primária e única, e \annotation{@GeneratedValue}, que delega ao banco de dados a lógica de geração do valor da chave.
 
-A classe Person então é modificada como no quadro~\ref{lst:33}.
+A classe \classe{Person} então é modificada como no quadro~\ref{lst:33}.
 
-\javacode{code/33.txt}{Classe Person herda de BaseEntity}{lst:33}
+\javacode{code/33.txt}{Classe \classe{Person} herda de \classe{BaseEntity}}{lst:33}
 
-A classe Person agora é subclasse de BaseEntity e está decorada com a anotação @Entity. A anotação @Entity diz ao Hibernate que essa classe deve ser mapeada para uma tabela e as propriedades da classe para as colunas da tabela.
+A classe \classe{Person} agora é subclasse de \classe{BaseEntity} e está decorada com a anotação \annotation{@Entity}. A anotação \annotation{@Entity} diz ao \est{Hibernate} que essa classe deve ser mapeada para uma tabela e as propriedades da classe para as colunas da tabela.
 
-Por padrão o Hibernate procura por uma tabela com o mesmo nome da classe e colunas com o mesmo nome das propriedades para realizar o mapeamento, mas esse comportamento pode ser modificado com as anotações @Table, @Column, @Transient e muitas outras. A propriedade name por exemplo, está decorada com a anotação @Column especificando que aquela propriedade não pode ser nula no banco de dados e a propriedade birthDate está decorada com a anotação @Temporal especificando que a coluna no banco deve ser do tipo Date.
+Por padrão o \est{Hibernate} procura por uma tabela com o mesmo nome da classe e colunas com o mesmo nome das propriedades para realizar o mapeamento, mas esse comportamento pode ser modificado com as anotações \annotation{@Table}, \annotation{@Column}, \annotation{@Transient} e muitas outras. A propriedade \est{name} por exemplo, está decorada com a anotação \annotation{@Column} especificando que aquela propriedade não pode ser nula no banco de dados e a propriedade \est{birthDate} está decorada com a anotação \annotation{@Temporal} especificando que a coluna no banco deve ser do tipo \classe{Date}.
 
-Na seção 3.1.3, durante a configuração do projeto, a propriedade hibernate.hbm2ddl.auto foi configurada com o valor “create”, assim o Hibernate irá criar as tabelas no banco de dados de acordo com as configurações de classes decoradas com a anotação @Entity. Outros valores para essa configuração podem ser “update”, para atualizar a estrutura das tabelas sem perder dados, e “validate”, para apenas verificar se o mapeamento objeto/relacional está consistente. O Hibernate cria tabelas, mas não cria o banco de dados, para que a criação de tabelas funcione é necessário que o banco de dados já exista. O Hibernate cria as tabelas no momento em que a aplicação é iniciada.
+Na seção 3.1.3, durante a configuração do projeto, a propriedade \est{hibernate.hbm2ddl.auto} foi configurada com o valor \est{"create"}, assim o \est{Hibernate} cria as tabelas no banco de dados de acordo com as configurações de classes decoradas com a anotação \annotation{@Entity}. Outros valores para essa configuração podem ser \est{"update"}, para atualizar a estrutura das tabelas sem perder dados, e \est{"validate"}, para apenas verificar se o mapeamento objeto/relacional está consistente. O \est{Hibernate} cria tabelas, mas não cria o banco de dados, para que a criação de tabelas funcione é necessário que o banco de dados já exista. As tabelas são criadas no momento em que a aplicação é iniciada.
 
 \subsubsection{.NET}
 
-Entidades no projeto ASP.NET MVC são criadas na pasta Model/Entities. Considere que a classe Person é movida para essa pasta. O quadro~\ref{lst:34} mostra a classe BaseEntity do projeto ASP.NET MVC.
+Entidades no projeto ASP.NET MVC são criadas na pasta \arquivo{Model/Entities}. Considere que a classe \classe{Person} é movida para essa pasta. O quadro~\ref{lst:34} mostra a classe \classe{BaseEntity} do projeto \est{ASP.NET MVC}.
 
-\javacode{code/34.txt}{Classe BaseEntity no projeto ASP.NET}{lst:34}
+\javacode{code/34.txt}{Classe \classe{BaseEntity} no projeto \est{ASP.NET}}{lst:34}
 
-Uma convenção do Entity Framework é que se uma classe tiver uma propriedade chamada Id de tipo numérico ou guid (tipo de identificar único), essa propriedade será usada como chave primária. Assim nenhuma configuração adicional é necessária.
+Uma convenção do \est{Entity Framework} é que se uma classe tiver uma propriedade chamada \est{Id} de tipo numérico ou \est{guid} (tipo de identificar único), essa propriedade será usada como chave primária. Assim nenhuma configuração adicional é necessária.
 
-Assim como no projeto Java, a classe Person do projeto ASP.NET MVC é modificada para ser subclasse de BaseEntity, como mostrado no quadro~\ref{lst:35}.
+Assim como no projeto \lang{Java}, a classe \classe{Person} do projeto \est{ASP.NET MVC} é modificada para ser subclasse de \classe{BaseEntity}, como mostrado no quadro~\ref{lst:35}.
 
-\javacode{code/35.txt}{Classe Person no projeto ASP.NET agora herda de BaseEntity}{lst:35}
+\javacode{code/35.txt}{Classe \classe{Person} no projeto \est{ASP.NET} agora herda de \classe{BaseEntity}}{lst:35}
 
-Assim como no projeto Java, entidades do Entity Framework podem ser decoradas com anotações que controlam como as tabelas serão geradas. No exemplo acima a anotação Required também diz que a coluna correspondente à propriedade Name não pode aceitar valores nulos.
+Assim como no projeto \lang{Java}, entidades do \est{Entity Framework} podem ser decoradas com anotações que controlam como as tabelas serão geradas. No exemplo acima a anotação \annotation{Required} também diz que a coluna correspondente à propriedade \est{Name} não pode aceitar valores nulos.
 
 \paragraph{Criando o contexto do banco de dados}
 
-Não existe configuração na classe acima que indique que ela é uma entidade e que deve ser usada no mapeamento objeto/relacional. Esse papel é da classe DbContext do Entity Framework. A classe DbContext representa o banco de dados como um todo. Para criar o banco de dados a partir das entidades, o desenvolvedor deve criar uma classe que herde de DbContext e tenha propriedades do tipo DbSet como a classe NetWebCrudContext no exemplo do quadro~\ref{lst:36}. 
+Não existe configuração nas classe do projeto \est{ASP.NET MVC} que indique que elas são entidades e que devem ser usadas no mapeamento objeto/relacional. Esse papel é da classe \classe{DbContext} do \est{Entity Framework}. A classe \classe{DbContext} representa o banco de dados como um todo. Para criar o banco de dados a partir das entidades, o desenvolvedor deve criar uma classe que herde de \classe{DbContext} e tenha propriedades do tipo \classe{DbSet} como a classe \classe{NetWebCrudContext} no exemplo do quadro~\ref{lst:36}. 
 
-\sharpcode{code/36.txt}{Classe NetWebCrudContext representa o contexto do banco de dados}{lst:36}
+\sharpcode{code/36.txt}{Classe \classe{NetWebCrudContext} representa o contexto do banco de dados}{lst:36}
 
-A classe NetWebCrudContext possui um DbSet de objetos do tipo Person que representa a tabela que será gerada no banco de dados. Para utilizar o banco, o desenvolvedor deve criar uma instância do contexto e fazer consultas aos DbSets usando LINQ (Language Integrated Query). O LINQ é uma linguagem para realizar consultas em coleções do .NET Framework. Usado em DbSets, ele gera consultas SQL automaticamente para manipular o banco de dados. Consultas com LINQ serão abordadas na seção 6.4.
+A classe \classe{NetWebCrudContext} possui um \classe{DbSet} de objetos do tipo \classe{Person} que representa a tabela que é gerada no banco de dados. Para utilizar o banco, o desenvolvedor deve criar uma instância do contexto e fazer consultas aos \classe{DbSets} usando o Language Integrated Query (\lang{LINQ}). O \lang{LINQ} é uma linguagem para realizar consultas em coleções do \est{.NET Framework}. Usado em \classe{DbSets}, ele gera consultas \lang{SQL} automaticamente para manipular o banco de dados. Consultas com \lang{LINQ} são abordadas na seção 6.4.
 
-O construtor de NetWebCrudContext executa o construtor de DbContext recebendo como parâmetro o nome da connection string que contém informações de conexão com o banco. Ele recebe o nome da connection string NetWebCrudContext, a mesma que foi configurada no arquivo Web.xml na seção 3.2.2.
+O construtor de \classe{NetWebCrudContext} executa o construtor de \classe{DbContext} recebendo como parâmetro o nome da \est{connection string} que contém informações de conexão com o banco. Ele recebe o nome da \est{connection string} \est{NetWebCrudContext}, a mesma que foi configurada no arquivo \arquivo{Web.xml} na seção 3.2.2.
 
-O construtor do contexto do banco de dados também é usado para configurar o tipo de inicialização do banco. O construtor de NetWebCrudContext utiliza como inicializador a classe DropCreateDatabaseIfModelChanges, então se qualquer entidade for modificada, o banco de dados será totalmente reconstruído e todos os dados perdidos. Existem outras classes que podem ser usadas como inicializadores como CreateDatabaseIfNotExists, para criar o banco apenas uma vez, e DropCreateDatabaseAways para sempre recriar o banco de dados quando a aplicação iniciar. O desenvolvedor pode estender esses inicializadores ou construir um completamente novo que implemente a interface IDatabaseInitializer.
+O construtor do contexto do banco de dados também é usado para configurar o tipo de inicialização do banco. O construtor de \classe{NetWebCrudContext} utiliza como inicializador a classe \classe{DropCreateDatabaseIfModelChanges}, então se qualquer entidade for modificada, o banco de dados é totalmente reconstruído e todos os dados perdidos. Existem outras classes que podem ser usadas como inicializadores como \classe{CreateDatabaseIfNotExists}, para criar o banco apenas uma vez, e \classe{DropCreateDatabaseAways} para sempre recriar o banco de dados quando a aplicação iniciar. O desenvolvedor pode estender esses inicializadores ou construir um completamente novo que implemente a interface \classe{IDatabaseInitializer}.
 
-O Entity Framework não atualiza automaticamente a estrutura do banco de dados sem perder informações, para isso é necessário utilizar o Entity Framework Migrations. Essa funcionalidade permite utilizar as linguagens C\# ou VB.NET para executar scripts no banco de dados e atualizar sua estrutura. O Entity Framework Migrations não é abordado nesse trabalho, para mais informações recomenda-se consultar a documentação do Entity Framework.
+O \est{Entity Framework} não atualiza automaticamente a estrutura do banco de dados sem perder informações, para isso é necessário utilizar o \est{Entity Framework Migrations}. Essa funcionalidade permite utilizar as linguagens \lang{C\#} ou \lang{VB.NET} para executar \est{scripts} no banco de dados e atualizar sua estrutura. O \est{Entity Framework Migrations} não é abordado nesse trabalho, para mais informações recomenda-se consultar a documentação do \est{Entity Framework}.
 
-O método OnModelCreating é usado para configurar diversos aspectos da criação do banco de dados.  No exemplo do quadro~\ref{lst:36}, a convenção de pluralizar o nome das tabelas é removida.
+O método \metodo{OnModelCreating} é usado para configurar diversos aspectos da criação do banco de dados.  No exemplo do quadro~\ref{lst:36}, a convenção de pluralizar o nome das tabelas é removida.
 
-Diferente do Hibernate que cria ou atualiza o banco de dados quando a aplicação é iniciada, o Entity Framework cria o banco de dados na primeira vez em que o contexto do Entity Framework é instanciado.
+Diferente do \est{Hibernate} que cria ou atualiza o banco de dados quando a aplicação é iniciada, o \est{Entity Framework} cria o banco de dados na primeira vez em que uma instancia de \classe{DbContext} é criada.
 
-Uma instancia de NetWebCrudContext precisa ser instanciada para que se possa usar o banco de dados. No projeto exemplo, cada requisição de um usuário deve criar uma nova instancia de NetWebCrudContext. Se mais de um usuário utilizar a mesma instancia, poderão haver erros de concorrência e um usuário poderá ter acesso os dados de outro que ainda não foram salvos para o banco de dados. O Ninject será responsável por criar as instancias de NetWebCrudContext e injeta-las nos repositórios que serão criados na seção 6.3.2. O quadro~\ref{lst:37} mostra a configuração de injeção de NetWebCrudContext.
+Uma instancia de \classe{NetWebCrudContext} precisa ser instanciada para que se possa usar o banco de dados. No projeto exemplo, cada requisição de um usuário deve criar uma nova instancia de \classe{NetWebCrudContext}. Se mais de um usuário utilizar a mesma instancia, poderão haver erros de concorrência e um usuário poderá ter acesso os dados de outro que ainda não foram salvos para o banco de dados. O \est{Ninject} é responsável por criar as instancias de \classe{NetWebCrudContext} e injeta-las nos repositórios que serão criados na seção 6.3.2. O quadro~\ref{lst:37} mostra a configuração de injeção de \classe{NetWebCrudContext}.
 
 \sharpcode{code/37.txt}{Injeção do contexto do banco de dados}{lst:37}
 
 \subsection{Relacionamentos entre entidades}
 
-Entidades podem se relacionar com outras com o uso de chaves estrangeiras no banco de dados. O relacionamento entre a classe Person e a classe Contact, que guardará o e-mail e telefone de uma pessoa, será usado nos exemplos dessa seção.
+Entidades podem se relacionar com outras com o uso de chaves estrangeiras. O relacionamento entre a classe \classe{Person} e a classe \classe{Contact} é usado nos exemplos dessa seção.
 
 \subsubsection{Java}
 
-A classe Contact é criada no pacote br.uece.webCrud.model como mostra o quadro~\ref{lst:38}.
+A classe \classe{Contact} é criada no pacote \pacote{br.uece.webCrud.model} como mostra o quadro~\ref{lst:38}.
 
 \javacode{code/38.txt}{Classe Contact no projeto Java}{lst:38}
 
-Assim como a classe Person, a classe Contact herda de BaseEntity e é decorada com a anotação @Entity. O Relacionamento com a classe Person é configurado pela anotação @OneToOne decorando o atributo person. O atributo mappedBy recebendo o valor “contact” quer dizer que na classe Person deve existir um atributo com esse nome, configurado como o dono do relacionamento entre as tabelas. Resumindo, a tabela correspondente à classe Person terá a coluna com a chave estrangeira para Contact.
+Assim como a classe \classe{Person}, a classe \classe{Contact} herda de \classe{BaseEntity} e é decorada com a anotação \annotation{@Entity}. O Relacionamento com a classe \classe{Person} é configurado pela anotação \annotation{@OneToOne} decorando o atributo \est{person}. O atributo \est{mappedBy} recebendo o valor \est{"contact"} quer dizer que na classe \classe{Person} deve existir um atributo com esse nome, configurado como o dono do relacionamento entre as tabelas. Resumindo, a tabela correspondente à classe \classe{Person} deve ter a coluna com a chave estrangeira para \classe{Contact}.
 
-Além da anotação @OneToOne, o JPA possui as anotações @OneToMany, @ManyToOne e @ManyToMany para criar relacionamentos. As anotações @OneToMany e @ManyToMany devem ser usadas em uma coleção de objetos, quando uma entidade tem um relacionamento de “um para muitos” ou de “muitos para muitos” com outra entidade.
+Além da anotação \annotation{@OneToOne}, o \sigla{JPA} possui as anotações \annotation{@OneToMany}, \annotation{@ManyToOne} e \annotation{@ManyToMany} para criar relacionamentos. As anotações \annotation{@OneToMany} e \annotation{@ManyToMany} devem ser usadas em uma coleção de objetos, quando uma entidade tem um relacionamento de "um para muitos" ou de "muitos para muitos" com outra entidade.
 
-O relacionamento na classe Person também deve ser configurado como mostra o quadro~\ref{lst:39}.
+O relacionamento na classe \classe{Person} também deve ser configurado como mostra o quadro~\ref{lst:39}.
 
-\javacode{code/39.txt}{Classe Person com relacionamento para Contact}{lst:39}
+\javacode{code/39.txt}{Classe \classe{Person} com relacionamento para \classe{Contact}}{lst:39}
 
-A classe Person agora possui uma propriedade do tipo Contact, também decorada com a anotação @OneToOne e com a anotação @JoinColumn. A primeira anotação é configurada para cascatear todas as operações de Person para Contact. Se por exemplo, um objeto do tipo Person for atualizado no banco de dados, a sua propriedade contact também será atualizada. A configuração fetch recebe como valor FetchType.EAGER, configurando a propriedade contact para ser recuperada do banco de dados por eager loading (executando uma única consulta). A propriedade fetch também pode receber FetchType.LAZY, fazendo com que contact só seja carregado quando necessário, mas gerando uma nova consulta ao banco de dados.
+A classe \classe{Person} agora possui uma propriedade do tipo \classe{Contact}, também decorada com a anotação \annotation{@OneToOne} e com a anotação \annotation{@JoinColumn}. A primeira anotação é configurada para cascatear todas as operações de \classe{Person} para \classe{Contact}. Se por exemplo, um objeto do tipo \classe{Person} for atualizado no banco de dados, a sua propriedade \est{contact} também será atualizada. A configuração \est{fetch} recebe como valor \classe{FetchType.EAGER}, configurando a propriedade \est{contact} para ser recuperada do banco de dados por \est{eager loading} (executando uma única consulta). A propriedade \est{fetch} também pode receber \classe{FetchType.LAZY}, fazendo com que \est{contact} só seja carregado quando necessário, mas gerando uma nova consulta ao banco de dados.
 
-A anotação @JoinColumn configura a classe Person para criar a coluna da chave estrangeira na sua tabela correspondente, essa coluna tem o nome de contactId. O Hibernate detecta automaticamente as chaves decoradas com @Id e as utiliza como chaves estrangeiras em tabelas relacionadas. A Figura~\ref{fig:36} mostra o resultado de criação das tabelas no banco de dados MySQL. 
+A anotação \annotation{@JoinColumn} configura a classe \classe{Person} para criar a coluna da chave estrangeira na sua tabela correspondente, essa coluna tem o nome de \est{contactId}. O \est{Hibernate} detecta automaticamente as chaves decoradas com \annotation{@Id} e as utiliza como chaves estrangeiras em tabelas relacionadas. A Figura~\ref{fig:36} mostra o resultado de criação das tabelas no banco de dados \est{MySQL}. 
 
-\figura{36.png}{Tabelas geradas pelo Hibernate}{fig:36}
+\figura{36.png}{Tabelas geradas pelo \est{Hibernate}}{fig:36}
 
 \subsubsection{.NET}
 
-A classe Contact, ilustrada no quadro~\ref{lst:40}, também é criada no projeto ASP.NET MVC.
+A classe \classe{Contact}, ilustrada no quadro~\ref{lst:40}, também é criada no projeto \est{ASP.NET MVC}.
 
-\sharpcode{code/40.txt}{Classe Contact no projeto ASP.NET MVC}{lst:40}
+\sharpcode{code/40.txt}{Classe \classe{Contact} no projeto \est{ASP.NET MVC}}{lst:40}
 
-A classe Contact não requer nenhuma configuração, sendo apenas preciso herdar de BaseEntity para adquirir a propriedade Id. Por outro lado, a classe Person recebe mais propriedades como mostra o quadro~\ref{lst:41}.
+A classe \classe{Contact} não requer nenhuma configuração, sendo apenas preciso herdar de \classe{BaseEntity} para adquirir a propriedade \est{Id}. Por outro lado, a classe \classe{Person} recebe mais propriedades como mostra o quadro~\ref{lst:41}.
 
-\sharpcode{code/41.txt}{Classe Person no projeto ASP.NET com novas propriedades}{lst:41}
+\sharpcode{code/41.txt}{Classe \classe{Person} no projeto \est{ASP.NET} com novas propriedades}{lst:41}
 
-Na classe Person é adicionada uma propriedade Contact modificada com a palavra chave “virtual” para configurá-la como uma propriedade de navegação. O desenvolvedor pode acessar as informações de Contact por lazy loading acessando essa propriedade.  Isso resulta em mais uma consulta no banco, mas com o uso do LINQ é possível recuperar as informações de Person e Contact com apenas uma consulta.
+Na classe \classe{Person} é adicionada uma propriedade \classe{Contact} modificada com a palavra chave \est{"virtual"} para configurá-la como uma propriedade de navegação que pode ser carregada por \est{lazy loading}. Isso resulta em mais uma consulta no banco, mas com o uso do \lang{LINQ} é possível recuperar as informações de \classe{Person} e \classe{Contact} com apenas uma consulta.
 
-A propriedade ContactId gera a coluna da chave estrangeira. Por convenção do Entity Framework, propriedades de chaves estrangeiras devem ter o nome da propriedade de navegação (Contact) seguido do nome da sua chave primária (Id).
+A propriedade \est{ContactId} gera a coluna da chave estrangeira. Por convenção do \est{Entity Framework}, propriedades de chaves estrangeiras devem ter o nome da propriedade de navegação (\classe{Contact}) seguido do nome da sua chave primária (\est{Id}).
 
-Por último, é necessário adicionar um DbSet para Contact no contexto do banco de dados, como mostra o quadro~\ref{lst:42}.
+Por último, é necessário adicionar um \classe{DbSet} para \classe{Contact} no contexto do banco de dados, como mostra o quadro~\ref{lst:42}.
 
-\sharpcode{code/42.txt}{Classe NetWebCrudContext com o DbSet para Contact}{lst:42}
+\sharpcode{code/42.txt}{Classe \classe{NetWebCrudContext} com o \classe{DbSet} para \classe{Contact}}{lst:42}
 
-O resultado no banco é semelhante ao do projeto Java/Spring, como mostra a Figura~\ref{fig:37}. Uma diferença que deve ser ressaltada é a criação da tabela \_\_migrationhistory. Essa tabela é usada pelo Entity Framework para armazenar dados sobre o histórico da estrutura do banco de dados. Assim o Entity Framework Migrations sabe quais modificações devem ser feitas no banco quando as entidades são modificadas.
+O resultado no banco é semelhante ao do projeto \est{Java/Spring}, como mostra a Figura~\ref{fig:37}. Uma diferença que deve ser ressaltada é a criação da tabela \est{\_\_migrationhistory}. Essa tabela é usada pelo \est{Entity Framework} para armazenar dados sobre o histórico da estrutura do banco de dados. Assim o \est{Entity Framework Migrations} sabe quais modificações devem ser feitas no banco quando as entidades são modificadas.
 
-\figura{37.png}{Tabelas geradas pelo Entity Framework}{fig:37}
+\figura{37.png}{Tabelas geradas pelo \est{Entity Framework}}{fig:37}
 
 \subsection{Repositórios}
 
-A persistência e acesso aos dados serão feitos utilizando o padrão de repositórios. Em cada projeto será criado um repositório genérico, que poderá realizar operações básicas (salvar, atualizar, recuperar e apagar) para qualquer classe que seja subclasse de BaseEntity. Um repositório especifico para a entidade Person é criado nos dois projetos e outro para Contact apenas no projeto ASP.NET MVC. Eles serão especializações do repositório genérico e possuirão operações especificas para essas entidades.
+A persistência e acesso aos dados são feitos utilizando o padrão de repositórios. Em cada projeto é criado um repositório genérico, que pode realizar operações básicas (salvar, atualizar, recuperar e apagar) em qualquer classe que seja subclasse de \classe{BaseEntity}. Um repositório especifico para a entidade \classe{Person} é criado nos dois projetos e outro para \classe{Contact} apenas no projeto \est{ASP.NET MVC}. Eles são especializações do repositório genérico e possuem operações especificas para essas entidades.
 
-Será demonstrado como utilizar a Java Persistence Query Language (JPQL) e a Language Integrated Query (LINQ) para realizar consultas ao banco de dados e como gerenciar transações. Por último, os repositórios serão injetados nas classes de serviço, substituindo as listas em memória.
+É demonstrado como utilizar a \est{Java Persistence Query Language} (\lang{JPQL}) e a \est{Language Integrated Query} (\sigla{LINQ}) para realizar consultas ao banco de dados e como gerenciar transações. Por último, os repositórios são injetados nas classes de serviço, substituindo as listas em memória.
 
 \subsubsection{Java}
 
-Nos exemplos dessa seção, os repositórios e interfaces que eles implementam no projeto Java/Spring serão criados no pacote br.uece.webCrud.repositories.
+Nos exemplos dessa seção, os repositórios e interfaces que eles implementam no projeto \est{Java/Spring} são criados no pacote \pacote{br.uece.webCrud.repositories}.
 
-Primeiramente, são criadas a interface GenericRepository e a classe GenericRepositoryImpl, demonstradas nos quadros~\ref{lst:43} e~\ref{lst:44} respectivamente. Essa classe é o repositório genérico mencionado anteriormente.
+Primeiramente, são criadas a interface \classe{GenericRepository} e a classe \classe{GenericRepositoryImpl}, demonstradas nos quadros~\ref{lst:43} e~\ref{lst:44} respectivamente. Essa classe é o repositório genérico mencionado anteriormente.
 
 \javacode{code/43.txt}{Interface GenericRepository}{lst:43}
 
 \javacode{code/44.txt}{Classe GenericRepositoryImpl}{lst:44}
 
-A classe GenericRepositoryImpl é decorada com a anotação @Repository, então instâncias dela podem ser injetadas Spring IoC Container. Erros de seus métodos em tempo de execução, dispararam a exceção DataAccessException do Spring Framework.
+A classe \classe{GenericRepositoryImpl} é decorada com a anotação \annotation{@Repository}, então instâncias dela podem ser injetadas pelo \est{Spring IoC Container}. Erros de seus métodos em tempo de execução, dispararam a exceção \classe{DataAccessException} do \est{Spring Framework}.
 
-Essa classe faz uso de Java Generics, podendo realizar suas operações com qualquer classe que herde de BaseEntity. Seu construtor de extrai o tipo da classe ele está trabalhando a utiliza em suas operações. GenericRepositoryImpl é uma classe abstrata (que não pode ser instanciada) logo, quem efetivamente poderá executar suas operações serão os repositórios que herdarão dessa classe.
+Essa classe faz uso de \est{Java Generics}, podendo realizar suas operações com qualquer classe que herde de \classe{BaseEntity}. Seu construtor de extrai o tipo da classe com a qual ele está trabalhando a utiliza em suas operações. \classe{GenericRepositoryImpl} é uma classe abstrata (que não pode ser instanciada), quem efetivamente poderá executar suas operações serão os repositórios que herdarão dessa classe.
 
-O objeto da classe que executa as operações no banco de dados é do tipo EntityManager, decorado com a anotação @PersistenceContext. A instancia de EntityManager é criada pelo bean LocalContainerEntitityManagerFactoryBean, configurado na seção 3.1.3, e injetado pelo Spring IoC Container. Para objetos de acesso a dados, a anotação @PersistenceContext funciona do mesmo modo que @Autowired.
+O objeto da classe que executa as operações no banco de dados é do tipo \classe{EntityManager}, decorado com a anotação \annotation{@PersistenceContext}. A instancia de \classe{EntityManager} é criada pelo \est{bean} \classe{LocalContainerEntitityManagerFactoryBean}, configurado na seção 3.1.3, e injetado pelo \est{Spring IoC Container}. Para objetos de acesso a dados, a anotação \annotation{@PersistenceContext} funciona do mesmo modo que \annotation{@Autowired}.
 
-O método getAll retorna todas as entradas de uma determinada entidade armazenada no banco de dados. Ele mostra um exemplo de como criar uma consulta usando o método createQuery de EntityManager, recebendo o texto da consulta escrito em JPQL. Essa linguagem possui similaridades com SQL. O método getResultList executa a consulta criada, convertendo o texto JPQL em SQL, realizando a consulta no banco de dados, mapeando tuplas para objetos, e devolvendo o resultado como uma lista. Para mais informações sobre o JPQL, é recomendado consultar a documentação da linguagem no site \url{http://docs.oracle.com/cd/E15523_01/apirefs.1111/e13946/ejb3_langref.html}.
+O método \metodo{getAll} retorna todas as entradas de uma determinada entidade armazenada no banco de dados. Ele mostra um exemplo de como criar uma consulta usando o método \metodo{createQuery} de \classe{EntityManager}, recebendo o texto da consulta escrito em \lang{JPQL}. Essa linguagem possui similaridades com \lang{SQL}. O método \metodo{getResultList} executa a consulta criada, convertendo o texto \lang{JPQL} em \lang{SQL}, realizando a consulta no banco de dados, mapeando tuplas para objetos, e devolvendo o resultado como uma lista. Para mais informações sobre o \lang{JPQL}, é recomendado consultar a documentação da linguagem no site \url{http://docs.oracle.com/cd/E15523_01/apirefs.1111/e13946/ejb3_langref.html}.
 
-O método findById usa o método find do EntityManager para encontrar uma entidade com chave primária e do tipo que foram passados como parâmetros. O método add chama o método persists para inserir um novo objeto no banco de dados. Esse objeto não pode ter uma chave primária de valor já existente no banco, ou o Hibernate irá disparar uma exceção PersistenceException.
+O método \metodo{findById} usa o método \metodo{find} do \classe{EntityManager} para encontrar uma entidade com chave primária e do tipo que foram passados como parâmetros. O método \metodo{add} chama o método \metodo{persists} para inserir um novo objeto no banco de dados. Esse objeto não pode ter uma chave primária de valor já existente no banco, ou o \est{Hibernate} irá disparar uma exceção \classe{PersistenceException}.
 
-O método merge, chamado por update, realiza atualização dos valores de uma entidade no banco de dados. Para que ele funcione é necessário que a chave primária do objeto a ser atualizado exista, ou o Hibernate também disparará uma exceção. O método delete, usa getById para recuperar uma entidade pela sua chave primária e chama o método remove de EntityManager para remove-la do banco de dados.
+O método \metodo{merge}, chamado por \metodo{update}, realiza atualização dos valores de uma entidade no banco de dados. Para que ele funcione é necessário que a chave primária do objeto a ser atualizado exista, ou o \est{Hibernate} também disparará uma exceção. O método \metodo{delete}, usa \metodo{getById} para recuperar uma entidade pela sua chave primária e chama o método \metodo{remove} de \classe{EntityManager} para remove-la do banco de dados.
 
-Com o repositório genérico criado, é possível criar um repositório especifico para a classe Person, como mostram os quadros~\ref{lst:45} e~\ref{lst:46}. A classe PersonRepositoryImpl adiciona o método existsWithName, que verifica a existência de uma entidade com um dado nome no banco de dados. Nesse método é criada uma consulta mais complexa, que retorna o valor booleano true, se existir uma entidade no banco de dados com a propriedade name igual a passada como parâmetro e propriedade id diferente da passada como parâmetro. Esse exemplo também mostra como adicionar parâmetros às consultas, utilizando método setParameter.
+Com o repositório genérico criado, é possível criar um repositório especifico para a classe \classe{Person}, como mostram os quadros~\ref{lst:45} e~\ref{lst:46}. A classe \classe{PersonRepositoryImpl} adiciona o método \metodo{existsWithName}, que verifica a existência de uma pessoa com um certo nome. Nesse método é criada uma consulta mais complexa, que retorna o valor booleano \est{true}, se existir uma entidade no banco de dados com a propriedade \est{name} igual a passada como parâmetro e propriedade \est{id} diferente da passada como parâmetro. Esse exemplo também mostra como adicionar parâmetros às consultas, utilizando método \metodo{setParameter}.
 
 \javacode{code/45.txt}{Interface PersonRepository}{lst:45}
 
 \javacode{code/46.txt}{Classe PersonRepositoryImpl}{lst:46}
 
-Por último, a lista em memória da classe PersonServiceImpl é substituída por PersonRepository e a anotação @Transactional é adicionada à classe, como mostra o quadro~\ref{lst:47}.
+Por último, a lista em memória da classe \classe{PersonServiceImpl} é substituída por \classe{PersonRepository} e a anotação \annotation{@Transactional} é adicionada à classe, como mostra o quadro~\ref{lst:47}.
 
-\javacode{code/47.txt}{PersonServiceImpl fazendo uso de PersonRepository}{lst:47}
+\javacode{code/47.txt}{\classe{PersonServiceImpl} utilizando \classe{PersonRepository}}{lst:47}
 
-A anotação @Transactional do Spring Framework pode ser utilizada em classes ou métodos. Essa anotação configura o gerenciamento de transações com o banco de dados. Decorando um método, essa anotação faz com que uma única transação seja usada em todas as operações de acesso a dados dentro daquele método. Decorando uma classe, como no exemplo do quadro~\ref{lst:47}, a anotação aplica o seu efeito a todos os métodos da classe.  O Spring controla internamente a criação e utilização de transações já existentes usando o Bean JpaTransactionManager também configurado na seção 3.1.3. Se um método decorado com essa anotação for chamado internamente por outro também decorado com ela, o método interno irá aproveitar a transação que já existe e não irá criar uma nova. Esse comportamento padrão pode ser modificado configurando atributos da anotação. 
+A anotação \annotation{@Transactional} do \est{Spring Framework} pode ser utilizada em classes ou métodos. Essa anotação configura o gerenciamento de transações com o banco de dados. Decorando um método, essa anotação faz com que uma única transação seja usada em todas as operações de acesso a dados dentro daquele método. Decorando uma classe, como no exemplo do quadro~\ref{lst:47}, a anotação aplica o seu efeito a todos os métodos da classe.  O \est{Spring} controla internamente a criação e reutilização de transações já existentes usando o \est{bean} \classe{JpaTransactionManager} também configurado na seção 3.1.3. Se um método decorado com essa anotação for chamado internamente por outro também decorado com ela, o método interno irá aproveitar a transação que já existe e não irá criar uma nova. Esse comportamento padrão pode ser modificado configurando atributos da anotação. 
 
 Caso não ocorram erros nas operações com o banco de dados, as operações da transação são persistidas de forma atômica. Caso haja algum erro, as operações são revertidas e uma exceção é disparada. De toda forma, a transação é destruída automaticamente quando não é mais utilizada.
 
-Como o relacionamento de Person com Contact configurado com CascadeType.ALL na seção 6.2.1, quando um objeto do tipo Person é salvo ou atualizado no banco de dados, o seu contato também é. Então nos exemplos desse capitulo para Java, não houve a necessidade de se criar um repositório para a classe Contact.
+Como o relacionamento de \classe{Person} com \classe{Contact} configurado com \est{CascadeType.ALL} na seção 6.2.1, quando um objeto do tipo \classe{Person} é salvo ou atualizado no banco de dados, o seu contato também é. Então nos exemplos desse capitulo para \lang{Java}, não houve a necessidade de se criar um repositório para a classe \classe{Contact}.
 
 \subsection{.NET}
 
-Os repositórios no projeto ASP.NET MVC são criados na pasta Models/Repositories. Assim como no projeto Java/Spring, começa-se criando o repositório genérico e sua interface. O quadro~\ref{lst:48} mostra a interface do repositório genérico, IGenericRepository, e o quadro~\ref{lst:49} mostra sua implementação, GenericRepository.
+Os repositórios no projeto \est{ASP.NET MVC} são criados na pasta \arquivo{Models/Repositories}. Assim como no projeto \est{Java/Spring}, começa-se criando o repositório genérico e sua \est{interface}. O quadro~\ref{lst:48} mostra a \est{interface} do repositório genérico, \classe{IGenericRepository}, e o quadro~\ref{lst:49} mostra sua implementação, \classe{GenericRepository}.
 
-\sharpcode{code/48.txt}{Interface IGenericRepository}{lst:48}
+\sharpcode{code/48.txt}{\est{Interface} \classe{IGenericRepository}}{lst:48}
 
-\sharpcode{code/49.txt}{Classe GenericRepository}{lst:49}
+\sharpcode{code/49.txt}{Classe \classe{GenericRepository}}{lst:49}
 
-Assim como no projeto Java/Spring, o repositório genérico é uma classe abstrata que realiza operações no banco de dados para classes que herdam de BaseEntity. Também semelhante ao outro projeto, existe uma propriedade no repositório que efetivamente irá persistir dados e consultar o banco, a propriedade context do tipo NetWebCrudContext. A propriedade EntitySet é usada para facilitar o acesso ao DbSet correto da entidade a qual o repositório genérico irá manipular.
+Assim como no projeto \est{Java/Spring}, o repositório genérico é uma classe abstrata que realiza operações no banco de dados para classes que herdam de \classe{BaseEntity}. Também semelhante ao outro projeto, existe uma propriedade no repositório que efetivamente irá persistir dados e consultar o banco, a propriedade \est{context} do tipo \classe{NetWebCrudContext}. A propriedade \est{EntitySet} é usada para facilitar o acesso ao \classe{DbSet} correto da entidade a qual o repositório genérico irá manipular.
 
-O método getById mostra um exemplo de como se usar expressões lambda e a sintaxe fluente do LINQ para realizar uma consulta. Métodos de filtragem e ordenação da sintaxe fluente do LINQ retornam coleções do tipo IQueryable, essa interface permite que mais métodos sejam chamados em cascata para a criação de consultas complexas. Uma consulta do LINQ só é realmente executada no bando de dados quando se chamam certo métodos, como Single, First, ToList e ToArray, e essas consultas também são transformadas em scripts SQL quando são executadas no banco de dados. No método getAll, o método ToList do DbSet retorna todas as tuplas do banco de dados transformadas em uma lista de objetos.
+O método \metodo{GetById} mostra um exemplo de como se usar expressões \est{lambda} e a sintaxe fluente do \lang{LINQ} para realizar uma consulta. Métodos de filtragem e ordenação da sintaxe fluente do \lang{LINQ} retornam coleções do tipo \classe{IQueryable}, essa \est{interface} permite que mais métodos sejam chamados em cascata para a criação de consultas complexas. Uma consulta do \lang{LINQ} só é realmente executada no bando de dados quando se chamam certo métodos, como \metodo{Single}, \metodo{First}, \metodo{ToList} e \metodo{ToArray}, e essas consultas também são transformadas em \est{scripts} \lang{SQL} quando são executadas no banco de dados. No método \metodo{GetAll}, o método \metodo{ToList} do \classe{DbSet} retorna todas as tuplas do banco de dados transformadas em uma lista de objetos.
 
-Dentro do método save, um objeto é adicionado ao DbSet usando o método Add, equivalente a uma operação de inserção na tabela. Operações de inserção, atualização e deleção de dados só são persistidas após a chamada do método SaveChanges do contexto. Esse método cria uma transação que em caso de erro reverte a transação e dispara uma exceção. É possível ter um controle melhor sobre transações, como ainda será visto nessa seção.
+Dentro do método \metodo{Save}, um objeto é adicionado ao \classe{DbSet} usando o método \metodo{Add}, equivalente a uma operação de inserção na tabela. Operações de inserção, atualização e deleção de dados só são persistidas após a chamada do método \metodo{SaveChanges} do contexto. Esse método cria uma transação que em caso de erro reverte a transação e dispara uma exceção. É possível ter um controle melhor sobre transações, como ainda será visto nessa seção.
 
-O método update é um pouco mais complexo. Para persistir novos dados de uma entidade no banco de dados, caso a entidade não esteja anexada ao contexto, é necessário anexa-la e utilizar o contexto para modificar seu estado para Modfied. Assim, quando SaveChanges for chamado, o contexto saberá que aquela entidade é de um objeto que já existe no banco de dados (através da chave primária já existente) e irá atualizar suas informações.
+O método \metodo{Update} é um pouco mais complexo. Para persistir dados atualizados de uma entidade no banco de dados, caso a entidade não esteja anexada ao contexto, é necessário anexa-la e utilizar o contexto para modificar seu estado para \classe{Modfied}. Assim, quando \metodo{SaveChanges} for chamado, o contexto saberá que aquela entidade é de um objeto que já existe no banco de dados (através da chave primária já existente) e irá atualizar suas informações.
 
-O método Delete é bastante similar ao do repositório do projeto Java/Spring. Uma entidade é recuperada pela sua chave primária e o método Remove do DbSet a remove do banco de dados.
+O método \metodo{Delete} é bastante similar ao do repositório do projeto \est{Java/Spring}. Uma entidade é recuperada pela sua chave primária e o método \metodo{Remove} do \classe{DbSet} a remove do banco de dados.
 
-O método GetTransaction proporciona um melhor controle sobre transações. O controle automático de transações que o Entity Framework possui no método SaveChanges pode não ser suficiente para conversações extensas com o banco de dados em regras de negócio complexas. Então é possível criar uma transação manualmente, com o método BeginTransation, e utilizar essa transação para persistir ou reverter alterações. Mesmo com o uso dessa transação, e necessário chamar o método SaveChanges antes executar a persistência de dados.
+O método \metodo{GetTransaction} proporciona um melhor controle sobre transações. O controle automático de transações que o \est{Entity Framework} possui no método \metodo{SaveChanges} pode não ser suficiente para conversações extensas com o banco de dados em regras de negócio complexas. Então é possível criar uma transação manualmente, com o método \metodo{BeginTransation}, e utilizar essa transação para persistir ou reverter alterações. Mesmo com o uso dessa transação, e necessário chamar o método \metodo{SaveChanges} antes executar a persistência de dados.
 
-Os repositórios para as entidades Person e Contact são criados como mostram os quadros~\ref{lst:50} e ~\ref{lst:51}. O Entity Framework cascateia automaticamente operações de inserção e deleção entre entidades relacionadas, mas não de atualização. Sendo assim, é necessária a existência de repositório de Contact para que atualizações dessa entidade sejam persistidas.
+Os repositórios para as entidades \classe{Person} e \classe{Contact} são criados como mostram os quadros~\ref{lst:50} e ~\ref{lst:51}. O \est{Entity Framework} cascateia automaticamente operações de inserção e deleção entre entidades relacionadas, mas não de atualização. Sendo assim, é necessária a existência de repositório de \classe{Contact} para que atualizações dessa entidade sejam persistidas.
 
-\sharpcode{code/50.txt}{Interfaces IPersonRepository e IContactRepository}{lst:50}
+\sharpcode{code/50.txt}{\est{Interfaces} \classe{IPersonRepository} e \classe{IContactRepository}}{lst:50}
 
-\sharpcode{code/51.txt}{Classes PersonRepository e ContactRepository}{lst:51}
+\sharpcode{code/51.txt}{Classes \classe{PersonRepository} e \classe{ContactRepository}}{lst:51}
 
-Assim como no projeto Java/Spring, o repositório para a classe Person possui um método que verifica a existência de uma outra entidade que possua o mesmo nome. A consulta é feita com uma expressão lambda do LINQ. O repositório para Contact não possui nenhuma operação adicional, usa apenas as operações herdades de GenericRepository. Como esses repositórios também serão injetados na classe de serviço PersonService, sua configuração de injeção é adicionada à classe NinjectWebCommon, como motra o quadro~\ref{lst:52}.
+Assim como no projeto \est{Java/Spring}, o repositório para a classe \classe{Person} possui um método que verifica a existência de uma outra entidade que possua o mesmo nome. A consulta é feita com uma expressão \est{lambda} do \lang{LINQ}. O repositório para \classe{Contact} não possui nenhuma operação adicional, usa apenas as operações herdades de \classe{GenericRepository}. Como esses repositórios também serão injetados na classe de serviço \classe{PersonService}, sua configuração de injeção é adicionada à classe \classe{NinjectWebCommon}, como mostra o quadro~\ref{lst:52}.
 
-\sharpcode{code/52.txt}{Configuração de injeção de repositórios no projeto ASP.NET MVC}{lst:52}
+\sharpcode{code/52.txt}{Configuração de injeção de repositórios no projeto \est{ASP.NET MVC}}{lst:52}
 
-Por último, a classe de serviço PersonService é atualizada como no quadro~\ref{lst:53}. O método Update mostra como fazer controle manual de transações. Chamando o método GetTransaction de PersonRepository, ou de qualquer outro repositório, uma transação é criada para o contexto NetWebCrudContext que é injetado no escopo da requisição do usuário. Dessa forma, só existe uma instância do contexto do banco de dados sendo utilizada por todos os repositórios, então a transação também é única.
+Por último, a classe de serviço \classe{PersonService} é atualizada como no quadro~\ref{lst:53}. O método \metodo{Update} mostra como fazer controle manual de transações. Chamando o método \metodo{GetTransaction} de \classe{PersonRepository}, ou de qualquer outro repositório, uma transação é criada para o contexto \classe{NetWebCrudContext} que é injetado no escopo da requisição do usuário. Dessa forma, só existe uma instância do contexto do banco de dados sendo utilizada por todos os repositórios, então a transação também é única.
 
-Usando uma transação dessa forma, o desenvolvedor pode fazer as operações que desejar com quaisquer repositórios, e chamar o método Commit da transação para finalizar a persistência. Em caso de erros, é chamado o método Rollback para reverter às alterações no banco de dados. Como a transação está dentro do escopo da palavra chave using, o coletor de lixo do .NET Framework se encarrega de chamar o método Dispose automaticamente para finalizar a transação.
+Usando uma transação dessa forma, o desenvolvedor pode fazer as operações que desejar com quaisquer repositórios, e chamar o método \metodo{Commit} da transação para finalizar a persistência. Em caso de erros, é chamado o método \metodo{Rollback} para reverter às alterações no banco de dados. Como a transação está dentro do escopo da palavra chave \est{using}, o coletor de lixo do \est{.NET Framework} se encarrega de chamar o método \metodo{Dispose} automaticamente para finalizar a transação.
 
-\sharpcode{code/53.txt}{Classe PersonService utilizando ambos os repositórios no projeto ASP.NET MVC}{lst:53}
+\sharpcode{code/53.txt}{Classe \classe{PersonService} utilizando ambos os repositórios no projeto \est{ASP.NET MVC}}{lst:53}
 
 \subsection{Conclusão}
 
-A criação de entidades para o modelo objeto/relacional com Hibernate e Entity Framework possuem abordagens distintas. No primeiro, classes precisam de anotações para serem tratadas como entidades, e no segundo não há essa necessidade. No Entity Framework, classes mais simples podem ser usadas e convenções cuidam de lógica no mapeamento objeto/relacional. A desvantagem do uso do Entity Framework é a necessidade de criação de uma classe de contexto que representa o banco de dados. Dependendo da complexidade da aplicação, a codificação e manutenção da classe de contexto pode se tornar uma inconveniência.
+A criação de entidades para o modelo objeto/relacional com \est{Hibernate} e \est{Entity Framework} possuem abordagens distintas. No primeiro, classes precisam de anotações para serem tratadas como entidades, e no segundo não há essa necessidade. No \est{Entity Framework}, classes mais simples podem ser usadas e convenções cuidam de lógica no mapeamento objeto/relacional. A desvantagem do uso do \est{Entity Framework} é a necessidade de criação de uma classe de contexto que representa o banco de dados. Dependendo da complexidade da aplicação, a codificação e manutenção da classe de contexto pode se tornar uma inconveniência.
 
-O relacionamento entre entidades no Hibernate é feito com anotações na própria entidade, e a configuração de relacionamentos de muito para muitos, por exemplo, pode se tornar complicada de entender para um desenvolvedor iniciante. O Entity Framework abstrai essa configuração, sendo apenas necessária a criação de propriedades de navegação entre entidades e propriedades que representem chaves estrangeiras.
+O relacionamento entre entidades no \est{Hibernate} é feito com anotações na própria entidade, e a configuração de relacionamentos de muito para muitos, por exemplo, pode se tornar complicada de entender para um desenvolvedor iniciante. O \est{Entity Framework} abstrai essa configuração, sendo apenas necessária a criação de propriedades de navegação entre entidades e propriedades que representem chaves estrangeiras.
 
-Repositórios em projetos Spring com Hibernate utilizam uma implementação de EntityManager para manipular entidades, podendo usar Criteria Queries ou JPQL para gerar consultas. Criteria Queries utilizam vários métodos para gerar uma consulta, que no fim resulta em código complexo, de baixa legibilidade e de manutenção questionável. A linguagem JPQL se assemelha a SQL e é mais legível, mas tem a desvantagem de ser escrita em Strings, o que a torna mais propensa a erros. Em projetos com o Entity Framework, a linguagem LINQ é usada para gerar consultas. Essa linguagem é de fácil entendimento, e pode utilizar as vantagens do IntelliSense (ferramenta de auto completar código do Visual Studio), tornando a detecção de erros mais fácil e a escrita de código mais eficiente.
+Repositórios em projetos \est{Spring} com \est{Hibernate} utilizam uma implementação de \classe{EntityManager} para manipular entidades, podendo usar \est{Criteria Queries} ou \lang{JPQL} para gerar consultas. \est{Criteria Queries} utilizam vários métodos para gerar uma consulta, que no fim resulta em um código complexo, de baixa legibilidade e de manutenção questionável. A linguagem \lang{JPQL} se assemelha a \lang{SQL} e é mais legível, mas tem a desvantagem de ser escrita com \est{strings}, o que a torna mais propensa a erros. Em projetos com o \est{Entity Framework}, a linguagem \lang{LINQ} é usada para gerar consultas. Essa linguagem é de fácil entendimento, e pode utilizar as vantagens do \est{IntelliSense} (ferramenta de auto completar código do \est{Visual Studio}), tornando a detecção de erros mais fácil e a escrita de código mais eficiente.
 
-Quanto ao controle de transações, o modo automático como o Spring Framework lida com transações o tornam uma melhor opção nesse aspecto do que o Entity Framework. 
+Quanto ao controle de transações, o modo automático como o \est{Spring Framework} lida com transações o tornam uma melhor opção nesse aspecto do que o \est{Entity Framework}. 
 
 \newpage
 \section{Conclusão}
 
-Nesse trabalho foi comparada a criação de uma aplicação web utilizando as tecnologias Java com o Spring MVC e o Hibernate, e o ASP.NET MVC utilizando C\#. Foram abordadas a configuração do ambiente de desenvolvimento, configuração inicial de projeto e a criação das três camadas da aplicação, apresentação (subdividida entre controllers e views), serviços (incluindo injeção de dependências) e persistência.
+Nesse trabalho foi comparada a criação de uma aplicação \est{web} utilizando as tecnologias \lang{Java} com o \est{Spring MVC} e o \est{Hibernate}, e o \est{ASP.NET MVC} utilizando \lang{C\#}. Foram abordadas a configuração do ambiente de desenvolvimento, configuração inicial de projeto e a criação das três camadas da aplicação, apresentação (subdividida entre \est{controllers} e \est{views}), serviços (incluindo injeção de dependências) e persistência.
 
 As conclusões a que se chegaram por esse trabalho em relação ao tópicos abordados foram as seguintes:
 
 \begin{itemize}
-  \item Preparação do ambiente de desenvolvimento - A tecnologia .NET é mais prática e poupa tempo do desenvolvedor. Enquanto com o .NET o necessário para a criação de um projeto se encontra pronto para uso em um único instalador, utilizando a tecnologia Java o desenvolvedor deve adquirir vários softwares de fontes diferentes e configura-los.
-  \item Criação e configuração de um novo projeto - Aqui a tecnologia .NET também obteve vantagem. Os modelos de projeto ASP.NET MVC do Visual Studio e convenções adotadas, ajudam o desenvolvedor à escrever sua aplicação imediatamente. Com o Spring Framework é necessária configuração de diversos objetos da estrutura da aplicação.
-  \item Criação de controllers - Na criação de controllers em si, nenhuma tecnologia mostrou grande superioridade. Mas o ASP.NET MVC demonstrou maior praticidade no mapeamento de endereços para ações, centralizando essa configuração em um único lugar e, vez de anotações espalhadas pelo código como no Spring Framework.
-  \item Criação de views - A possibilidade de views fortemente tipadas e utilização de funcionalidades de auto completar código, deram vantagem à view engine Razor do ASP.NET MVC em relação ao JSTL do Java Enterprise Edition. Mas seria injusto não mencionar que a liberdade de escolher outras view engines é uma grande vantagem da plataforma Java.
+  \item Preparação do ambiente de desenvolvimento - A tecnologia \sigla{.NET} é mais prática e poupa tempo do desenvolvedor. Enquanto com o \sigla{.NET} o necessário para a criação de um projeto se encontra pronto para uso em um único instalador, utilizando a tecnologia \lang{Java} o desenvolvedor deve adquirir vários \est{softwares} de fontes diferentes e configura-los.
+  \item Criação e configuração de um novo projeto - Aqui a tecnologia \sigla{.NET} também obteve vantagem. Os modelos de projeto \est{ASP.NET MVC} do \est{Visual Studio} e convenções adotadas, ajudam o desenvolvedor à escrever sua aplicação imediatamente. Com o \est{Spring Framework} é necessária configuração de diversos objetos da estrutura da aplicação.
+  \item Criação de \est{controllers} - Na criação de \est{controllers} em si, nenhuma tecnologia mostrou grande superioridade. Mas o \est{ASP.NET MVC} demonstrou maior praticidade no mapeamento de endereços para ações, centralizando essa configuração em um único lugar e, vez de anotações espalhadas pelo código como no \est{Spring Framework}.
+  \item Criação de \est{views} - A possibilidade de \est{views} fortemente tipadas e utilização de funcionalidades de auto completar código, deram vantagem à \est{view engine Razor} do \est{ASP.NET MVC} em relação ao \sigla{JSTL} do \est{Java Enterprise Edition}. Mas seria injusto não mencionar que a liberdade de escolher outras \est{view engines} é uma grande vantagem da plataforma \lang{Java}.
   \item Criação de classes de serviço - Nenhuma tecnologia se mostrou superior à outra em relação a criação de classes de serviço.
-  \item Configuração de injeção de dependências - A existência de um container nativo de injeção de dependências no Spring Framework, junto com configuração automática de instanciação e injeção de classes mostram superioridade dessa tecnologia em relação ao ASP.NET MVC nesse aspecto. Além de precisar adquirir uma biblioteca externa (o Ninject, utilizado como exemplo) também foi necessária configuração adicional para cada classe a ser injetada no projeto .NET.
-  \item Criação de entidades - Pela não necessidade da criação de um contexto do banco de dados e possuir atualização da estrutura do banco de forma automática, o Hibernate implementando o JPA se mostrou superior ao Entity Framework, apesar de requerer que as entidades sejam decoradas com várias anotações.
-  \item Criação de repositórios - A sintaxe fluente do LINQ (.NET) se mostrou superior ao JPQL (Java/JPA) por utilizar expressões lambda, ser fortemente tipada e fazer uso das funções de auto completar código do Visual Studio. Apesar disso, desenvolvedores mais familiarizados em trabalhar com scripts SQL podem preferir o JPQL. Em relação ao controle de transações, o Spring Framework se mostrou superior, pois automatiza a criação e reuso de transações ao mesmo tempo que dá ao desenvolvedor controle sobre elas. 
+  \item Configuração de injeção de dependências - A existência de um \est{container} nativo de injeção de dependências no \est{Spring Framework}, junto com configuração automática de instanciação e injeção de classes mostram superioridade dessa tecnologia em relação ao \est{ASP.NET MVC} nesse aspecto. Além de precisar adquirir uma biblioteca externa (o \est{Ninject}, utilizado como exemplo) também foi necessária configuração adicional para cada classe a ser injetada no projeto \sigla{.NET}.
+  \item Criação de entidades - Pela não necessidade da criação de um contexto do banco de dados e possuir atualização da estrutura do banco de forma automática, o \est{Hibernate} implementando o \sigla{JPA} se mostrou superior ao \est{Entity Framework}, apesar de requerer que as entidades sejam decoradas com várias anotações.
+  \item Criação de repositórios - A sintaxe fluente do \lang{LINQ} (\sigla{.NET}) se mostrou superior ao \lang{JPQL} (\lang{Java}/\sigla{JPA}) por utilizar expressões \est{lambda}, ser fortemente tipada e fazer uso das funções de auto completar código do \est{Visual Studio}. Apesar disso, desenvolvedores mais familiarizados em trabalhar com \est{scripts} \lang{SQL} podem preferir o \lang{JPQL}. Em relação ao controle de transações, o \est{Spring Framework} se mostrou superior, pois automatiza a criação e reuso de transações ao mesmo tempo que dá ao desenvolvedor controle sobre elas. 
 \end{itemize}
 
-Existem outras carateristas inerentes às tecnologias utilizadas que devem ser lavadas em consideração na hora de escolher algum delas para um novo projeto. A versão atual do ASP.NET por exemplo, não funciona em sistemas operacionais que não sejam o Windows. Então se nos requisitos do sistema especificasse que ele deve rodar em Linux, por exemplo, Java deverá ser a escolha entre as duas tecnologias. A familiaridade da equipe de desenvolvimento e suas preferencias subjetivas também impactam na escolha da tecnologia.
+Existem outras carateristas inerentes às tecnologias utilizadas que devem ser lavadas em consideração na hora de escolher alguma delas para um novo projeto. A versão atual do \est{ASP.NET} por exemplo, não funciona em sistemas operacionais que não sejam o \est{Windows}. Então se nos requisitos do sistema especificasse que ele deve rodar em \est{Linux}, por exemplo, \lang{Java} deverá ser a escolha entre as duas tecnologias. A familiaridade da equipe de desenvolvimento e suas preferencias subjetivas também impactam na escolha da tecnologia.
 
-De modo geral, a conclusão a que esse trabalho chega é que se um projeto precisar ficar pronto rápido e a equipe de desenvolvimento não tiver uma preferencia clara por uma tecnologia, o uso do ASP.NET pode ser uma boa opção. Em contra partida, se o time de desenvolvimento quiser ter controle granular sobre o projeto, dispor de tempo para testar várias arquiteturas diferentes e dominar o Spring Framework, utilizar o ambiente Java é uma melhor opção.
+De modo geral, a conclusão a que esse trabalho chega é que se um projeto precisar ficar pronto rápido e a equipe de desenvolvimento não tiver uma preferencia clara por uma tecnologia, o uso do \est{ASP.NET} pode ser uma boa opção. Em contra partida, se o time de desenvolvimento quiser ter controle granular sobre o projeto, dispor de tempo para testar várias soluções diferentes e dominar o \est{Spring Framework}, utilizar o ambiente \lang{Java} é uma melhor opção.
 
-Como trabalho futuro, o desempenho das duas tecnologias pode ser analisado. Quando o ASP.NET MVC 6 for lançado, pode ser feita uma nova comparação para desenvolvimento em ambiente Linux. Pode-se também utilizar o Spring Boot em um trabalho futuro e verificar como ele auxilia a configuração de um projeto Java.
+Como trabalho futuro, o desempenho das duas tecnologias pode ser analisado. Quando o \est{ASP.NET MVC 6} for lançado, pode ser feita uma nova comparação para desenvolvimento em ambiente \est{Linux}. Pode-se também utilizar o \est{Spring Boot} em um trabalho futuro e verificar como ele auxilia a configuração de um projeto \lang{Java}.
 
-Esse trabalho foi importante para auxiliar a ter uma compreensão melhor das vantagens e desvantagens entre as duas tecnologias de modo mais lógico. Ouve-se muitas discussões entre desenvolvedores em momentos de descontração que dizem rpeferir uma tecnologia à outra por motivos subjetivos, muitos deles não conhecendo realmente a tecnologia rival. Assim, esse trabalho também auxilia desenvolvedores experientes em fundamentar seus elogios e críticas à uma ou outra tecnologia.
+Esse trabalho foi importante para auxiliar a ter uma compreensão melhor das vantagens e desvantagens entre as duas tecnologias de modo mais lógico. Ouve-se muitas discussões entre desenvolvedores em momentos de descontração que dizem preferir uma tecnologia à outra por motivos subjetivos, muitos deles não conhecendo realmente a tecnologia rival. Assim, esse trabalho também auxilia desenvolvedores experientes em fundamentar seus elogios e críticas à uma ou outra tecnologia.
 
 \end{document}
