@@ -1,0 +1,48 @@
+\chapter{Introdução}
+\label{cap:introducao}
+
+\section{Objetivo}
+\label{sec:objetivo}
+
+Este trabalho tem como objetivo comparar a criação de uma aplicação utilizando duas tecnologias, \textit{Java} com o \lib{Spring Framework} e \lib{Hibernate}, e o \sigla{ASP.NET MVC 5} e \textit{Entity Framework} utilizando \lang{C\#}. é usado como exemplo, a criação de um projeto de uma aplicação web de três camadas (apresentação, serviços e persistência) que utiliza o padrão \est{Model View Controller} (\sigla{MVC}).
+
+A abordagem utilizada consiste em dividir as tarefas necessárias para a criação da aplicação em cinco capítulos, e nesses capítulos serão demonstrados exemplos de código com as duas tecnologias. Depois de expostos os exemplos de como executar as tarefas, serão ressaltadas as vantagens, desvantagens e características distintas de cada tecnologia. As tarefas a serem executadas serão as seguintes:
+
+\begin{itemize}
+  \item Preparação do ambiente de desenvolvimento.
+  \item Criação e configuração de um novo projeto.
+  \item Criação de \est{controllers}.
+  \item Criação de \est{views}.
+  \item Criação de classes de serviço.
+  \item Configuração de injeção de dependências.
+  \item Criação de entidades.
+  \item Criação de repositórios.
+\end{itemize}
+
+\section{Estado da arte}
+\label{sec:estadoarte}
+ 
+No momento de criação desse trabalho, a literatura conta com vários trabalhos sobre medição de desempenho de aplicações \est{web} e poucos comparando como se cria uma aplicação. E mesmos trabalhos comparando o esforço do desenvolvimento de aplicações utilizando tecnologias diferentes, utilizam versões antigas de tais tecnologias. 
+
+Atul Mishra em seu trabalho \est{"Critical Comparison Of PHP And ASP.NET For Web Development"}, por exemplo, compara a criação de um site utilizando uma versão antiga do \sigla{ASP.NET} e utilizando \sigla{PHP}. Nesse trabalho não são expostos exemplos de código, apenas as conclusões tiradas pelo autor. Mostafa Pordel e Faranhaz Yekeh, autores do artigo "\est{"JSF vs ASP.NET, what are their limits?"} também comparam o desenvolvimento de aplicações \est{web} utilizando as tecnologias \lang{Java} e \lib{.NET}. Mas também utilizam versões antigas de ambas as tecnologias e mostram poucos exemplos de código.
+
+Tiago Bencardino, em seu trabalho de conclusão do curso de engenharia de teleinformática de titulo "\est{iQuizzer}: Integrando aplicações web e dispositivos móveis em um ambiente para criação e execução de \est{quizzes}", comparou o desenvolvimento de uma aplicação para as plataformas moveis \est{Android} e \est{iOS}. Bencardino utilizou uma quantidade maior de exemplos de código, comparando o desenvolvimento das mesmas tarefas em ambas as plataformas alvos de seu trabalho.
+
+\section{Resumo dos resultados alcançados}
+\label{sec:resumoresultados}
+
+Ambas as tecnologias possuem seus pontos fortes e fracos. De modo geral, o uso de \lang{Java} com o \lib{Spring Framework} proporciona melhor controle do projeto ao desenvolvedor e a liberdade de utilizar uma gama maior de bibliotecas para sua configuração. Mas essa liberdade tem um custo, o desenvolvedor de modo geral, precisa escrever mais código de configuração e pesquisar como os componentes escolhidos interagem para que o projeto seja bem sucedido.
+
+A tecnologia \sigla{ASP.NET MVC} é mais fechada (apesar de ter seu código ser aberto), existem muitas convenções que o desenvolvedor deve obedecer e não existe tanta liberdade para configuração, tudo é mais padronizado. A vantagem disso é que o desenvolvedor se preocupa menos em como vai configurar sua aplicação e ele pode usar esse tempo para escrever código que realmente agrega valor ao produto.
+
+De modo geral, se o desenvolvedor dispuser de tempo e precisar de um controle maior sobre o projeto, o uso da tecnologia \lang{Java} é aconselhável. Por outro lado, se o projeto tiver um prazo reduzido ou o desenvolvedor preferir seguir convenções e não quiser se preocupar em como vai ter que configurar o projeto, a tecnologia \lib{.NET} pode ser uma melhor opção.
+ 
+\section{Publico alvo}
+\label{sec:publicalvo}
+
+Esse trabalho pode beneficiar gerentes de projetos e lideres técnicos à escolher qual das duas tecnologias utilizar para iniciar um novo projeto. Estudantes interessados em começar a desenvolver para a \est{web} também podem se beneficiar desse trabalho e aprender o básico sobre as duas tecnologias.
+
+\section{Metodologia de pesquisa}
+\label{sec:metodologiapesquisa}
+
+A maior fonte da informação para esse trabalho foram livros, em sua maioria as edições mais recentes. Além dos livros, foram utilizados como fonte de pesquisa as documentações online de ambas as tecnologias. Também foram utilizados como fonte de pesquisa, exemplos encontrados em sites de desenvolvedores na internet, sendo o mais utilizado o \est{stack overflow} americano.

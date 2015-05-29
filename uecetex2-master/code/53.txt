@@ -1,0 +1,61 @@
+using NetWebCrud.Models.Entities;
+using NetWebCrud.Models.Repositories;
+using Ninject;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace NetWebCrud.Models.Services
+{
+    public class PersonService : IPersonService
+    {
+        [Inject]
+        public IPersonRepository PersonRepository { set; private get; }
+        [Inject]
+        public IContactRepository ContactRepository { set; private get; }
+
+        public void Add(Person p) {
+            if (PersonRepository.ExistsWithName(p)) {
+                throw new Exception("Person already exists.");
+            }
+            PersonRepository.Save(p);
+        }
+
+        public Person GetById(int id) {
+            var result = PersonRepository.GetById(id);
+
+            if (result == null) {
+                throw new Exception("Person doesnt exists.");
+            }
+            return result;
+        }
+
+        public Person Update(Person p) {
+            Person result = null;
+
+            using (var transaction = PersonRepository.GetTransaction()) {
+                try {
+                    if (p.ContactId != null && p.ContactId > 0) {
+                        ContactRepository.Update(p.Contact);
+                    }
+
+                    result = PersonRepository.Update(p);
+
+                    transaction.Commit();
+                }
+                catch (Exception ex) {
+                    transaction.Rollback();
+                }
+            }
+            return result;
+        }
+
+        public void Delete(int id) {
+            PersonRepository.Delete(id);
+        }
+
+        public IList<Person> GetAll() {
+            return PersonRepository.GetAll();
+        }
+    }
+}

@@ -1,0 +1,101 @@
+\chapter{Classes de serviços e injeção de dependências}
+
+Uma aplicação de três camadas típica se divide em camadas de apresentação, negócios/serviços e persistência de dados. A camada de serviços é onde se escreve o código que representa regras de negócio das aplicações, enquanto a camada de persistência é responsável por guardar os dados da aplicação para uso posterior. É importante que essas camadas estejam fracamente acopladas, pois o desenvolvedor pode, por exemplo, aproveitar as classes de negócio que ele escreveu para uma aplicação \est{web} em uma aplicação para celular.
+
+Nos exemplos desse trabalho, a camada de apresentação é formada pelas páginas \est{web} escritas no capítulo anterior, os \est{controllers} funcionam como uma ponte entre a camada de apresentação e de negócios. \est{Controllers} devem apenas receber e responder requisições, o ideal é que não exista código de regras de negócios em suas ações.
+
+Nesse capítulo é demonstrado como escrever classes de serviço (também chamadas de classes de negócio) fracamente acopladas à camada de apresentação e aos \est{controllers}. 
+
+\section{Classes de serviços}
+
+É criada como exemplo uma classe de serviço em cada projeto que contêm um método com uma regra de negócio simples. As listas de objetos \classe{Person}, até agora pertencente aos \est{controllers}, são movidas para essas classes como uma forma de representar a camada de persistência. Em ambos os projetos, o serviço implementa uma \est{interface}. Diferente do que é sugerido para \est{controllers}, que um \est{controller} não deve chamar métodos de outro, classes de serviço podem utilizar outras classes de serviço.
+
+\subsection{Java}
+
+No projeto \lang{Java}, a \est{interface} e classe concreta são criadas no pacote \pacote{br.uece.webCrud.service}. Primeiro é feita a interface \classe{PersonService} que o serviço irá implementar, como podemos observar no quadro~\ref{lst:22}.
+
+\javacode{code/22.txt}{\est{Interface} \classe{PersonService}}{lst:22}
+
+No quadro~\ref{lst:23} pode-se observar o serviço \classe{PersonServiceImpl} implementando a \est{interface} \classe{PersonService}.
+
+\javacode{code/23.txt}{Classe \classe{PersonServiceImpl}}{lst:23}
+
+A classe \classe{PersonServiceImpl} começa decorada com a anotação \annotation{@Service}. Essa anotação é usada pelo \est{Spring Framework} para marcar classes da camada de serviços. A anotação \annotation{@Service} herda da anotação \annotation{@Component}, então essa é uma classe que pode ser usada pelo \est{Spring IoC Container} durante injeção de dependências. Mais detalhes sobre injeção de dependências e o modo como o \est{Spring} injeta uma instância dessa classe serão explicados nas seções 5.2 e 5.2.1. Segundo a documentação do \est{Spring Framework 4.1.4}, a anotação \annotation{@Service} tem o mesmo efeito que \annotation{@Component}, mas é recomendado o uso de \annotation{@Service} pois em versões futuras do \est{framework}, essa anotação poderá conter funcionalidades adicionais.
+
+O construtor de \classe{PersonServiceImpl} inicializa a lista de objetos \classe{Person}. O método \metodo{add} recebe um objeto do tipo \classe{Person} como parâmetro. Ele verifica se já existe um objeto com o mesmo nome na lista, se sim, dispara uma exceção, se não, adiciona o objeto à lista. Essa verificação é um exemplo simples de uma regra de negócios.
+
+\subsection{.NET}
+
+As classes de serviços no projeto \est{ASP.NET MVC} são criadas dentro da pasta \arquivo{Models/Services}. Para o \est{ASP.NET MVC} a camada \est{model} de uma aplicação \sigla{MVC} contém tanto entidades quanto regras de negócios. Assim como no projeto \lang{Java}, primeiro é feita a \est{interface} \classe{IPersonService} mostrada no quadro~\ref{lst:24}.
+
+\sharpcode{code/24.txt}{\est{Interface} \classe{IPersonService}}{lst:24}
+
+O quadro~\ref{lst:25} mostra a implementação da \est{interface} pela classe \classe{PersonService}.
+
+\sharpcode{code/25.txt}{Classe \classe{PersonService}}{lst:25}
+
+A classe \classe{PersonService} no projeto \est{ASP.NET MVC} é uma classe comum para onde foi movida a lista de objetos \classe{Person} e contém um método idêntico ao do projeto \lang{Java}. Nenhuma anotação ou configuração especial é feita na classe para identificá-la como serviço.
+
+\section{Injeção de dependências}
+
+Injeção de dependências é uma técnica utilizada para diminuir o acoplamento entre classes. Nos exemplos dessa seção, as classes de serviço são injetadas nos \est{controllers} criados no capitulo anterior. 
+
+Considere o exemplo do quadro~\ref{lst:26}.
+
+\javacode{code/26.txt}{Exemplo de classes fortemente acopladas}{lst:26}
+
+No exemplo acima, a classe \classe{Foo} usa uma classe chamada \classe{BarImpl} que implementa uma \est{interface} chamada \classe{Bar}. Nesse exemplo a classe \classe{Foo} fica fortemente acoplada à implementação \classe{BarImpl}. Imagine se a classe \classe{BarImpl} fosse uma classe de persistência que salva informações em arquivos de texto e um dia o desenvolvedor precisasse portar a aplicação para mais um ambiente onde seria usado um banco de dados. Sem usar injeção de dependências, o desenvolvedor também teria que escrever uma nova versão da classe \classe{Foo} que usasse outra implementação de \classe{Bar}.
+
+O exemplo do quadro~\ref{lst:27} mostra como funciona a injeção de dependências.
+
+\javacode{code/27.txt}{Exemplo de classes fracamente acopladas}{lst:27}
+
+No exemplo acima, a classe \classe{Foo} agora recebe em seu construtor um abjeto que implemente \classe{Bar}. Uma instância de \classe{BarImpl} é criada dentro do método \metodo{main} e injetada dentro da instância de \classe{Foo}. Nesse cenário, as classes não estão tão acopladas e o desenvolvedor pode usar outras implementações de \classe{Bar} mais facilmente. A injeção de dependências também é conhecida como inversão de controle (\est{Inversion of Control} ou \sigla{IoC}), pois dá a responsabilidade de inicializar dependências de uma classe para classes externas. 
+
+Essa técnica ainda pode ser melhorada se a injeção de dependências for automatizada, requerendo menos código. É isso que o \est{IoC Container} do \est{Spring Framework} e o \est{Ninject} fazem. O uso dessas ferramentas será demonstrado nas seções seguintes.
+
+\subsection{Java}
+
+O \est{Spring IoC container} resolve dependências procurando por classes para serem injetadas dentro dos pacotes da aplicação de modo automático. Na seção 3.1.3., a classe de configuração \classe{SpringMvcConfig} foi decorada com a anotação \annotation{@ComponentScan}. Os nomes dos pacotes passados como parâmetro para essa anotação são os pacotes onde o \est{Spring Framework} procura por classes para serem instanciadas e injetadas.
+
+Para serem utilizadas pelo \est{Spring IoC container}, as classes devem estar decoradas com a anotação \annotation{@Component} ou alguma de suas especializações, como \annotation{@Service}, \annotation{@Repository} e \annotation{@Controller} ou métodos decorados com a anotação \annotation{@Bean}. Por padrão o \est{Spring IoC container} injeta as classes como \est{singletons}, criando apenas uma instância da classe para ser usada várias vezes. Esse comportamento pode ser alterado pela anotação \annotation{@Scope} nas classes que se deseja injetar.
+
+A diferença entre as anotações \annotation{@Component} e \annotation{@Bean} (também utilizada na seção 3.1.3) é que \annotation{@Component} é usado em classes que o próprio \est{Spring IoC container} procura e instancia enquanto \annotation{@Bean} é usado em métodos que retornam objetos que o próprio desenvolvedor criou. Classes anotadas com \annotation{@Component} ou uma de suas especializações devem ter um construtor que não receba parâmetros.
+
+O código do quadro~\ref{lst:28} mostra uma nova versão do \est{controller} \classe{PersonController} do projeto \est{Java/Spring}, agora com uma instância de \classe{PersonServiceImpl} sendo injetada e utilizada.
+
+\javacode{code/28.txt}{\classe{PersonController} utilizando \classe{PersonService} no projeto \est{Java/Spring}}{lst:28}
+
+No lugar da lista em memória, agora o \est{controller} possui e utiliza um \classe{PersonService} que  está decorado com a anotação \annotation{@Autowired}. Essa anotação marca propriedades onde o \est{Spring IoC container} deve injetar dependências. No caso acima, o \est{container} procura por classes decoradas com \annotation{@Component} ou suas especializações, que implementam \classe{PersonService} e estão contidas nos pacotes configurados por \annotation{@ComponentScan}. Encontrada a classe \classe{PersonServiceImpl}, uma instância dessa classe é criada e atribuída à propriedade \est{personService} para uso no \classe{PersonController}.
+
+Essa não é a única maneira de injetar dependências usando o \est{Spring}. Para conhecer mais opções de injeção de dependências, aconselha-se consultar sua documentação.
+
+\subsection{.NET}
+
+O \est{ASP.NET MVC 5} não possui injeção de dependências automática nativa, então é usado a biblioteca \est{Ninject} para essa funcionalidade. Diferente do \est{Spring}, o \est{Ninject} não procura por classes de modo automático para injetar dependências, as classes que o desenvolvedor deseja injetar devem ser configuradas por código. Na seção 3.2.1, o \est{Ninject MVC 5} foi adicionado ao projeto e uma classe chamada \classe{NinjectWebCommon} (exibida no quadro~\ref{lst:29}) foi criada na pasta \arquivo{App\_Start}. 
+
+\sharpcode{code/29.txt}{Classe \classe{NinjectWebCommon}}{lst:29}
+
+O método \metodo{Start} é executado quando a aplicação é inicializada, ele registra módulos do \est{Ninjet} para uso interno da aplicação, cria e inicializa um \est{kernel} do \est{Ninject}. O \est{kernel} é o objeto onde é feita a configuração de injeções de dependência, essa configuração é feita no método \metodo{RegisterServices} como mostra o quadro~\ref{lst:30}.
+
+\sharpcode{code/30.txt}{Registro de dependências no \est{Ninject}}{lst:30}
+
+O \est{kernel} do \est{Ninject} pode usar uma sintaxe fluente para configurar dependências. Aqui usa-se o método genérico \metodo{Bind} recebendo a interface \classe{IPersonService} seguido do método \metodo{To} configurando a classe \classe{PersonService} para ser a classe concreta injetada quando o \est{Ninject} encontra aquela interface. Por último, o método \metodo{InRequestScope} cria uma instancia de \classe{PersonService} para cada requisição do usuário ao servidor. Existe o método \metodo{InSingletonScope} que pode criar apenas uma instancia da classe para todos os usuários e todas as requisições, mas a necessidade de se utilizar \metodo{InRequestScope} é abordada na seção 6.3.2.
+
+O \est{Ninject} é uma biblioteca extensa que contém módulos que funcionam em vários tipos de projetos \sigla{.NET}. Para mais informações aconselha-se acessar a página do \est{Ninject} (\url{http://www.ninject.org/}).
+
+O \est{controller} \classe{PersonController} é modificado para utilizar o serviço \classe{PersonService}, como pode ser observado no quadro ~\ref{lst:31}.
+
+\sharpcode{code/31.txt}{\classe{PersonController} do projeto \est{ASP.NET MVC} usando \classe{PersonService}}{lst:31}
+
+A anotação \annotation{Inject} decora a propriedade \classe{PersonService} onde é injetada a instância de classe \classe{PersonService}, do mesmo modo que \annotation{@Autowired} no projeto \est{Java/Spring}. A propriedade deve ter um método \metodo{set} público para que o \est{Ninject} possa ter acesso e injetar a classe concreta, o método \metodo{get} pode ser mais restrito.
+
+\section{Conclusão}
+
+O \est{Spring} possui a anotação \annotation{@Service} para marcar classes de serviço e classes de negócio, enquanto no \est{ASP.NET MVC} qualquer classe pode ser uma classe de serviço. Atualmente nenhuma das tecnologias mostra vantagem na criação de serviços mas no futuro, talvez sejam adicionadas funcionalidades para a anotação \annotation{@Service} que possam beneficiar o \est{Spring Framework}.
+
+O \est{Spring} é superior ao \est{ASP.NET MVC 5} em se tratando de injeção de dependências. Além de ter um \est{IoC container} nativo, o \est{Spring} resolve dependências automaticamente enquanto o \est{ASP.NET MVC 5} precisa de bibliotecas de terceiros, e o \est{Ninject} precisa de configurações via código para todas as classes que são injetadas.
+
+Na próxima versão do \sigla{ASP.NET}, também chamada de \est{vNext}, será adicionado um \est{IoC Container} nativo. Até o momento em que este trabalho está sendo escrito, o \est{vNext} está em fase de testes público e pode passar por mudanças, então o uso do \est{IoC Container} da próxima versão não foi considerado.
+
+No próximo capítulo é abordada a criação do banco de dados a partir de entidades de negócio e acesso a dados usando repositórios do \est{Spring} e a classe \classe{DbContext} do \est{Entity Framework}.

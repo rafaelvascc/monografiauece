@@ -1,0 +1,11 @@
+package br.uece.webCrud.repository;
+import java.util.List;
+import br.uece.webCrud.model.BaseEntity;
+
+public interface GenericRepository<T extends BaseEntity> {
+	public List<T> getAll();
+	public T getById(int id);
+	public T add(T entity);
+	public T update(T entity);
+	public void delete(int id);
+}

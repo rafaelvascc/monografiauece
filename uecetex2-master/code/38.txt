@@ -1,0 +1,37 @@
+package br.uece.webCrud.model;
+import javax.persistence.Entity;
+import javax.persistence.OneToOne;
+
+@Entity
+public class Contact extends BaseEntity {
+	private String phone;
+
+	private String email;
+
+	@OneToOne(mappedBy = "contact")
+	private Person person;
+
+	public String getPhone() {
+		return phone;
+	}
+
+	public void setPhone(String phone) {
+		this.phone = phone;
+	}
+
+	public String getEmail() {
+		return email;
+	}
+
+	public void setEmail(String email) {
+		this.email = email;
+	}
+
+	public Person getPerson() {
+		return person;
+	}
+
+	public void setPerson(Person person) {
+		this.person = person;
+	}
+}

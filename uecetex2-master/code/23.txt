@@ -1,0 +1,27 @@
+package br.uece.webCrud.service;
+import java.util.ArrayList;
+import java.util.List;
+import org.springframework.stereotype.Service;
+import br.uece.webCrud.model.Person;
+
+@Service
+public class PersonServiceImpl implements PersonService {
+
+	private List<Person> persons;
+	
+	public PersonServiceImpl() {
+		persons = new ArrayList<Person>();
+	}
+	
+	public void add(Person p) {
+		if(persons.stream().anyMatch(pp -> pp.getName().equals(p.getName()))) {
+			throw new RuntimeException("Person already exists.");
+		}
+		
+		persons.add(p);
+	}
+
+	public List<Person> getAll() {
+		return persons;
+	}
+}

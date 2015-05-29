@@ -1,0 +1,29 @@
+\chapter{Conclusão}
+
+Nesse trabalho foi comparada a criação de uma aplicação \est{web} utilizando as tecnologias \lang{Java} com o \est{Spring MVC} e o \est{Hibernate}, e o \est{ASP.NET MVC} utilizando \lang{C\#}. Foram abordadas a configuração do ambiente de desenvolvimento, configuração inicial de projeto e a criação das três camadas da aplicação, apresentação (subdividida entre \est{controllers} e \est{views}), serviços (incluindo injeção de dependências) e persistência.
+
+As conclusões a que se chegaram por esse trabalho em relação ao tópicos abordados foram as seguintes:
+
+\begin{itemize}
+  \item Preparação do ambiente de desenvolvimento - A tecnologia \sigla{.NET} é mais prática e poupa tempo do desenvolvedor. Enquanto com o \sigla{.NET} o necessário para a criação de um projeto se encontra pronto para uso em um único instalador, utilizando a tecnologia \lang{Java} o desenvolvedor deve adquirir vários \est{softwares} de fontes diferentes e configura-los.
+  \item Criação e configuração de um novo projeto - Aqui a tecnologia \sigla{.NET} também obteve vantagem. Os modelos de projeto \est{ASP.NET MVC} do \est{Visual Studio} e convenções adotadas, ajudam o desenvolvedor à escrever sua aplicação imediatamente. Com o \est{Spring Framework} é necessária configuração de diversos objetos da estrutura da aplicação.
+  \item Criação de \est{controllers} - Na criação de \est{controllers} em si, nenhuma tecnologia mostrou grande superioridade. Mas o \est{ASP.NET MVC} demonstrou maior praticidade no mapeamento de endereços para ações, centralizando essa configuração em um único lugar e, vez de anotações espalhadas pelo código como no \est{Spring Framework}.
+  \item Criação de \est{views} - A possibilidade de \est{views} fortemente tipadas e utilização de funcionalidades de auto completar código, deram vantagem à \est{view engine Razor} do \est{ASP.NET MVC} em relação ao \sigla{JSTL} do \est{Java Enterprise Edition}. Mas seria injusto não mencionar que a liberdade de escolher outras \est{view engines} é uma grande vantagem da plataforma \lang{Java}.
+  \item Criação de classes de serviço - Nenhuma tecnologia se mostrou superior à outra em relação a criação de classes de serviço.
+  \item Configuração de injeção de dependências - A existência de um \est{container} nativo de injeção de dependências no \est{Spring Framework}, junto com configuração automática de instanciação e injeção de classes mostram superioridade dessa tecnologia em relação ao \est{ASP.NET MVC} nesse aspecto. Além de precisar adquirir uma biblioteca externa (o \est{Ninject}, utilizado como exemplo) também foi necessária configuração adicional para cada classe a ser injetada no projeto \sigla{.NET}.
+  \item Criação de entidades - Pela não necessidade da criação de um contexto do banco de dados e possuir atualização da estrutura do banco de forma automática, o \est{Hibernate} implementando o \sigla{JPA} se mostrou superior ao \est{Entity Framework}, apesar de requerer que as entidades sejam decoradas com várias anotações.
+  \item Criação de repositórios - A sintaxe fluente do \lang{LINQ} (\sigla{.NET}) se mostrou superior ao \lang{JPQL} (\lang{Java}/\sigla{JPA}) por utilizar expressões \est{lambda}, ser fortemente tipada e fazer uso das funções de auto completar código do \est{Visual Studio}. Apesar disso, desenvolvedores mais familiarizados em trabalhar com \est{scripts} \lang{SQL} podem preferir o \lang{JPQL}. Em relação ao controle de transações, o \est{Spring Framework} se mostrou superior, pois automatiza a criação e reuso de transações ao mesmo tempo que dá ao desenvolvedor controle sobre elas. 
+\end{itemize}
+
+Existem outras carateristas inerentes às tecnologias utilizadas que devem ser lavadas em consideração na hora de escolher alguma delas para um novo projeto. A versão atual do \est{ASP.NET} por exemplo, não funciona em sistemas operacionais que não sejam o \est{Windows}. Então se nos requisitos do sistema especificasse que ele deve rodar em \est{Linux}, por exemplo, \lang{Java} deverá ser a escolha entre as duas tecnologias. A familiaridade da equipe de desenvolvimento e suas preferencias subjetivas também impactam na escolha da tecnologia.
+
+De modo geral, a conclusão a que esse trabalho chega é que se um projeto precisar ficar pronto rápido e a equipe de desenvolvimento não tiver uma preferencia clara por uma tecnologia, o uso do \est{ASP.NET} pode ser uma boa opção. Em contra partida, se o time de desenvolvimento quiser ter controle granular sobre o projeto, dispor de tempo para testar várias soluções diferentes e dominar o \est{Spring Framework}, utilizar o ambiente \lang{Java} é uma melhor opção.
+
+Como trabalho futuro, o desempenho das duas tecnologias pode ser analisado. Quando o \est{ASP.NET MVC 6} for lançado, pode ser feita uma nova comparação para desenvolvimento em ambiente \est{Linux}. Pode-se também utilizar o \est{Spring Boot} em um trabalho futuro e verificar como ele auxilia a configuração de um projeto \lang{Java}.
+
+Esse trabalho foi importante para auxiliar a ter uma compreensão melhor das vantagens e desvantagens entre as duas tecnologias de modo mais lógico. Ouve-se muitas discussões entre desenvolvedores em momentos de descontração que dizem preferir uma tecnologia à outra por motivos subjetivos, muitos deles não conhecendo realmente a tecnologia rival. Assim, esse trabalho também auxilia desenvolvedores experientes em fundamentar seus elogios e críticas à uma ou outra tecnologia.
+
+
+
+
+

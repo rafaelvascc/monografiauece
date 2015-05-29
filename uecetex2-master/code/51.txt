@@ -1,0 +1,24 @@
+using NetWebCrud.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Linq;
+
+namespace NetWebCrud.Models.Repositories
+{
+    public class PersonRepository : GenericRepository<Person>, IPersonRepository
+    {
+        public bool ExistsWithName(Person p)
+        {
+            return EntitySet.Any(e => e.Name.Equals(name) && e.Id != p.Id);
+        }
+    }
+}
+
+using NetWebCrud.Models.Entities;
+
+namespace NetWebCrud.Models.Repositories
+{
+    public class ContactRepository : GenericRepository<Contact>, IContactRepository
+    {
+    }
+}

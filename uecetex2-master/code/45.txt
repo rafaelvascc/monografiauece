@@ -1,0 +1,6 @@
+package br.uece.webCrud.repository;
+import br.uece.webCrud.model.Person;
+
+public interface PersonRepository extends GenericRepository<Person> {
+	public boolean existsWithName(Person p);
+}

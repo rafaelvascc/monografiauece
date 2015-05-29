@@ -1,0 +1,11 @@
+[HttpGet]
+public ActionResult GetOne()
+{
+	var p = new Person
+	{
+		Name = "Test",
+		BirthDate = DateTime.Now
+	};
+
+	return Json(p, JsonRequestBehavior.AllowGet);
+}

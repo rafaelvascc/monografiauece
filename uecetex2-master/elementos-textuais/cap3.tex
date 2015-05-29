@@ -1,0 +1,196 @@
+\chapter{Criando projetos web no padrão \sigla{MVC}}
+
+Nesse capitulo é mostrado como criar um novo projeto para uma aplicação \est{web} que utiliza o padrão \sigla{MVC} nas plataformas \spring e \anmvc. Para \lang{Java} serão usadas as bibliotecas \est{Spring Framework}, que cuidará da arquitetura \sigla{MVC} e injeção de dependências, e o \est{Hibernate}, que cuidará da persistência e acesso a dados. Na plataforma \sigla{.NET} é utilizado o \sigla{ASP.NET MVC 5}, que cuida de toda estrutura de uma aplicação web \sigla{MVC}, o \est{Entity Framework 6} para acesso a dados e o \est{Ninject} para injeção de dependências.
+
+\section{Criando um projeto do \est{Gradle} no \est{Eclipse}}
+
+O modelo de projeto usado nos exemplos desse trabalho é o \est{Gradle Project}. Esse modelo de projeto está localizado na pasta \est{Gradle} na arvore de novos projetos do \est{Eclipse}. Na Figura~\ref{fig:gradleproject} pode-se observar a localização do modelo e a criação do novo projeto.
+
+\figura{gradleproject1.png}{Criando um projeto do \est{Gradle}}{fig:gradleproject}
+
+É criado um projeto com a estrutura mostrada na Figura~\ref{fig:gradletree}.
+
+\figura{gradleproject1.png}{Estrutura inicial de um projeto do \est{Gradle}}{fig:gradletree}
+
+As pastas \arquivo{"src/main/java"} e \arquivo{"src/main/resources"} devem armazenar, respectivamente, código fonte \lang{Java} e recursos utilizados na aplicação.  As pastas \arquivo{"src/test/java"} e \arquivo{"src/test/resources"} são utilizadas para testes unitários. As pastas de testes não serão utilizadas nos exemplos e são removidas. A pasta \est{build} é para onde irão todos os artefatos gerados pelo projeto.
+
+O arquivo \arquivo{build.gradle}, exibido no quadro~\ref{lst:1}, é o arquivo de definição de projeto do \est{Gradle}. Nele podem ser criados \est{scripts} para controlar a construção de artefatos, adquirir bibliotecas de terceiros, configurar testes unitários e realizar várias outras tarefas. Os \est{scripts} do \est{Gradle} são escritos em \lang{Groovy}, outra linguagem compatível com a máquina virtual \lang{Java}. 
+
+\groovycode{code/buildgradle.txt}{O arquivo \est{build.gradle}}{lst:1}
+
+A estrutura do projeto e o arquivo \arquivo{build.gradle} gerados devem ser modificados para servir à uma aplicação \est{web}. é adicionada uma nova pasta, chamada de \est{WebContent}, para armazenar conteúdo especifico para \est{web} (páginas \est{jsp/html}, arquivos \lang{javascript} e \lang{css}). Dentro dela deve ser criada uma pasta chamada \est{WEB-INF} para armazenar páginas \est{jsp}. Por padrão, usuários de sistemas \est{web} \est{Java Enterprise Edition} não possuem acesso direto à pasta \est{WEB-INF}, então é um lugar seguro para armazenar páginas. Na Figura~\ref{fig:12} pode ser observada a estrutura do projeto com a pasta \est{WEB-INF}.
+
+\figura{prrojetocomweninf.png}{Estrutura do projeto com a pasta \est{WebContent}}{fig:12}
+
+Em seguida, é necessário modificar o arquivo \arquivo{build.gradle}. O \est{Gradle} dispõe de vários \est{plugins} que facilitam seu uso em diversas situações e servem a propósitos específicos. Para gerar arquivos \arquivo{.war} (artefatos de aplicações \est{web}) e informar ao \est{Gradle} que a pasta \est{WebContent} armazenará o conteúdo especifico para \est{web}, é utilizado o \est{plugin} chamado \est{war}. Para fazer com que o \est{Eclipse} veja o projeto como um projeto para \est{web} que possa ser enviado para o \est{Tomcat}, é utilizado o \est{plugin} \est{eclipse-wtp}. O início do arquivo \arquivo{build.gradle} deverá ficar como no exemplo do quadro~\ref{lst:2}.
+
+\groovycode{code/newgradle.txt}{Arquivo \arquivo{build.gradle} com novos \est{plugins}}{lst:2}
+
+Com tudo devidamente configurado, é necessário atualizar o tipo de projeto para que o \est{Eclipse} o veja como um projeto de uma aplicação \est{web}. Pressionando Ctrl + Alt + Shift + R o \est{Eclipse} abrirá uma caixa de texto onde poderão ser executadas tarefas do \est{Gradle}. Uma dessas tarefas é o comando \est{"eclipse"} que gera arquivos adicionais para que o projeto possa ser detectado como uma aplicação \est{web}. O comando é executado como na Figura~\ref{fig:13} e o \est{Eclipse} agora poderá publicar a aplicação no \est{Tomcat}.
+
+\figura{gradlecommand.png}{\est{Gradle Task Quick Launcher}}{fig:13}
+
+Após executar esse comando, a estrutura do projeto mudará um pouco. As pastas destinadas a conter código \lang{Java} e bibliotecas usadas no projeto serão movidas para uma pasta chamada \est{Java Resources}.
+
+\subsection{Adicionando o projeto ao \est{Tomcat}}
+
+Para adicionar uma aplicação \est{web} ao servidor \est{Tomcat} configurado no \est{Eclipse}, na aba \est{"servers"} dá-se um duplo clique no servidor para abrir suas configurações, e na aba \est{"modules"} clica-se no botão \est{"Add Web Module"}. Escolhido o projeto \est{web} que se deseja adicionar, o caminho da aplicação pode ser configurado. A Figura~\ref{fig:14} ilustra esse procedimento. Com a configuração padrão do \est{Tomcat}, a aplicação estará disponível no endereço com o seguinte formato: \url{http://<endereço-ip>:8080/<caminho-da-aplicação>}. Esse endereço é referenciado no restante do trabalho como raiz da aplicação.
+
+Iniciando o \est{Tomcat}, clicando nos botões \est{"Start the server"} ou \est{"Start the server in debug mode"}, e acessando o endereço da aplicação, é mostrado uma página de erro 404. Isso acontece porque ainda não existem as configurações do \est{servlet} padrão, do \est{Spring MVC} e ainda não foi criado nenhum \est{controller} e nenhuma \est{view}. Nesse capítulo ainda é demonstrado como configurar o \est{servlet} padrão e o \est{Spring MVC}, no capitulo 3 é demonstrado como se criam \est{controllers} e \est{views}.
+
+\figura{tomcatproject.png}{Adicionando um projeto web ao \est{Tomcat}}{fig:14}
+
+\subsection{Adicionando dependências ao projeto}
+
+Abaixo estão listadas as bibliotecas que são usadas no projeto \spring. O \est{Gradle} pode adquirir essas bibliotecas e suas dependências do repositório central do \est{Maven}.
+
+\begin{itemize}
+  \item \lib{Java Servlet API 3.1.0} - Biblioteca base para programar em \lang{Java} para \est{web} usando \est{servlets}.
+  \item \lib{Spring Web MVC 4.1.4 RELEASE} - Biblioteca para criar um projeto \sigla{MVC} com \est{Spring}.
+  \item \lib{Spring Transaction 4.1.4 RELEASE} - Gerenciador de transações com o banco de dados.
+  \item \lib{Spring Object/Relational Mapping 4.1.4 RELEASE} - Gerenciador de entidades e mapeamento objeto/relacional.
+  \item \lib{Jackson Databind 2.5.1} - Serializa e de deserializa objetos \lang{Java} no formato \sigla{JSON}.
+  \item \lib{MySQL Java Connector 5.1.34} - Comunicação com o banco de dados \est{MySQL}.
+  \item \lib{Hibernate JPA Support 4.3.8 Final} - Adaptador do \est{Hibernate} para padrões \est{Java Persistence API}.
+  \item \lib{Hibernate Validator Engine 5.1.3 Final} - Biblioteca para validar dados de entidades.
+  \item \lib{Hibernate c3p0 Integration 4.3.8} - Gerenciador de conexões com o banco de dados.
+\end{itemize}
+
+Os detalhes sobre as funcionalidades das bibliotecas de comunicação com o banco de dados e mapeamento objeto/relacional são abordados no capítulo 6. 
+
+Para fazer com que o \est{Gradle} adquira as bibliotecas necessárias e suas dependências, a seção \est{"dependencies"} do arquivo \arquivo{build.gradle} é alterada como mostra o quadro~\ref{lst:3}.
+
+\groovycode{code/gradledependencies.txt}{Adicionando dependências ao projeto}{lst:3}
+
+Com o arquivo \arquivo{build.gradle} alterado e salvo, o comando para baixar as dependências para o projeto está localizado no menu de contexto do projeto (clicando com o botão direito do \est{mouse} sobre ele) no caminho \est{Gradle/Refresh Dependencies}, que pode ser observado na Figura~\ref{fig:15}. O \est{Gradle} irá adquirir todas as bibliotecas especificadas no arquivo \arquivo{build.gradle} e suas dependências automaticamente. O \est{Spring MVC}, por exemplo, depende do \est{Spring Core} para funcionar e o \est{Hibernate JPA Support} precisa do \est{Hibernate Core}. Todas as dependências do projeto ficam visíveis na seção \est{Libraries/Gradle Dependencies}.
+
+\figura{refreshdependencies.png}{Atualizando dependências de um projeto \est{Gradle}}{fig:15}
+
+\subsection{Configurando a aplicação \est{web}}
+
+Existem duas maneiras de se configurar uma aplicação \lang{Java}, usando arquivos \lang{XML} ou escrevendo a configuração em \lang{Java}. Nos exemplos dessa seção, é usada a segunda opção.
+
+Os arquivos de configuração são armazenados no pacote \pacote{br.uece.webCrud.config}. Dentro desse pacote são criadas duas classes, \classe{AppInitializer} e \classe{SpringMvcConfig}, como mostra a Figura~\ref{fig:16}. 
+
+\figura{configpackage.png}{Estrutura do projeto \spring com pacote para arquivos de configuração}{fig:16}
+
+A primeira configuração que deve ser feita é usar a classe \classe{DispatcherServlet} como o \est{servlet} padrão e configurar o contexto da aplicação (configurações especificas do \est{Spring Framework}). \est{Servlets} são classes \lang{Java} que processam requisições para aplicação, elas podem servir páginas para o usuário, retornar objetos \sigla{JSON}, redirecionar requisições para outros \est{servlets}, ETC. Para mais informações sobre \est{servlets} recomenda-se o livro \est{Murach’s Java Servlets and JSP}.
+
+A classe \classe{AppInitializer} herda da interface \classe{WebApplicationInitializer}. Para inicializar a aplicação, o \est{Spring Framework} irá procura classes que herdam dessa \est{interface} dentro dos pacotes. O conteúdo da classe deve estar como no quadro~\ref{lst:4}.
+
+A interface \classe{WebApplicationInitializer} possui a assinatura de apenas um método, \metodo{onStartup}. Na implementação desse método é escrito código para configurar tanto o contexto da aplicação quando o \est{servlet} primário.
+
+Primeiro é criado um objeto do tipo \classe{AnnotationConfigWebApplicationContext} e é usado o seu método \metodo{register} para adicionar a classe \classe{SpringMvcConfig} como uma classe de configuração do \est{Spring}. A classe \classe{AnnotationConfigWebApplicationContext} habilita o uso de anotações \lang{Java} para configurar demais classes, o conteúdo da classe \classe{SpringMvcConfig} é exposto mais adiante.
+
+É criado então um \est{servlet} do tipo \classe{DispatcherServlet} que recebe o contexto como parâmetro e é usada a classe \classe{ServletRegistration} para registrar o \est{servlet} à aplicação. O método \metodo{addMapping} recebe como parâmetro o caractere "/", isso quer dizer que esse \est{servlet} é usado para todas a páginas \est{web} e demais caminhos dentro da aplicação. O método \metodo{setLoadOnStartup} recebe como parâmetro o valor 1, para configurar o \est{servlet} como o primeiro que o servidor deve usar.
+
+\javacode{code/AppInitializer.txt}{Classe \classe{AppInitializer}}{lst:4}
+
+Vários objetos que fazem parte da estrutura da aplicação (também conhecidos como \est{Spring Beans}) são configurados na classe \classe{SpringMvcConfig}, como mostra o quadro~\ref{lst:mvcconfig}. A anotação \annotation{@Bean} do \est{Spring Framework} decora métodos na classe \classe{SpringMvcConfig} que retornam objetos que são usados no núcleo da aplicação e definem seu contexto.
+
+A classe \classe{SpringMvcConfig} começa decorada com as seguintes anotações:
+
+\begin{itemize}
+  \item \annotation{@Configuration} - Define a classe como uma classe de configuração do \est{Spring Framework}.
+  \item \annotation{@EnableWebMvc} - Habilita o \est{Spring MVC}.
+  \item \annotation{@EnableTransactionManagement} - Habilita o controle automático de transações com o banco de dados pelo \est{Spring Framework}.
+  \item \annotation{@ComponentScan} - Configura os nomes de pacotes onde o \est{Spring IoC Container} deve procurar classes decoradas a anotação \annotation{@Component} e suas especializações, como \annotation{@Repository}, \annotation{@Service} e \annotation{@Controller} (Mais detalhes sobre essas anotações em capítulos posteriores).  
+\end{itemize}
+
+\javacode{code/mvcconfig.txt}{Classe \classe{SpringMvcConfig}}{lst:mvcconfig}
+
+A classe começa definindo várias propriedades que são usadas para a criação da conexão com o banco de dados, como o \est{driver} a ser utilizado, localização, nome do banco, usuário e senha. Outras propriedades armazenam configurações do \sigla{JPA} (implementadas pelo \est{Hibernate}), como qual dialeto do \sigla{SQL} usar para gerar consultas no banco (dialeto do \est{MySql 5}), qual a ação executar na configuração \est{hibernate.hbm2ddl.auto} (\est{"create"} para criar o banco de dados e gerar tabelas a partir de classes decoradas com a anotação \annotation{@Entity}) e qual o esquema padrão a ser usado nas consultas (normalmente o mesmo nome do banco de dados no \est{MySql})
+
+A classe \classe{SpringMvcConfig} herda da classe \classe{WebMvcConfigurerAdapter} para ter acesso a alguns métodos que facilitam a configuração da aplicação. Esses métodos decorados com \annotation{@Override} configuram o uso do \classe{ServletHandler} padrão do \est{Spring} e como a aplicação deve servir diferentes tipos de conteúdo ao usuário.
+
+Os dois primeiros métodos decorados com \annotation{@Bean} retornam objetos com informações de onde e como encontrar as \est{views} da aplicação. O \classe{InternalResourceViewResolver} armazena configurações sobre em que diretório estão as \est{views} (\est{WEB-INF}) e suas extensões (\est{.jsp}). Assim é dito ao \est{Spring Framework} para procurar páginas \est{.jsp} dentro do caminho \arquivo{/WebContent/WEB-INF}.
+
+O Segundo método configura o \classe{ContentNegotiatorViewResolver}, uma classe de uso interno do \est{Spring} que resolve \est{views} baseadas no cabeçalho das requisições \sigla{HTTP}. Note que ele recebe uma coleção de \classe{ViewResolvers} como parâmetro e é adicionado o \classe{InternalResourceViewResolver} do método anterior nessa lista.
+
+Os três últimos métodos decorados com a anotação \annotation{@Bean} retornam objetos relacionados ao uso do banco de dados e manipulação de entidades. O primeiro deles retorna um objeto do tipo \classe{ComboPooledDatasource} que recebe vários parâmetros para se conectar ao banco de dados e servir como fonte de dados para a aplicação. 
+
+O segundo método cria um objeto do tipo \classe{LocalContainerEntityManagerFactoryBean} que gerenciará a criação de uma implementação da interface \classe{EntityManager}. Implementações de \classe{EntityManager} são usadas nos repositórios para persistir objetos e consultar o banco de dados. Entre os parâmetros que o \classe{LocalContainerEntityManagerFactoryBean} recebe estão um adaptador para o uso do \est{Hibernate}, o nome do pacote onde são criadas entidades e o \classe{ComboPooledDatasource} configurado anteriormente para ser usado como fonte de dados. Ele também recebe um objeto do tipo \classe{Properties} contendo várias configurações do \est{Java Persistence API} (\sigla{JPA}). Para informações mais detalhadas sobre o \sigla{JPA}, recomenda-se o livro \est{Pro JPA 2.0}, 2ª edição, da editora \est{Appress}.
+
+O último método retorna um objeto \classe{JpaTansactionManager}. Esse objeto é o responsável por gerenciar as transações com o banco de dados. Ele recebe a instancia do objeto \classe{LocalContainerEntityManagerFactoryBean} configurado anteriormente como parâmetro.
+
+\section{Criando um projeto \anmvc no \est{Visual Studio Community 2013}}
+
+O link \est{"new project..."}, na tela inicial do Visual \est{Studio Community 2013}, mostra um menu com diversos modelos para criação de projetos. Para o projeto desse trabalho, é usando o \est{"ASP.NET Web Application"} o menu \est{"Visual C\#"}.
+
+Um projeto no \est{Visual Studio} faz parte de uma solução. Uma solução além de ser uma coleção de projetos, contém informações de dependências e configurações. A Figura~\ref{fig:17} ilustra a criação de um novo projeto. Os arquivos de solução junto com os de projeto são os equivalentes aos arquivos de projeto do \est{Eclipse} e o arquivo \arquivo{build.gradle}. vsnewproject.png
+
+\figura{vsnewproject.png}{Criando um novo projeto no \est{Visual Studio Community 2013}}{fig:17}
+
+O nome da solução de exemplo é \est{"NetWebCrud"}. O \est{Visual Studio} automaticamente dá o mesmo nome da solução para o primeiro projeto criado. O local de armazenamento dos arquivos também pode ser configurado nessa tela. Clicando no botão "OK", aparecerá o menu mostrado na Figura~\ref{fig:18}.
+
+\figura{vsnewproject2.png}{Opções de um novo projeto \est{web} no \est{Visual Studio}}{fig:18}
+
+Existem várias opções de projetos para \est{web}. Para um projeto \sigla{MVC} contendo apenas o mínimo necessário para seu funcionamento, é escolhido o modelo \est{"Empty"} e é marcada a opção \sigla{MVC}. O serviço \est{Microsoft Azure} não é utilizado, então a opção \est{"Host in the Cloud"} é desmarcada. Clicando em "OK", o \est{Visual Studio} irá gerar um projeto com a estrutura mostrada pela Figura~\ref{fig:19}.
+
+\figura{19.png}{Estrutura de um projeto \anmvc}{fig:19}
+
+O \anmvc funciona seguindo o princípio de convenção à configuração. O desenvolvedor deve seguir várias convenções para o desenvolvimento de sua aplicação, em compensação, a quantidade de configuração necessária é mínima.
+
+Todas as páginas, e subpastas que contém páginas, devem ficar inseridas na pasta \est{Views}, todos os \est{controllers} devem fica na pasta \est{Controllers}. No \sigla{ASP.NET MVC} existe o conceito de \est{Areas}, onde o desenvolvedor pode organizar melhor seu código, mas esse conceito não é abordado nesse trabalho. A pasta \est{Models} pode conter entidades de negócio, repositórios e quaisquer outras classes da camada \est{Model} do padrão \sigla{MVC}, mas o desenvolvedor também pode criar tais classes em outros projetos dentro da solução.
+
+A classe \classe{AssembyInfo} contém informações como nome da aplicação, empresa desenvolvedora e número de versão. Esse arquivo pode ser editado pelo desenvolvedor para atualizar os metadados da aplicação. A pasta \est{References}, contém as bibliotecas que são usadas no projeto. A pasta \est{App\_Data} pode conter um arquivo de banco de dados minimalista para armazenar dados, mas como é usado o banco de dados \est{MySql}, essa pasta é apagada manualmente.
+
+A pasta \est{App\_Start} existe para que o desenvolvedor possa armazenar arquivos de inicialização da aplicação. Um modelo de um novo projeto \anmvc vêm com a classe \classe{RouteConfig} onde a tabela de rotas que mapeia \sigla{URLs} para \est{controllers} é configurada. Esse conteúdo desse arquivo é explicado no próximo capítulo durante a criação de \est{controllers}.
+
+O arquivo \arquivo{Global.asax} contém o método \metodo{Application\_Start}. Esse método é chamado uma vez quando a aplicação é iniciada e nele podem ser incluídas linhas de código que serão executadas quando a aplicação iniciar. No modelo de projeto escolhido, ele já vem com uma chamada ao método \metodo{RegisterRoutes} da classe \classe{RouteConfig} e \metodo{RegisterAllAreas} da classe \classe{AreaRegstration}.
+
+O Arquivo \arquivo{Web.config} na pasta raiz do projeto é um arquivo \lang{XML} que contém diversas configurações para o projeto. O arquivo \arquivo{web.config} na pasta \est{Views} contém configuração apenas para a criação de \est{views}.
+
+\subsection{Adicionando dependências usando o \est{NuGet}}
+
+Do mesmo modo que o \est{Gradle} pode adicionar bibliotecas externas ao projeto \lang{Java}, o \est{NuGet} é uma ferramenta que adiciona e gerencia pacotes nos projetos do Visual Studio. Nesse projeto de exemplo são usadas as seguintes bibliotecas:
+
+\begin{itemize}
+  \item \lib{MySql.Data.Entity 6.9.5} - Biblioteca necessária para o \est{MySql} funcionar com o \est{Entity Framework 6}. Adicionando essa biblioteca, o \est{NuGet} também adiciona o \est{driver do MySql} e o \est{Entity Framework 6} ao projeto.
+  \item \lib{Ninject MVC5 3.2.2} - Injeção de dependências para projetos \anmvc. 
+\end{itemize}
+
+O console do \est{NuGet} pode ser acessado no menu \est{TOOLS/NuGet Package Manager/Package Manager Console}, como mostra a Figura~\ref{fig:20}.
+
+\figura{20.png}{Acessando o console do \est{NuGet}}{fig:20}
+
+O console do \est{NuGet} é exibido no \est{Visual Studio} como mostra a Figura~\ref{fig:21}. Nele o desenvolvedor pode digitar comandos para procurar e adquirir bibliotecas para seus projetos.
+
+\figura{21.png}{Console do NuGet}{fig:21}
+
+Para instalar as bibliotecas citadas anteriormente, executa-se os seguintes comandos no console do \est{NuGet}:
+
+\begin{itemize}
+  \item \est{Install-package mysql.data.entity}
+  \item \est{Install-package ninject.mvc5}
+\end{itemize}
+
+Quando o \est{NuGet} terminar de baixar todos os arquivos, eles são adicionado ao projeto. A Figura~\ref{fig:22} ilustra a instalação das bibliotecas.
+
+\figura{22.png}{Console do \est{NuGet}}{fig:22}
+
+Ao terminar a instalação, os arquivos \arquivo{packages.config} e \arquivo{Web.config} são atualizados com as referências e configurações das novas bibliotecas.
+
+A instalação do \est{Ninject Mvc 5} adiciona o arquivo \arquivo{NinJectWebCommon.cs} à pasta \est{App\_Start}. Na Figura~\ref{fig:23} pode-se observar o arquivo adicional citado. O conteúdo e funcionalidade desse arquivo é abordado no capitulo 5.
+
+\figura{23.png}{Arquivo adicional do \est{Ninject}}{fig:23}
+
+\subsection{Adicionando informações de conexão com o banco de dados}
+
+O acesso ao banco de dados é configurado no arquivo \arquivo{Web.config} na raiz do projeto. Para adicionar informações de conexão com o banco \est{MySql}, é adicionada a \est{tag} \est{connectionStrings} como no exemplo mostrado no quadro~\ref{lst:6}.
+
+\xmlcode{code/6.txt}{Adicionando configurações de conexão ao \arquivo{Web.xml}}{lst:6}
+
+A \est{tag} \est{configuration} é a raiz do arquivo de configuração. A \est{tag} \est{configSections} deve ser a primeira filha da \est{tag} raiz, caso não seja, a aplicação irá reportar um erro de configuração. Note que já existem referências ao \est{Entity Framework}. A \est{tag} \est{connectionStrings} deve ser filha da \est{tag} \est{configuration}.
+
+A \est{tag} \est{add} é usada para adicionar informações de conexão com o banco de dados. É necessário dar um nome para a conexão, configurar a \est{connection string} propriamente dita e o nome da classe responsável pelo acesso ao banco. A \est{connection string} deve conter no mínimo informações sobre para qual servidor apontar, qual o nome do banco de dados e usuário/senha utilizados. 
+
+\section{Conclusão}
+
+Criar um novo projeto com o \est{Spring MVC} requer escrita de código, mais passos e conhecimento de como o \est{framework} funciona internamente. A vantagem de um projeto com \est{Spring} é a questão da modularidade de componentes (o desenvolvedor adiciona ao projeto somente aquilo que precisa) e uma liberdade maior de configuração.
+
+Uma maneira de tornar a configuração inicial de projetos \lang{Java} com \est{Spring} mais simples é usar o módulo \est{Spring Boot}. O \est{Spring Boot} configura automaticamente a aplicação a partir dos arquivos \est{.jar} contidos no projeto. Ele detecta as bibliotecas populares e "adivinha" como o projeto deve ser configurado. Internamente ele cria de forma automática a configuração que foi demonstrada na seção 2.1.3.
+
+As vantagens de criação de um novo projeto \est{ASP.NET MVC} no \est{Visual Studio} são os modelos de projetos que já vem prontos logo após a instalação. Não existe a necessidade de realizar tantas configurações iniciais, contudo menos aspectos do projeto são configuráveis. O desenvolvedor deve obedecer as convenções do \est{ASP.NET MVC}.
+
+No próximo capitulo será mostrado como criar \est{controllers} e \est{views} nos dois tipos de projetos.

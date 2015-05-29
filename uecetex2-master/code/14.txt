@@ -1,0 +1,12 @@
+private List<Person> persons;
+
+@RequestMapping(value = "/add", method = RequestMethod.POST)
+public String addPost(@ModelAttribute Person person) {
+	
+	if(persons == null) {
+		persons = new ArrayList<Person>();
+	}
+	persons.add(person);
+	
+	return "redirect:/person/list";
+}

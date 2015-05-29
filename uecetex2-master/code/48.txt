@@ -1,0 +1,16 @@
+using NetWebCrud.Models.Entities;
+using System.Collections.Generic;
+using System.Data.Entity;
+
+namespace NetWebCrud.Models.Repositories
+{
+    public interface IGenericRepository<T> where T : BaseEntity
+    {
+        T GetById(int Id);
+        IList<T> GetAll();
+        T Save(T entity);
+        T Update(T entity);
+        void Delete(int Id);
+        DbContextTransaction GetTransaction();
+    }
+}

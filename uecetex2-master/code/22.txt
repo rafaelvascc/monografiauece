@@ -1,0 +1,7 @@
+package br.uece.webCrud.service;
+import br.uece.webCrud.model.Person;
+
+public interface PersonService {
+	public Person add(Person p); 
+	public List<Person> getAll();
+}

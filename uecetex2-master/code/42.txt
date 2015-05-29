@@ -1,0 +1,27 @@
+using NetWebCrud.Models.Entities;
+using System;
+using System.Collections.Generic;
+using System.Data.Entity;
+using System.Data.Entity.ModelConfiguration.Conventions;
+using System.Linq;
+using System.Web;
+
+namespace NetWebCrud.Models.Context
+{
+    public class NetWebCrudContext : DbContext
+    {
+        public NetWebCrudContext() : base("NetWebCrudContext") 
+        {
+            Database.SetInitializer<NetWebCrudContext>(new 
+				DropCreateDatabaseIfModelChanges<NetWebCrudContext>());
+        }
+
+        public DbSet<Person> Persons { set; get; }
+        public DbSet<Contact> Contacts { set; get; }
+
+        protected override void OnModelCreating(DbModelBuilder modelBuilder)
+        {
+            modelBuilder.Conventions.Remove<PluralizingTableNameConvention>();
+        }
+    }
+}

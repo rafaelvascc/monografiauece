@@ -1,0 +1,11 @@
+@RequestMapping("/list")
+public ModelAndView listPage()
+{
+	if(persons == null) {
+		persons = new ArrayList<Person>();
+	}
+	
+	ModelAndView result = new ModelAndView("person/list");
+	result.addObject("personsList", persons);
+	return result;
+}

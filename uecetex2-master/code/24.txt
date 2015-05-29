@@ -1,0 +1,8 @@
+namespace NetWebCrud.Models.Services
+{
+    public interface IPersonService
+    {
+		void add(Person p);
+		IList<Person> GetAll();
+    }
+}

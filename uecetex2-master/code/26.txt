@@ -1,0 +1,27 @@
+package br.uece.webCrud.examples;
+
+public interface Bar {
+	public void sayHello();
+}
+
+public class BarImpl implements Bar {
+	public void sayHello() {
+		System.out.println("Hello World");		
+	}
+}
+public class Foo {
+	private Bar bar;	
+	public Foo() {
+		bar = new BarImpl();
+	}
+	
+	public Bar getBar() {
+		return bar;
+	}
+}
+public class App {
+	public static void main(String[] args) {
+		Foo foo = new Foo();
+		foo.getBar().sayHello();
+	}
+}

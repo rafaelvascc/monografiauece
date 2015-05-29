@@ -1,0 +1,19 @@
+package br.uece.webCrud.repository;
+import javax.persistence.TypedQuery;
+import org.springframework.stereotype.Repository;
+import br.uece.webCrud.model.Person;
+
+@Repository
+public class PersonRepositoryImpl extends GenericRepositoryImpl<Person> implements PersonRepository {
+	@Override
+	public boolean existsWithName(Person p) {
+		TypedQuery<Boolean> query = em
+			.createQuery(
+				"SELECT CASE WHEN COUNT(*) > 0 THEN true ELSE false END " +
+				"FROM Person p WHERE p.name = :name AND p.id <> :id",
+				Boolean.class);
+		query.setParameter("id", p.getId());
+		query.setParameter("name", p.getName());
+		return (boolean) query.getSingleResult();
+	}
+}

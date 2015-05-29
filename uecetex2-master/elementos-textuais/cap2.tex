@@ -1,0 +1,89 @@
+\chapter{Configuração de ambiente de desenvolvimento}
+
+Neste capitulo é demonstrado o preparo do ambiente de desenvolvimento em um computador rodando o sistema operacional \est{Windows 8.1} de 64 \est{bits}. Primeiramente, instala-se um sistema gerenciador de banco de dados para trabalhar tanto com a plataforma \spring quanto com a plataforma \anmvc.  O banco de dados usado é o \est{MySQL Community Server} versão 5.6.22 (a versão mais atual até o momento de criação desta monografia). A \est{Integrated Development Environment} (\sigla{IDE}) utilizada  para escrever código em \lang{Java}, é o \est{Eclipse Luna}. O \est{Gradle} é usado como \est{build tool} e o \est{Apache Tomcat} como \est{container} \est{Java Enterprise Edition} (\sigla{JEE}). Para desenvolver em \lang{C\#}, é usado o \est{Visual Studio 2013 Community}. Considerando que o leitor já possui entendimentos sobre informática necessários para instalar programas no \est{Windows}, as instruções de instalação serão sucintas. 
+
+\section{Instalação do MySQL}
+
+O download do instalador do \est{MySQL Community} foi feito no seguinte endereço \url{https://dev.mysql.com/downloads/windows/installer/5.6.html}. O instalador está disponível duas versões, \est{web installer} e \est{off-line installer}. O \est{web installer} é um arquivo pequeno que quando executado irá baixar os arquivos do \sigla{MySQL} para a máquina, o \est{off-line installer} é maior e vem com todos os arquivos necessários para a  instalação do \sigla{MySQL}. Qualquer que seja o método de instalação escolhido, eles terão as mesmas opções.
+
+Executando o instalador, é escolhida a opção \est{Custom} e na árvore de opções que aparecerá na tela a seguir, são escolhidos o \est{MySQL Server}, o \est{MySQL Workbench}, o \est{Connector/J} (para \lang{Java}) e o \est{Connector/NET} (para \sigla{.NET}), como mostrado na Figura~\ref{fig:sql1}. Pode acontecer do instalador pedir para instalar o \est{Microsoft Visual C++ 2013} como dependência do \est{MySQL Workbench}, se isso acontecer, o próprio instalador proverá um botão para instalar essa dependência.
+
+\figura{mysqlinstaller1.jpg}{Opções de instalação do \mysql}{fig:sql1}
+
+Concluída a instalação, é hora de configurar o serviço do \sigla{MySQL}. Deixa-se selecionado o tipo de configuração como \est{Development Machine} e as configurações de rede padrão (protocolo \sigla{TCP/IP}, porta 3306). Quando for necessária a senha do usuário \est{Root}, é usada “1234”, é uma senha fraca que não se recomenda usar em ambiente de produção, mas serve para propósito de exemplo. Finaliza-se a configuração deixando marcados os restantes das opções de configuração como padrão do instalador.
+
+Com o objetivo de testar o sucesso da instalação, o desenvolvedor pode executar o \est{MySQL Workbench}, como ilustrado na Figura~\ref{fig:sql2}, e tentar se conectar à instancia do MySQL.
+
+\figura{mysqlinstaller2.jpg}{O \mysql \est{Workbench}}{fig:sql2}
+
+Para mais informações sobre o \sigla{MySQL}, visite a página oficial do projeto, \url{https://www.mysql.com/}.
+
+\section{Preparando o ambiente \lang{Java}}
+
+Para desenvolver em \lang{Java}, é utilizado o \est{Eclipse Luna} e o \est{Java Development Kit 8} (\sigla{JDK 8}). é usado o \est{Gradle} como \est{build tool} através de um \est{plugin} do \est{Eclipse} e o servidor \est{web} utilizado é o \est{Apache Tomcat}.
+
+\subsection{Instalando JDK 8}
+
+O instalador do \sigla{JDK 8} pode ser adquirido no endereço \url{http://www.oracle.com/technetwork/java/javase/downloads/jdk8-downloads-2133151.html}. Existem diversas versões para diversos sistemas operacionais, é usado nesse trabalho a versão para \est{Windows} de 64 \est{bits}. 
+
+Para fazer a instalação do \sigla{JDK}, é executado o arquivo de instalação seguindo as suas instruções. A única configuração possível durante a instalação é a mudança da sua pasta de destino, mas é mantido o diretório padrão como mostrado na Figura~\ref{fig:jdk1}.
+
+\figura{jdk81.jpg}{O instalador do \sigla{JDK 8}}{fig:jdk1}
+
+Terminada a instalação, é necessário configurar a variável \est{PATH} para que o sistema encontre os arquivos do \lang{Java}. Essas opções de configuração estão no painel de controle do \est{Windows}, no caminho Sistema/Configurações avançadas do sistema/Variáveis de ambiente. Na janela de variáveis do sistema, é editada a variável \est{PATH}. Se adiciona o caminho onde o \sigla{JDK} foi instalado acrescido da pasta bin (C:\textbackslash Program Files\textbackslash Java\textbackslash jdk\textmd{1.8.0\_25}\textbackslash bin) como mostrado na Figura~\ref{fig:path}.
+
+\figura{path1.png}{Configurando a variável \est{PATH}}{fig:path}
+
+Para testar se tudo foi instalado corretamente, abre-se uma janela do \est{prompt} de comando e digita-se o comando \est{“java –version”} (sem aspas). Se não existirem problemas, é exibida na tela o número da versão do \sigla{JDK} instalado. Caso isso não aconteça, é aconselhável desinstalar o \sigla{JDK} e repetir o processo de instalação. 
+
+\subsection{Instalando o \est{Eclipse Luna}} 
+
+O \est{Eclipse Luna} para Desenvolvedores \est{Java EE} é encontrado no endereço \url{https://www.eclipse.org/downloads/}. Terminando o \est{download}, a pasta \est{“eclipse”} pode ser descompactada para qualquer diretório do computador. Coloca-se um atalho na sua área de trabalho para o executável do \est{Eclipse} (eclipse.exe) para facilitar o acesso.
+
+Na primeira vez que o \est{Eclipse} é executado é exibida uma janela para configurar o \est{Workspace} padrão (uma pasta onde serão guardados projetos e configurações), como está ilustrado na Figura~\ref{fig:eclipse1}.
+
+\figura{eclipse1.png}{\est{Eclipse} recém instalado}{fig:eclipse1}
+
+\subsection{Instalando o \est{plugin} do \est{Gradle}} 
+
+O \est{Gradle} é a \est{build tool} que é utilizada nos exemplos do projeto \spring. Ele faz o mesmo trabalho que o \est{ANT} associado ao \est{Ivy} ou o \est{Maven} fazem, mas ele é considerado por alguns autores como o mais moderno em se tratando de \est{build tools}, pois seus \est{scripts} são escritos em \lang{Groovy} em vez de \sigla{XML} e ele permite configurações que o \est{Maven} não permite. O \est{Gradle} está presente em todo ciclo de vida do software (ele gera artefatos, executa teste unitários, resolve dependências e executa integração continua), mas nesse trabalho é usada apenas uma pequena parte do que ele pode oferecer. Para mais informações sobre o \est{Gradle} acesse \url{https://www.gradle.org}. 
+
+No \est{Eclipse Marketplace} (repositório de \est{plugins} do \est{Eclipse}), faz-se uma pesquisa por \est{"Gradle"} na barra de buscas, entre os resultados está o \est{Gradle IDE Pack}. Esse \est{plugin} é usado nos exemplos desse trabalho. O \est{Eclipse} pede confirmação para instalação de todos os pacotes necessários, todos são selecionados e instalados. Aceita-se os termos de uso do \est{Gradle} e ao aparecer uma janela de alerta confirmando a instalação, clica-se em OK. Quando a instalação terminar, o \est{Eclipse} é reiniciado.
+
+Para verificar se o \est{plugin} foi instalado com sucesso, a pasta \est{Gradle} deve aparecer na arvore de tipos de projetos, no menu de novos projetos, como pode ser observado na Figura~\ref{fig:gradle1}.
+
+\figura{plugin1.png}{Instalando o \est{plugin} do \est{Gradle}}{fig:gradle1}
+
+\subsection{Instalando o \est{Apache Tomcat 8} como servidor de desenvolvimento do \est{Eclipse}} 
+
+O \est{Java Enterprise Edition} é um conjunto de especificações que precisam ser implementadas por um \est{container} (um servidor de aplicação ou servidor \est{web}) que irá executar efetivamente a aplicação. Existem diversos \est{containers} disponíveis no mercado, sendo o \est{GlassFish} o próprio \est{container} da \est{Oracle}. Nesse trabalho é usado o \est{Apache Tomcat}, pois o \est{Eclipse} tem integração nativa com ele. O \est{Tomcat} pode ser gerenciado pela aba de servidores do \est{Eclipse}.
+
+O instalador do \est{Tomcat 8} pode ser encontrado no endereço \url{https://tomcat.apache.org/download-80.cgi}. Para os exemplos, usa-se a distribuição para \est{Windows} de 64 bits no formato \est{zip}. A pasta \est{apache-tomcat-8.0.15} pode ser descompactada para qualquer diretório no disco rígido (como exemplo é usada a raiz do disco C:).  
+
+Na aba \est{Servers} do Eclipse existe um \est{link} auto descritivo para adicionar um novo servidor. Clicando no \est{link} e expandindo pasta \est{Apache}, é escolhido o \est{Tomcat 8} na árvore de opções, o que pode ser observado na Figura~\ref{fig:tomcat1}. Na janela seguinte, em \est{Tomcat installation directory}, o botão \est{browse...} é usado para escolher o caminho de instalação do \est{Tomcat} (C:\textbackslash apache-tomcat-\textmd{8.0.15}). Clicando no botão \est{Finish}, o \est{Tomcat} está pronto para uso com o \est{Eclipse}. 
+
+\figura{tomcat1.png}{Janela pra adicionar servidores no \est{Eclipse}}{fig:tomcat1}
+
+\section{Instalando o \est{Visual Studio Community 2013}} 
+
+O instalador do \est{Visual Studio Community 2013} pode ser encontrado no endereço \url{http://www.visualstudio.com/en-us/news/vs2013-community-vs.aspx}. Na Figura~\ref{fig:vs1} temos uma ilustração do instalador em questão. Esse é um instalador \est{online}, ele baixa os arquivos do \est{Visual Studio} e opcionais selecionados à medida que a instalação for progredindo. Uma imagem do DVD de instalação \est{offline} também está disponível na sessão de \est{downloads} do site \url{http://www.visualstudio.com}.
+
+\figura{vs1.png}{Instalador do Visual Studio Community 2013}{fig:vs1}
+
+Clicando no botão \est{Next}, a próxima tela que o instalador exibe uma lista de componentes opcionais como o \est{kit} de desenvolvimento do \est{Windows Phone 8} e do \est{Silverlight}. Desses componentes opcionais, é aconselhável instalar pelo menos o \est{Microsoft Web Developer Tools} para facilitar o desenvolvimento de aplicações \est{web}.
+
+Após a instalação, o desenvolvedor pode utilizar sua conta da \est{Microsoft} como perfil no \est{Visual Studio} e publicar suas aplicações no \est{Microsoft Azure}, porém isso é opcional. Quando se executa o \est{Visual Studio} pela primeira vez, ilustrado na Figura~\ref{fig:vs2}, o desenvolvedor pode escolher as opções de desenvolvimento e um esquema de cores que irá usar. Como exemplo, é escolhida a opção de desenvolvimento \est{Web Development}.
+
+\figura{vs2.png}{Tela inicial do \est{Visual Studio Community 2013}}{fig:vs2}
+
+O \est{Visual Studio} possui sua própria ferramenta de geração de \est{builds} (\est{MsBuild}), gerenciador de pacotes para obter bibliotecas de terceiros (\est{Nuget}) e um servidor de desenvolvimento minimalista baseado no \est{Internet Information Services} (servidor \est{web} do \est{Windows Server}) para executar e depurar aplicações \est{web}.  
+
+\section{Conclusão}
+
+A preparação de um ambiente de desenvolvimento \spring requer mais passos, dentre eles instalar o kit de desenvolvimento do \est{Java}, uma \sigla{IDE} (\est{Eclipse}), um \est{container Java Enterprise Edition} (\est{Tomcat}) e uma \est{build tool} (\est{Gradle}), enquanto  todo o \est{software} necessário para se desenvolver com \sigla{.NET} é adquirido em um único instalador.
+
+A vantagem do ambiente \lang{Java} é que ele fornece ao desenvolvedor mais opções de como configurar seu ambiente, além disso o tamanho em \est{megabytes} do \est{software} necessário é consideravelmente menor do que o ambiente \sigla{.NET}. O desenvolvedor tem a liberdade de escolher outras \est{build tools} disponíveis no mercado (Ex: \est{Ant}, \est{Maven}), outras \sigla{IDEs} (Ex: \est{Netbeans}) e outros servidores \est{Java EE} (Ex: \est{Jetty}, \est{Glassfish}). O lado negativo dessa liberdade é que, com  essa variedade de opções, o desenvolvedor tem que pesquisar mais sobre cada solução até decidir como vai montar seu ambiente de desenvolvimento. Então depois de escolher quais produtos irá utilizar, pode ser que precise de mais algum tempo estudando como eles interagem.
+
+A vantagem do ambiente \sigla{.NET} está na facilidade de obter todo o \est{software} necessário para o desenvolvimento em um único pacote, o \est{.NET Framework}, \est{Visual Studio Community 2013} e demais ferramentas. A desvantagem é que esse pacote pode conter componentes que o desenvolvedor não precisa ou deseja, baixando arquivos desnecessários e tomando espaço em disco.
+
+No próximo capitulo é demonstrado como criar um projeto de uma aplicação \est{web} nas duas plataformas.
