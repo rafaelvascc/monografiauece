@@ -1,4 +1,4 @@
-\chapter{Criando projetos web no padrão \sigla{MVC}}
+\chapter{Criando projetos \est{web} no padrão \sigla{MVC}}
 
 Nesse capitulo é mostrado como criar um novo projeto para uma aplicação \est{web} que utiliza o padrão \sigla{MVC} nas plataformas \spring e \anmvc. Para \lang{Java} serão usadas as bibliotecas \est{Spring Framework}, que cuidará da arquitetura \sigla{MVC} e injeção de dependências, e o \est{Hibernate}, que cuidará da persistência e acesso a dados. Na plataforma \sigla{.NET} é utilizado o \sigla{ASP.NET MVC 5}, que cuida de toda estrutura de uma aplicação web \sigla{MVC}, o \est{Entity Framework 6} para acesso a dados e o \est{Ninject} para injeção de dependências.
 
@@ -38,7 +38,7 @@ Para adicionar uma aplicação \est{web} ao servidor \est{Tomcat} configurado no
 
 Iniciando o \est{Tomcat}, clicando nos botões \est{"Start the server"} ou \est{"Start the server in debug mode"}, e acessando o endereço da aplicação, é mostrado uma página de erro 404. Isso acontece porque ainda não existem as configurações do \est{servlet} padrão, do \est{Spring MVC} e ainda não foi criado nenhum \est{controller} e nenhuma \est{view}. Nesse capítulo ainda é demonstrado como configurar o \est{servlet} padrão e o \est{Spring MVC}, no capitulo 3 é demonstrado como se criam \est{controllers} e \est{views}.
 
-\figura{tomcatproject.png}{Adicionando um projeto web ao \est{Tomcat}}{fig:14}
+\figura{tomcatproject.png}{Adicionando um projeto \est{web} ao \est{Tomcat}}{fig:14}
 
 \subsection{Adicionando dependências ao projeto}
 
@@ -156,7 +156,7 @@ O console do \est{NuGet} pode ser acessado no menu \est{TOOLS/NuGet Package Mana
 
 O console do \est{NuGet} é exibido no \est{Visual Studio} como mostra a Figura~\ref{fig:21}. Nele o desenvolvedor pode digitar comandos para procurar e adquirir bibliotecas para seus projetos.
 
-\figura{21.png}{Console do NuGet}{fig:21}
+\figura{21.png}{Console do \est{NuGet}}{fig:21}
 
 Para instalar as bibliotecas citadas anteriormente, executa-se os seguintes comandos no console do \est{NuGet}:
 
@@ -167,7 +167,7 @@ Para instalar as bibliotecas citadas anteriormente, executa-se os seguintes coma
 
 Quando o \est{NuGet} terminar de baixar todos os arquivos, eles são adicionado ao projeto. A Figura~\ref{fig:22} ilustra a instalação das bibliotecas.
 
-\figura{22.png}{Console do \est{NuGet}}{fig:22}
+\figura{22.png}{Instalação de dependências bem sucedidas}{fig:22}
 
 Ao terminar a instalação, os arquivos \arquivo{packages.config} e \arquivo{Web.config} são atualizados com as referências e configurações das novas bibliotecas.
 

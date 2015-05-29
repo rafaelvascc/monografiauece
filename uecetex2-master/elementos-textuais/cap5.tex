@@ -10,7 +10,7 @@ Nesse capítulo é demonstrado como escrever classes de serviço (também chamad
 
 É criada como exemplo uma classe de serviço em cada projeto que contêm um método com uma regra de negócio simples. As listas de objetos \classe{Person}, até agora pertencente aos \est{controllers}, são movidas para essas classes como uma forma de representar a camada de persistência. Em ambos os projetos, o serviço implementa uma \est{interface}. Diferente do que é sugerido para \est{controllers}, que um \est{controller} não deve chamar métodos de outro, classes de serviço podem utilizar outras classes de serviço.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 No projeto \lang{Java}, a \est{interface} e classe concreta são criadas no pacote \pacote{br.uece.webCrud.service}. Primeiro é feita a interface \classe{PersonService} que o serviço irá implementar, como podemos observar no quadro~\ref{lst:22}.
 
@@ -24,7 +24,7 @@ A classe \classe{PersonServiceImpl} começa decorada com a anotação \annotatio
 
 O construtor de \classe{PersonServiceImpl} inicializa a lista de objetos \classe{Person}. O método \metodo{add} recebe um objeto do tipo \classe{Person} como parâmetro. Ele verifica se já existe um objeto com o mesmo nome na lista, se sim, dispara uma exceção, se não, adiciona o objeto à lista. Essa verificação é um exemplo simples de uma regra de negócios.
 
-\subsection{.NET}
+\subsection{\sigla{.NET}}
 
 As classes de serviços no projeto \est{ASP.NET MVC} são criadas dentro da pasta \arquivo{Models/Services}. Para o \est{ASP.NET MVC} a camada \est{model} de uma aplicação \sigla{MVC} contém tanto entidades quanto regras de negócios. Assim como no projeto \lang{Java}, primeiro é feita a \est{interface} \classe{IPersonService} mostrada no quadro~\ref{lst:24}.
 
@@ -54,7 +54,7 @@ No exemplo acima, a classe \classe{Foo} agora recebe em seu construtor um abjeto
 
 Essa técnica ainda pode ser melhorada se a injeção de dependências for automatizada, requerendo menos código. É isso que o \est{IoC Container} do \est{Spring Framework} e o \est{Ninject} fazem. O uso dessas ferramentas será demonstrado nas seções seguintes.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 O \est{Spring IoC container} resolve dependências procurando por classes para serem injetadas dentro dos pacotes da aplicação de modo automático. Na seção 3.1.3., a classe de configuração \classe{SpringMvcConfig} foi decorada com a anotação \annotation{@ComponentScan}. Os nomes dos pacotes passados como parâmetro para essa anotação são os pacotes onde o \est{Spring Framework} procura por classes para serem instanciadas e injetadas.
 
@@ -70,7 +70,7 @@ No lugar da lista em memória, agora o \est{controller} possui e utiliza um \cla
 
 Essa não é a única maneira de injetar dependências usando o \est{Spring}. Para conhecer mais opções de injeção de dependências, aconselha-se consultar sua documentação.
 
-\subsection{.NET}
+\subsection{\sigla{.NET}}
 
 O \est{ASP.NET MVC 5} não possui injeção de dependências automática nativa, então é usado a biblioteca \est{Ninject} para essa funcionalidade. Diferente do \est{Spring}, o \est{Ninject} não procura por classes de modo automático para injetar dependências, as classes que o desenvolvedor deseja injetar devem ser configuradas por código. Na seção 3.2.1, o \est{Ninject MVC 5} foi adicionado ao projeto e uma classe chamada \classe{NinjectWebCommon} (exibida no quadro~\ref{lst:29}) foi criada na pasta \arquivo{App\_Start}. 
 

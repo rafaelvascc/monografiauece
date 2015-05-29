@@ -12,7 +12,7 @@ As seções a seguir mostram como utilizar uma classe para gerar tabelas no banc
 
 Como são usadas duas entidades nesse capitulo e ambas precisam do identificador único, é criada uma classe base com essa propriedade em comum chamada \classe{BaseEntity}. O intuito da criação dessa classe é mostrar como é possível o uso de herança nas entidades. As classes \classe{Person} e \classe{Contact} são especializações de \classe{BaseEntity}.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 Entidades no projeto \est{Java/Spring} são criadas no pacote \pacote{br.uece.webCrud.model}. A classe \classe{BaseEntity} é criada como mostra o quadro~\ref{lst:32}.
 
@@ -30,7 +30,7 @@ Por padrão o \est{Hibernate} procura por uma tabela com o mesmo nome da classe 
 
 Na seção 3.1.3, durante a configuração do projeto, a propriedade \est{hibernate.hbm2ddl.auto} foi configurada com o valor \est{"create"}, assim o \est{Hibernate} cria as tabelas no banco de dados de acordo com as configurações de classes decoradas com a anotação \annotation{@Entity}. Outros valores para essa configuração podem ser \est{"update"}, para atualizar a estrutura das tabelas sem perder dados, e \est{"validate"}, para apenas verificar se o mapeamento objeto/relacional está consistente. O \est{Hibernate} cria tabelas, mas não cria o banco de dados, para que a criação de tabelas funcione é necessário que o banco de dados já exista. As tabelas são criadas no momento em que a aplicação é iniciada.
 
-\subsection{.NET}
+\subsection{\sigla{.NET}}
 
 Entidades no projeto ASP.NET MVC são criadas na pasta \arquivo{Model/Entities}. Considere que a classe \classe{Person} é movida para essa pasta. O quadro~\ref{lst:34} mostra a classe \classe{BaseEntity} do projeto \est{ASP.NET MVC}.
 
@@ -70,11 +70,11 @@ Uma instancia de \classe{NetWebCrudContext} precisa ser instanciada para que se 
 
 Entidades podem se relacionar com outras com o uso de chaves estrangeiras. O relacionamento entre a classe \classe{Person} e a classe \classe{Contact} é usado nos exemplos dessa seção.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 A classe \classe{Contact} é criada no pacote \pacote{br.uece.webCrud.model} como mostra o quadro~\ref{lst:38}.
 
-\javacode{code/38.txt}{Classe Contact no projeto Java}{lst:38}
+\javacode{code/38.txt}{Classe \classe{Contact} no projeto \lang{Java}}{lst:38}
 
 Assim como a classe \classe{Person}, a classe \classe{Contact} herda de \classe{BaseEntity} e é decorada com a anotação \annotation{@Entity}. O Relacionamento com a classe \classe{Person} é configurado pela anotação \annotation{@OneToOne} decorando o atributo \est{person}. O atributo \est{mappedBy} recebendo o valor \est{"contact"} quer dizer que na classe \classe{Person} deve existir um atributo com esse nome, configurado como o dono do relacionamento entre as tabelas. Resumindo, a tabela correspondente à classe \classe{Person} deve ter a coluna com a chave estrangeira para \classe{Contact}.
 
@@ -90,7 +90,7 @@ A anotação \annotation{@JoinColumn} configura a classe \classe{Person} para cr
 
 \figura{36.png}{Tabelas geradas pelo \est{Hibernate}}{fig:36}
 
-\subsection{.NET}
+\subsection{\sigla{.NET}}
 
 A classe \classe{Contact}, ilustrada no quadro~\ref{lst:40}, também é criada no projeto \est{ASP.NET MVC}.
 
@@ -118,15 +118,15 @@ A persistência e acesso aos dados são feitos utilizando o padrão de repositó
 
 É demonstrado como utilizar a \est{Java Persistence Query Language} (\lang{JPQL}) e a \est{Language Integrated Query} (\sigla{LINQ}) para realizar consultas ao banco de dados e como gerenciar transações. Por último, os repositórios são injetados nas classes de serviço, substituindo as listas em memória.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 Nos exemplos dessa seção, os repositórios e interfaces que eles implementam no projeto \est{Java/Spring} são criados no pacote \pacote{br.uece.webCrud.repositories}.
 
 Primeiramente, são criadas a interface \classe{GenericRepository} e a classe \classe{GenericRepositoryImpl}, demonstradas nos quadros~\ref{lst:43} e~\ref{lst:44} respectivamente. Essa classe é o repositório genérico mencionado anteriormente.
 
-\javacode{code/43.txt}{Interface GenericRepository}{lst:43}
+\javacode{code/43.txt}{\est{Interface} \classe{GenericRepository}}{lst:43}
 
-\javacode{code/44.txt}{Classe GenericRepositoryImpl}{lst:44}
+\javacode{code/44.txt}{Classe \classe{GenericRepositoryImpl}}{lst:44}
 
 A classe \classe{GenericRepositoryImpl} é decorada com a anotação \annotation{@Repository}, então instâncias dela podem ser injetadas pelo \est{Spring IoC Container}. Erros de seus métodos em tempo de execução, dispararam a exceção \classe{DataAccessException} do \est{Spring Framework}.
 
@@ -156,7 +156,7 @@ Caso não ocorram erros nas operações com o banco de dados, as operações da 
 
 Como o relacionamento de \classe{Person} com \classe{Contact} configurado com \est{CascadeType.ALL} na seção 6.2.1, quando um objeto do tipo \classe{Person} é salvo ou atualizado no banco de dados, o seu contato também é. Então nos exemplos desse capitulo para \lang{Java}, não houve a necessidade de se criar um repositório para a classe \classe{Contact}.
 
-\subsection{.NET}
+\subsection{\sigla{.NET}}
 
 Os repositórios no projeto \est{ASP.NET MVC} são criados na pasta \arquivo{Models/Repositories}. Assim como no projeto \est{Java/Spring}, começa-se criando o repositório genérico e sua \est{interface}. O quadro~\ref{lst:48} mostra a \est{interface} do repositório genérico, \classe{IGenericRepository}, e o quadro~\ref{lst:49} mostra sua implementação, \classe{GenericRepository}.
 

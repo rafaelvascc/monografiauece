@@ -1,4 +1,4 @@
-\chapter{Criando controllers e views}
+\chapter{Criando \est{controllers} e \est{views}}
 
 Um \est{controller} é uma classe que  recebe requisições, processa informações (ou chama outras classes processa-las) e devolve um resultado ao usuário. Resultados comuns são páginas da \est{web} e objetos \sigla{JSON} ou \sigla{XML} para processamento no navegador (usando Javascript). \est{Views}, no contexto de uma aplicação \est{web}, são as próprias páginas que serão exibidas ao usuário.
 
@@ -12,13 +12,13 @@ Numa aplicação \sigla{MVC}, um controller não deve instanciar nem usar métod
 
 Os exemplos desse capítulo, irão manipular uma classe chamada \classe{Person}. Os quadros~\ref{lst:7} e~\ref{lst:8} mostram o código das classes em \lang{Java} e \lang{C\#}.
 
-\javacode{code/7.txt}{Classe \classe{Person} em Java}{lst:7}
+\javacode{code/7.txt}{Classe \classe{Person} em \lang{Java}}{lst:7}
 
 A anotação \annotation{@DateTimeFormat} especifica em qual formado o capo de data será escrito. A escolha desse formato será explicada na seção 4.1.2.
 
-\sharpcode{code/8.txt}{Classe \classe{Person} em C\#}{lst:8}
+\sharpcode{code/8.txt}{Classe \classe{Person} em \lang{C\#}}{lst:8}
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 Controllers no \est{Spring MVC} são classes decoradas com a anotação \annotation{@Controller}. Essas classes podem estar contidas em qualquer pacote do projeto. No projeto exemplo, elas estarão contidas no \pacote{pacote br.uece.webCrud.controller}. O código contido no quadro~\ref{lst:9} mostra um exemplo de um \est{controller}, com o nome de \classe{PersonController} e com uma ação que retorna uma página.
 
@@ -38,11 +38,11 @@ O conteúdo do arquivo \arquivo{add.jsp} é editado como no exemplo do quadro~\r
 
 A diretiva \est{page} no cabeçalho da página diz ao servidor como tratar o arquivo, no caso como uma página \sigla{HTML}. O resto arquivo é um formulário \sigla{HTML} comum, que recebe dois valores (o nome e a data de nascimento de uma pessoa) e tem um botão que os envia para o servidor. Note que o formulário faz o envio usando o método \est{POST}.
 
-\subsection{ASP.NET MVC}
+\subsection{\sigla{.NET}}
 
 Um \est{controller} é adicionado ao projeto \est{ASP.NET MVC} clicando com o botão direito do mouse na pasta \arquivo{Controllers}, em seguida selecionado as opções \est{"Add"} e \est{"Controller"}. A Figura~\ref{fig:25} ilustra a adição do \est{controller}.
 
-\figura{25.png}{Adicionando um controller no Visual Studio}{fig:25}
+\figura{25.png}{Adicionando um \est{controller} no \est{Visual Studio}}{fig:25}
 
 São exibidas diversas opções de modelos de \est{controllers}, a opção usada é a \est{"MVC 5 Controller – Empty"} e o \est{controller} foi também nomeado como \classe{PersonController}. Uma das convenções do \est{ASP.NET MVC} é que \est{controllers} sempre tem que terminar com a palavra \est{"Controller"}. Normalmente é recomendado que se nomeie \est{controllers} com o nome da entidade que eles manipulam como prefixo, para facilitar a organização do código.
 
@@ -82,11 +82,11 @@ Na seção 4.1, foram criadas ações que respondem ao método \est{HTTP GET} e 
 
 Devem ser criadas ações nos \est{controllers} que respondam ao mesmo endereço da página, mas usem método \est{POST}. Essas ações também devem receber as informações que o formulário irá enviar. Isso é feito configurando anotações e adicionando parâmetros às ações em ambos os projetos. Nos exemplos das seções 4.2.1 e 4.2.2 são feitas ações que recebem um objeto do tipo \classe{Person} e o adicionam à uma coleção armazenada em memória.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 O código presente no quadro~\ref{lst:14} é adicionado à classe \classe{PersonController}:
 
-\javacode{code/14.txt}{Ação de \classe{PersonController} no projeto Java que responde ao método \est{POST}}{lst:14}
+\javacode{code/14.txt}{Ação de \classe{PersonController} no projeto \lang{Java} que responde ao método \est{POST}}{lst:14}
 
 A anotação \annotation{@RequestMapping} no método \metodo{addPost} aponta para o mesmo caminho que o método \metodo{addPage} mas ela responde às chamadas usando o método \est{POST}. O método \metodo{addPost} recebe como parâmetro um objeto do tipo \classe{Person}. Os parâmetros de métodos também podem ser decorados com anotações.
 
@@ -104,7 +104,7 @@ Quando chegam ao servidor, os dados são mapeados automaticamente para o parâme
 
 O retorno do método \metodo{addPost} redireciona a requisição para outra ação que mostra uma página com uma tabela com todas pessoas adicionadas à lista. As implementações dessa ação e página serão demonstradas em seções posteriores.
 
-\subsection{ASP.NET MVC}
+\subsection{\sigla{.NET}}
 
 O código apresentado no quadro~\ref{lst:15} foi adicionado ao \classe{PersonController}.
 
@@ -124,7 +124,7 @@ Aplicações web modernas utilizam a técnica \sigla{AJAX} para atualizar partes
 
 Para mais informações sobre como manipular dados com \lang{Javascript} e \sigla{AJAX}, é recomendada a leitura dos livros \est{Pro Javascript For Web Apps} e \est{Pro jQuery} da editora \est{Apress}.
 
-\subsection{Java}
+\subsection{\lang{Java}}
 
 A biblioteca \est{Jackson Databind} é responsável por converter objetos \lang{Java} no formato \sigla{JSON}. Essa biblioteca foi adicionada ao projeto durante a configuração do arquivo \arquivo{build.gradle} na seção 3.1.2. 
 
@@ -138,7 +138,7 @@ Acessando a ação \metodo{getOne} pelo navegador, é obtida a resposta exposta 
 
 O atributo \est{birthDate} é enviado ao navegador como um número que pode ser usado para criar um objeto \classe{Date} do \lang{Javascript}.
 
-\subsection{ASP.NET MVC}
+\subsection{\sigla{.NET}}
 
 O \est{ASP.NET MVC} pode trabalhar com objetos no formato \sigla{JSON} sem precisar de uma biblioteca de terceiros. O exemplo do quadro~\ref{lst:17} mostra uma ação que retorna um objeto \sigla{JSON}.
 
@@ -154,7 +154,7 @@ Aqui existe uma inconveniência. O modo como o \est{ASP.NET} envia datas faz com
 
 Nessa seção é demonstrado como fazer uma página que exibe todos os itens das listas de objetos \classe{Person} em ambos os projetos. São feitas ações que enviam as listas para as \est{views} que montam o código \sigla{HTML} usando as \est{view engines} padrão de cada tecnologia, \est{JSP Standart Tag Library} (\sigla{JSTL}) no projeto \est{Java/Spring} e \est{Razor} no projeto \est{ASP.NET MVC}.
 
-\subsection{Java (JSTL)}
+\subsection{\lang{Java} (\sigla{JSTL})}
 
 Observe o método \metodo{listPage} na classe \classe{PersonController} no exemplo do quadro~\ref{lst:18}.
 
@@ -176,7 +176,7 @@ Dentro de cada iteração é criada uma nova linha para a tabela, e em cada linh
 
 O \sigla{JSTL} possui muitas outras \est{taglibs}. Para mais informações, consulte a documentação do \sigla{JSTL}.
 
-\subsection{ASP.NET (Razor)}
+\subsection{\sigla{.NET} (\lang{Razor})}
 
 O exemplo do quadro~\ref{lst:20} mostra a ação que retorna a página que exibe o conteúdo da lista.
 
