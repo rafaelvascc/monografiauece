@@ -4,7 +4,7 @@
 \section{Objetivo}
 \label{sec:objetivo}
 
-Este trabalho tem como objetivo comparar a criação de uma aplicação utilizando duas tecnologias, \textit{Java} com o \lib{Spring Framework} e \lib{Hibernate}, e o \sigla{ASP.NET MVC 5} e \textit{Entity Framework} utilizando \lang{C\#}. é usado como exemplo, a criação de um projeto de uma aplicação web de três camadas (apresentação, serviços e persistência) que utiliza o padrão \est{Model View Controller} (\sigla{MVC}).
+Este trabalho tem como objetivo comparar a criação de uma aplicação utilizando duas tecnologias, \textit{Java} com o \lib{Spring Framework} e \lib{Hibernate}, e o \sigla{ASP.NET MVC 5} e \textit{Entity Framework} utilizando \lang{C\#}. é utilizado como exemplo a criação de um projeto de uma aplicação web de três camadas (apresentação, serviços e persistência), que utiliza o padrão \est{Model View Controller} (\sigla{MVC}).
 
 A abordagem utilizada consiste em dividir as tarefas necessárias para a criação da aplicação em cinco capítulos, e nesses capítulos serão demonstrados exemplos de código com as duas tecnologias. Depois de expostos os exemplos de como executar as tarefas, serão ressaltadas as vantagens, desvantagens e características distintas de cada tecnologia. As tarefas a serem executadas serão as seguintes:
 
@@ -22,11 +22,34 @@ A abordagem utilizada consiste em dividir as tarefas necessárias para a criaç�
 \section{Estado da arte}
 \label{sec:estadoarte}
  
-No momento de criação desse trabalho, a literatura conta com vários trabalhos sobre medição de desempenho de aplicações \est{web} e poucos comparando como se cria uma aplicação. E mesmos trabalhos comparando o esforço do desenvolvimento de aplicações utilizando tecnologias diferentes, utilizam versões antigas de tais tecnologias. 
+A literatura conta com vários trabalhos sobre medição de desempenho de aplicações \est{web} e poucos comparando como se cria uma aplicação. Mesmos trabalhos comparando o esforço do desenvolvimento de aplicações utilizando tecnologias diferentes, utilizam versões antigas de tais tecnologias. 
 
-Atul Mishra em seu trabalho \est{"Critical Comparison Of PHP And ASP.NET For Web Development"}, por exemplo, compara a criação de um site utilizando uma versão antiga do \sigla{ASP.NET} e utilizando \sigla{PHP}. Nesse trabalho não são expostos exemplos de código, apenas as conclusões tiradas pelo autor. Mostafa Pordel e Faranhaz Yekeh, autores do artigo "\est{"JSF vs ASP.NET, what are their limits?"} também comparam o desenvolvimento de aplicações \est{web} utilizando as tecnologias \lang{Java} e \lib{.NET}. Mas também utilizam versões antigas de ambas as tecnologias e mostram poucos exemplos de código.
+Atul Mishra em seu trabalho \est{"Critical Comparison Of PHP And ASP.NET For Web Development"}, por exemplo, compara a criação de um site utilizando uma versão antiga do \sigla{ASP.NET} e utilizando \sigla{PHP}. Nesse trabalho não são expostos exemplos de código, apenas as conclusões tiradas pelo autor. Esse artigo também não detalha quais \est{frameworks} foram utilizados na construção do \est{software}. É dito que se usa o \est{ASP.NET} mas não é especificado se é utilizado o \est{ASP.NET MVC} ou \est{ASP.NET WEb Forms}, e nem qual versão é utilizada. 
+
+Mostafa Pordel e Faranhaz Yekeh, autores do artigo "\est{"JSF vs ASP.NET, what are their limits?"} também comparam o desenvolvimento de aplicações \est{web} utilizando as tecnologias \lang{Java} e \lib{.NET}. Mas também utilizam versões antigas de ambas as tecnologias e mostram poucos exemplos de código. Esse trabalho compara o uso do \est{ASP.NET Web Forms} com o \est{Java Server Faces} (\est{JSF}) com um foco maior na em explicar o funcionamento interno das tecnologias e vez de mostrar como utiliza-las.
 
 Tiago Bencardino, em seu trabalho de conclusão do curso de engenharia de teleinformática de titulo "\est{iQuizzer}: Integrando aplicações web e dispositivos móveis em um ambiente para criação e execução de \est{quizzes}", comparou o desenvolvimento de uma aplicação para as plataformas moveis \est{Android} e \est{iOS}. Bencardino utilizou uma quantidade maior de exemplos de código, comparando o desenvolvimento das mesmas tarefas em ambas as plataformas alvos de seu trabalho.
+
+A Tabela 1 contém um resumo do conteúdo dos trabalhos citados:
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl1} Conteúdo de trabalhos sobre comparação de tecnologias.}
+    \UECEtab{}{
+        \begin{tabular}{ccll}
+            \toprule
+                Autor/trabalho & Tecnologia recente & Exemplos & Tecnologia \est{Web} \\
+            \midrule \midrule
+                Atul Mishra & Não & Não & Sim \\
+                Mostafa Pordel e Faranhaz Yekeh & Não & Poucos & Sim \\
+                Tiago Bencardino & Sim & Sim & Não \\
+								Esta trabalho & Sim & Sim & Sim \\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
 
 \section{Resumo dos resultados alcançados}
 \label{sec:resumoresultados}
