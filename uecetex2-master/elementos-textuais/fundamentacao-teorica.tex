@@ -1,110 +1,75 @@
 \chapter{Fundamentação Teórica}
-\label{cap:fundamentacao-teorica}
 
-Integer non lacinia magna. Aenean tempor lorem tellus, non sodales nisl commodo ut. Proin mattis placerat risus sit amet laoreet. Praesent sapien arcu, maximus ac fringilla efficitur, vulputate faucibus sem. Donec aliquet velit eros, sit amet elementum dolor pharetra eget. Integer eget mattis libero
+\section{Desenvolvimento Web}
 
-\section{Fundamentação Teórica A}
-\label{sec:fundamentacao-teorica-a}
+Desenvolvimento para \textit{web} é o termo utilizado para o desenvolvimento de páginas e/ou sistemas para \est{internet} ou \{intranets}. 
+O desenvolvedor cria páginas que são armazenadas em servidores (computadores que servem as páginas para os uauários) e quando requisitadas, são lidas e exibidas em navegadores \textit{web}, como o \textit{Internet Explorer}.
 
-\lipsum[10]
+Quando o usuário digita o endereço de uma página no navegador ou clica em um \textit{link} que leva à uma página, uma requisição é enviada ao servidor que está hospedanda a página. 
+O servidor então envia a página para o navegador do usuário, que a exibe na tela do seu computador, como mostra a Figura~\ref{fig:requisicao}. 
 
-	\begin{figure}[h!]
-		\centering
-		\Caption{\label{fig:exemplo-1} Lorem ipsum dolor sit amet, consectetur adipiscing elit. Suspendisse commodo lectus et augue elementum varius.}	
-		\UECEfig{}{
-			\fbox{\includegraphics[width=8cm]{figuras/figura-1}}
-		}{
-			\Fonte{Elaborado pelo autor}
-		}	
-	\end{figure}
-	
-\lipsum[11]
+\figura{requisicao.jpg}{Exemplo de requisição para o servidor}{fig:requisicao}
 
+Páginas da \textit{web} são escritas usando a linguagem HTML (\textit{Hipertext Markup Lanaguage}). 
+Essa linguagem define quais elementos devem aparecer no navegador do usuário, como uma caixa de texto ou um botão. 
+A aparência desses elementos é definida pela linguagem CSS (\textit{Cascading Style Sheet}).
+As versão mais atuais do HTML e do CSS são o HTML 5 e o CSS 3. A Figura~\ref{fig:htmlcss} mostra exemplos dessas linguagens.
 
-\section{Fundamentação Teórica B}
-\label{sec:fundamentacao-teorica-b}
+\figura{htmlcss.jpg}{Exemplo código HTML e CSS}{fig:htmlcss}
 
-Integer non lacinia magna. Aenean tempor lorem tellus, non sodales nisl commodo ut. Proin mattis placerat risus sit amet laoreet. Praesent sapien arcu, maximus ac fringilla efficitur, vulputate faucibus sem. Donec aliquet velit eros, sit amet elementum dolor pharetra eget. Integer eget mattis libero. Praesent ex velit, pulvinar at massa vel, fermentum dictum mauris. Ut feugiat accumsan augue, et ultrices ipsum euismod vitae
+Comportamentos podem ser adicionados à elementos da página, e até para a própria página,  utilizando uma linguagem de \textit{script} que o navegador consiga interpretar.
+A linguagem de \textit{script} mais comummente utilizada é o \textit{Javascript}. A Figura~\ref{fig:javascript} mostra uma função \textit{Javascript} que é executada quando se pressiona um botão.
+Esse é um exemplo simples, código \textit{Javascript} tem a capáidade de manipular uma página e seus elementos de várias maneiras diferentes e também permitir comunicação com o servidor.
 
-	\begin{figure}[h!]
-		\centering
-		\Caption{\label{fig:exemplo-2} Maecenas luctus augue odio, sed tincidunt nunc posuere nec}	
-		\UECEfig{}{
-			\fbox{\includegraphics[width=8cm]{figuras/figura-2}}
-		}{
-			\Fonte{Elaborado pelo autor}			
-		}	
-	\end{figure}
+\figura{javascript.jpg}{Exemplo código Javascript}{fig:javascript}
 
-Nunc ac pretium dui. Mauris aliquam dapibus nulla ac mattis. Aenean non tortor volutpat, varius lectus vitae, accumsan nibh. Cras pretium vestibulum enim, id ullamcorper tortor ultrices non. Integer sodales viverra faucibus. Curabitur at dui lacinia, rhoncus lacus at, blandit metus. Integer scelerisque non enim quis ornare.
+Por fim, páginas da \textit{web} podem ser estáticas ou dinâmicas. 
+Páginas estáticas são arquivos HTML escritos pelo desenvolvedor \web{web} de forma que seu conteúdo não é alterado pelo servidor ou pelo usuário.
+Páginas dinâmicas são geradas pelo servidor, tendo seu conteúdo modificado pelos dados recebidos de um banco de dados ou pelo \textit{input} do usuário.
 
-\lipsum[13]
+\section{O padrão \textit{Model-View-Controller} (MVC)}
 
-	\begin{table}[h!]	
-		\centering
-		\Caption{\label{tab:exemplo-1} Duis faucibus, enim quis tincidunt pellentesque, nisl leo varius nulla, vitae tempus dui mauris ac ante purus lorem}		
-		\UECEtab{}{
-			\begin{tabular}{cll}
-				\toprule
-				Ranking & Exon Coverage & Splice Site Support \\
-				\midrule \midrule
-				E1 & Complete coverage by a single transcript & Both splice sites\\
-				E2 & Complete coverage by more than a single transcript & Both splice sites\\
-				E3 & Partial coverage & Both splice sites\\
-				E4 & Partial coverage & One splice site\\
-				E5 & Complete or partial coverage & No splice sites\\
-				E6 & No coverage & No splice sites\\
-				\bottomrule
-			\end{tabular}
-		}{
-		\Fonte{Elaborado pelo autor}
-	}
-	\end{table}
+O padrão Model-View-Controller foi primeiro documentado em 1979, pelo laboratório \textit{Palo Alto Research Center} da empresa \textit{Xerox}.
+O padrão consiste em dividir a aplicação em 3 partes:
 
-Duis faucibus, enim quis tincidunt pellentesque, nisl leo varius nulla, vitae tempus dui mauris ac ante. Quisque purus lorem, pharetra sit amet lobortis eu, vehicula vitae purus. Ut varius, erat nec vehicula elementum, risus est tempus justo, nec vulputate augue leo egestas metus.
+\begin{itemize}
+  \item \textit{Model} - Representa as entidades e regras de negócio da aplicação.
+  \item \textit{View} - A forma como os dados serão exibidos para o usuário.
+  \item \textit{Controllers} - A ponte entre \textit{View} e o \textit{Model}. Responde à comandos do usuário e devolve uma resposta.
+\end{itemize}
 
-	\begin{figure}[h!]
-		\centering
-		\Caption{\label{fig:exemplo-3} Ut posuere, ex quis sagittis auctor, magna massa euismod felis}	
-		\UECEfig{}{
-			\fbox{\includegraphics[width=8cm]{figuras/figura-2}}
-		}{
-		\Fonte{Elaborado pelo autor}			
-	}	
-	\end{figure}
+Em uma aplicação \textit{web}, a \textit{View} é uma pagina. 
+Páginas \textit{web} podem possuir botões, \textit{links} e outros elementos que permitam que o usuário interaja com a página e envie informações para o servidor.
+O servidor então recebe essas informações (ou comandos) enviados pelo usuário e os trata em classes que fazem o papel de \textit{Controllers}.
+Essas classes, em posse dos dados enviados pelo do usuário, decidem que o que fazer com esses dados. 
+Elas podem perceber que o usuário quer apenas ir para a próxima página e envia-la para o navegador do usuário ou podem enviar esses dados para o \textit{Model}, trata-las de acordo com as regras de negócio da aplicação e devolver o resultado para o usuário.
+O resultado pode ser um simples mensagem de sucesso ou falha das operações realizadas na camada de \textit{Model}, ou pode ser uma página dinâmica gerada pelo servidor.
 
-\lipsum[14]
+A Figura~\ref{fig:mvc} mostra o fluxo do padrão MVC:
 
-	\begin{table}[h!]	
-		\centering
-		\Caption{\label{tab:exemplo-2} Etiam molestie, nulla a egestas aliquet, velit augue congue metus}		
-		\UECEtab{}{
-			\begin{tabular}{ccll}
-				\toprule
-				Quisque & pharetra & tempus & vulputate \\
-				\midrule \midrule
-				E1 & Complete coverage by a single transcript & Both splice sites\\
-				E2 & Complete coverage by more than a single transcript & Both splice sites\\
-				E3 & Partial coverage & Both splice sites & Both \\
-				E4 & Partial coverage & One splice site & Both \\
-				E5 & Complete or partial coverage & No splice sites & Both\\
-				E6 & No coverage & No splice sites\\
-				\bottomrule
-			\end{tabular}
-		}{
-		\Fonte{Elaborado pelo autor}
-	}
-	\end{table}
-	
-Duis faucibus, enim quis tincidunt pellentesque, nisl leo varius nulla, vitae tempus dui mauris ac ante. Quisque purus lorem, pharetra sit amet lobortis eu, vehicula vitae purus.
-\acrlong{DATASUS},\acrlong{DNV},\acrlong{DO},\acrlong{ESF},\acrlong{IBGE},\acrlong{MFC},\acrlong{MI},\acrlong{MS},\acrlong{NV},\acrlong{ODM},\acrlong{OI},\acrlong{OMS},\acrlong{ONU},\acrlong{PNI},\acrlong{PSF},\acrlong{RIPSA},\acrlong{RN},\acrlong{SIM},\acrlong{SINASC},\acrlong{SUS},\acrlong{TMI},\acrlong{TMMFC}
+\figura{mvc.jpg}{O fluxo do padrão MVC}{fig:mvc}
 
-\begin{alineascomponto}
-	\item Integer non lacinia magna. Aenean tempor lorem tellus, non sodales nisl commodo ut
-	\item Proin mattis placerat risus sit amet laoreet. Praesent sapien arcu, maximus ac fringilla efficitur, vulputate faucibus sem. Donec aliquet velit eros, sit amet elementum dolor pharetra eget
-	\item Integer eget mattis libero. Praesent ex velit, pulvinar at massa vel, fermentum dictum mauris. Ut feugiat accumsan augue, et ultrices ipsum euismod vitae
-	\begin{subalineascomponto}
-		\item Integer non lacinia magna. Aenean tempor lorem tellus, non sodales nisl commodo ut
-		\item Proin mattis placerat risus sit amet laoreet.
-	\end{subalineascomponto}
-\end{alineascomponto}
+\section{\textit{Frameworks}}
+
+Em \cite{28}, Gamma define framework como um conjunto de classes que cooperam entre si com o objectivo de criar um design reusável para um tipo de software especifico.
+O framework define a arquitetura e estrutura da aplicação. Ele promove uma inversão de controle entre a aplicação e o software na qual ela tem como base. 
+Em outras palavras, o framework é um conjunto de classes que ajudam o desenvolvedor à escrever sua aplicação. 
+O desenvolvedor delega detalhes da arquitetura da aplicação ao framework enquanto pode ter um foco maior em desenvolver o negócio.
+
+\subsection{Tipos de \textit{Frameworks} para desenvolvimento \textit{web}}
+
+Quando se trata de desenvolvimento \textit{web}, \textit{frameworks} podem ser de dois tipos: Baseados em ações e baseados em componentes.
+
+\textit{Frameworks} baseados em componentes são conhecidos por facilitarem o desenvolvimento \textit{web} para programadores não familiarizados com o desenvolvimento \textit{web}. 
+Neles, elementos HTML e código Javascript são gerados pelo \textit{framework}, e esse componentes tem seu comportamento definido no lado servidor da aplicação.
+Quando um cliente faz uma requisição à uma aplicação \textit{web} que usa esse tipo de \textit{framework}, a requisição segue o fluxo mostrado pela Figura~\ref{fig:lixo}.
+
+\figura{lixo.jpg}{Fluxo de \textit{framework} baseado em componentes}{fig:lixo}
+
+\textit{Frameworks} baseados em ações tratam requisições no \textit{Controller} e não na \textit{View}. 
+Eles exigem um maior conhecimento do desenvolvedor de como se programar para a \textit{web}, gerando menos componentes HTML e não gerando Javascript automaticamente. 
+As requisições nesse tipo de \textit{framework} são apssados do \textit{Controller} para o \textit{Model}, o \textit{Controller} então passa a resposta do \textit{Model} para a \textit{View} como mostra a Figura~\ref{fig:lixo}.
+
+\figura{certo.jpg}{Fluxo de \textit{framework} baseado em ações}{fig:certo}
+
+Os \textit{frameworks} \textit{Spring MVC} e \textit{ASP.NET MVC} são baseados em ações.
