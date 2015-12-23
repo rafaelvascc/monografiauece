@@ -4,9 +4,11 @@
 \section{Objetivo}
 \label{sec:objetivo}
 
-Este trabalho tem como objetivo comparar a criação de uma aplicação utilizando duas tecnologias, \textit{Java} com o \lib{Spring Framework} e \lib{Hibernate}, e o \sigla{ASP.NET MVC 5} e \textit{Entity Framework} utilizando \lang{C\#}. é utilizado como exemplo a criação de um projeto de uma aplicação web de três camadas (apresentação, serviços e persistência), que utiliza o padrão \est{Model View Controller} (\sigla{MVC}).
+Este trabalho tem como objetivo comparar a criação de uma aplicação utilizando duas tecnologias, \textit{Java} com o \lib{Spring Framework} e \lib{Hibernate}, e o \sigla{ASP.NET MVC 5} e \textit{Entity Framework} utilizando \lang{C\#} e encontrar as vantagens e desvantagens que uma tem sobre a outra. 
+É utilizado como exemplo a criação de um projeto de uma aplicação \textit{web} de três camadas (apresentação, serviços e persistência), que utiliza o padrão \est{Model View Controller} (\sigla{MVC}).
 
-A abordagem utilizada consiste em dividir as tarefas necessárias para a criação da aplicação em cinco capítulos, e nesses capítulos serão demonstrados exemplos de código com as duas tecnologias. Depois de expostos os exemplos de como executar as tarefas, serão ressaltadas as vantagens, desvantagens e características distintas de cada tecnologia. As tarefas a serem executadas serão as seguintes:
+A abordagem utilizada consiste em dividir as tarefas necessárias para a criação da aplicação em cinco capítulos, e nesses capítulos serão demonstrados exemplos de código com as duas tecnologias. 
+Depois de expostos os exemplos de como executar as tarefas, serão ressaltadas as vantagens, desvantagens e características distintas de cada tecnologia. As tarefas a serem executadas serão as seguintes:
 
 \begin{itemize}
   \item Preparação do ambiente de desenvolvimento.
@@ -18,6 +20,22 @@ A abordagem utilizada consiste em dividir as tarefas necessárias para a criaç�
   \item Criação de entidades.
   \item Criação de repositórios.
 \end{itemize}
+
+\subsection{Aplicação de exemplo}
+
+A aplicação de exemplo consiste em 3 páginas \textit{web}. 
+Uma recebe uma lista de objetos do banco de dados e os mostra em uma tabela, como mostra a Figura~\ref{fig:listpage}. 
+Essa página possui \textit{links} para a criação, edição e deleção de objetos. 
+
+\figura{listpage.jpg}{Página de lista de objetos}{fig:listpage}
+
+Os \textit{links} de adição e edição levam às suas respectivas páginas, exibidas pela Figura~\ref{fig:addedit}. 
+Essas páginas são semelhantes em aparência, no entanto a página de adição é carregada com todos os seus campos vazios e os campos da página de edição são carregados com os valores do objeto que se está editando. 
+Além disso, o botão \textit{save} em cada página chama uma ação diferente no servidor.
+Quando o usuário salva as modificações feitas em ambas as páginas, o sistema retorna para página de lista, que exibe as informações atualizadas.
+O \textit{link} de deleção apaga o objeto do banco de dados e recarrega a página de lista para atualizar as informações exibidas.
+
+\figura{addedit.jpg}{Paginas de adição e edição de objetos}{fig:addedit}
 
 \section{Estado da arte}
 \label{sec:estadoarte}
@@ -72,11 +90,9 @@ De modo geral, se o desenvolvedor dispuser de tempo e precisar de um controle ma
 \section{Publico alvo}
 \label{sec:publicalvo}
 
-Esse trabalho pode beneficiar gerentes de projetos e lideres técnicos à escolher qual das duas tecnologias utilizar para iniciar um novo projeto. Estudantes interessados em começar a desenvolver para a \est{web} também podem se beneficiar desse trabalho e aprender o básico sobre as duas tecnologias.
+Esse trabalho pode beneficiar gerentes de projetos e lideres técnicos à escolher qual das duas tecnologias utilizar para iniciar um novo projeto. Estudantes interessados em começar a desenvolver para a \textit{web} também podem se beneficiar desse trabalho e aprender o básico sobre as duas tecnologias.
 
 \section{Metodologia de pesquisa}
 \label{sec:metodologiapesquisa}
 
-A maior fonte da informação para esse trabalho foram livros, em sua maioria as edições mais recentes. Além dos livros, foram utilizados como fonte de pesquisa as documentações online de ambas as tecnologias. Também foram utilizados como fonte de pesquisa, exemplos encontrados em sites de desenvolvedores na internet, sendo o mais utilizado o \est{stack overflow} americano.
-
-\section{Aplicação de exemplo}
+A maior fonte da informação para esse trabalho foram livros, em sua maioria as edições mais recentes. Além dos livros, foram utilizados como fonte de pesquisa as documentações online de ambas as tecnologias. Também foram utilizados como fonte de pesquisa, exemplos encontrados em sites de desenvolvedores na internet, sendo o mais utilizado o \textit{stack overflow} americano.
