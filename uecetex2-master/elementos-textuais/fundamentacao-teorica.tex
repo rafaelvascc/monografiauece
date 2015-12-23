@@ -2,11 +2,11 @@
 
 \section{Desenvolvimento Web}
 
-Desenvolvimento para \textit{web} é o termo utilizado para o desenvolvimento de páginas e/ou sistemas para \est{internet} ou \{intranets}. 
-O desenvolvedor cria páginas que são armazenadas em servidores (computadores que servem as páginas para os uauários) e quando requisitadas, são lidas e exibidas em navegadores \textit{web}, como o \textit{Internet Explorer}.
+Desenvolvimento para \textit{web} é o termo utilizado para o desenvolvimento de páginas e/ou sistemas para \textit{internet} ou \textit{intranets}. 
+O desenvolvedor cria páginas que são armazenadas em servidores (computadores que servem as páginas para os usuários) e quando requisitadas, são lidas e exibidas em navegadores \textit{web}, como o \textit{Internet Explorer}.
 
-Quando o usuário digita o endereço de uma página no navegador ou clica em um \textit{link} que leva à uma página, uma requisição é enviada ao servidor que está hospedanda a página. 
-O servidor então envia a página para o navegador do usuário, que a exibe na tela do seu computador, como mostra a Figura~\ref{fig:requisicao}. 
+Quando o usuário digita o endereço de uma página no navegador ou clica em um \textit{link} que leva à uma página, uma requisição é enviada ao servidor onde está hospedanda a página. 
+O servidor então responde à requisição, enviando a página para o navegador do usuário, sendo exibida na tela do seu computador. A Figura~\ref{fig:requisicao} mostra o fluxo simplificado de uma requisição. 
 
 \figura{requisicao.jpg}{Exemplo de requisição para o servidor}{fig:requisicao}
 
@@ -17,14 +17,14 @@ As versão mais atuais do HTML e do CSS são o HTML 5 e o CSS 3. A Figura~\ref{f
 
 \figura{htmlcss.jpg}{Exemplo código HTML e CSS}{fig:htmlcss}
 
-Comportamentos podem ser adicionados à elementos da página, e até para a própria página,  utilizando uma linguagem de \textit{script} que o navegador consiga interpretar.
-A linguagem de \textit{script} mais comummente utilizada é o \textit{Javascript}. A Figura~\ref{fig:javascript} mostra uma função \textit{Javascript} que é executada quando se pressiona um botão.
-Esse é um exemplo simples, código \textit{Javascript} tem a capáidade de manipular uma página e seus elementos de várias maneiras diferentes e também permitir comunicação com o servidor.
+Comportamentos podem ser adicionados à elementos da página, e até para a própria página, utilizando uma linguagem de \textit{script} que o navegador consiga interpretar.
+Uma linguagem de \textit{script} utilizada é o \textit{Javascript}. A Figura~\ref{fig:javascript} mostra uma função \textit{Javascript} que é executada quando se pressiona um botão.
+Esse é um exemplo simples, código \textit{Javascript} tem a capacidade de manipular uma página e seus elementos de várias maneiras diferentes e também permitir comunicação com o servidor.
 
 \figura{javascript.jpg}{Exemplo código Javascript}{fig:javascript}
 
 Por fim, páginas da \textit{web} podem ser estáticas ou dinâmicas. 
-Páginas estáticas são arquivos HTML escritos pelo desenvolvedor \web{web} de forma que seu conteúdo não é alterado pelo servidor ou pelo usuário.
+Páginas estáticas são arquivos HTML escritos pelo desenvolvedor \textit{web} de forma que seu conteúdo não é alterado pelo servidor ou pelo usuário.
 Páginas dinâmicas são geradas pelo servidor, tendo seu conteúdo modificado pelos dados recebidos de um banco de dados ou pelo \textit{input} do usuário.
 
 \section{O padrão \textit{Model-View-Controller} (MVC)}
@@ -38,11 +38,11 @@ O padrão consiste em dividir a aplicação em 3 partes:
   \item \textit{Controllers} - A ponte entre \textit{View} e o \textit{Model}. Responde à comandos do usuário e devolve uma resposta.
 \end{itemize}
 
-Em uma aplicação \textit{web}, a \textit{View} é uma pagina. 
-Páginas \textit{web} podem possuir botões, \textit{links} e outros elementos que permitam que o usuário interaja com a página e envie informações para o servidor.
-O servidor então recebe essas informações (ou comandos) enviados pelo usuário e os trata em classes que fazem o papel de \textit{Controllers}.
-Essas classes, em posse dos dados enviados pelo do usuário, decidem que o que fazer com esses dados. 
-Elas podem perceber que o usuário quer apenas ir para a próxima página e envia-la para o navegador do usuário ou podem enviar esses dados para o \textit{Model}, trata-las de acordo com as regras de negócio da aplicação e devolver o resultado para o usuário.
+Em uma aplicação \textit{web}, a \textit{View} é uma página exibida pelo navegador \textit{web}. 
+Páginas \textit{web} podem possuir botões, \textit{links} e outros elementos que permitam que o usuário interaja com a página e envie informações para o servidor e
+o servidor então recebe essas informações (ou comandos) e os trata em classes que fazem o papel de \textit{Controllers}.
+Essas classes, em posse dos dados enviados pelo do usuário, decidem que o que fazer com esse \textit{input}. 
+Elas podem perceber que o usuário quer apenas ir para a próxima página e envia-la para o seu navegador ou podem enviar esses dados para o \textit{Model}, trata-los de acordo com as regras de negócio da aplicação e devolver o resultado para o usuário.
 O resultado pode ser um simples mensagem de sucesso ou falha das operações realizadas na camada de \textit{Model}, ou pode ser uma página dinâmica gerada pelo servidor.
 
 A Figura~\ref{fig:mvc} mostra o fluxo do padrão MVC:
@@ -51,20 +51,24 @@ A Figura~\ref{fig:mvc} mostra o fluxo do padrão MVC:
 
 \section{\textit{Frameworks}}
 
-Em \cite{28}, Gamma define framework como um conjunto de classes que cooperam entre si com o objectivo de criar um design reusável para um tipo de software especifico.
-O framework define a arquitetura e estrutura da aplicação. Ele promove uma inversão de controle entre a aplicação e o software na qual ela tem como base. 
-Em outras palavras, o framework é um conjunto de classes que ajudam o desenvolvedor à escrever sua aplicação. 
-O desenvolvedor delega detalhes da arquitetura da aplicação ao framework enquanto pode ter um foco maior em desenvolver o negócio.
+Em \cite{28}, Gamma define \textit{framework} como um conjunto de classes que cooperam entre si com o objectivo de criar um design reusável para um tipo de \textit{software} especifico.
+O \textit{framework} define a arquitetura e estrutura da aplicação. Ele promove uma inversão de controle entre a aplicação e o software na qual ela tem como base. 
+Em outras palavras, o \textit{framework} é um conjunto de classes que ajudam o desenvolvedor à escrever sua aplicação. 
+O desenvolvedor delega detalhes da arquitetura da aplicação ao \textit{framework} enquanto pode ter um foco maior em desenvolver o negócio.
 
 \subsection{Tipos de \textit{Frameworks} para desenvolvimento \textit{web}}
 
-Quando se trata de desenvolvimento \textit{web}, \textit{frameworks} podem ser de dois tipos: Baseados em ações e baseados em componentes.
+Quando se trata de desenvolvimento \textit{web}, \textit{frameworks} podem ser de dois tipos: baseados em ações e baseados em componentes.
 
 \textit{Frameworks} baseados em componentes são conhecidos por facilitarem o desenvolvimento \textit{web} para programadores não familiarizados com o desenvolvimento \textit{web}. 
 Neles, elementos HTML e código Javascript são gerados pelo \textit{framework}, e esse componentes tem seu comportamento definido no lado servidor da aplicação.
 Quando um cliente faz uma requisição à uma aplicação \textit{web} que usa esse tipo de \textit{framework}, a requisição segue o fluxo mostrado pela Figura~\ref{fig:lixo}.
 
 \figura{lixo.jpg}{Fluxo de \textit{framework} baseado em componentes}{fig:lixo}
+
+O ASP.NET WebForms e o JSF (Java Server Faces) são exemplos de \textit{frameworks} baseados em componentes. O uso dese tipo de framework não é recomendado para aplicações \textit{web} modernas, 
+pois a Microsoft descontinuou o ASP.NET WebForms e empresa de consultoria ThoughtWorks (na qual o próprio Martin Fowler é cientista chefe) recomenda evitar esse tipo de \textit{framework}, 
+argumentando que suas equipes tiveram problemas em usar o JSF \cite{30}.
 
 \textit{Frameworks} baseados em ações tratam requisições no \textit{Controller} e não na \textit{View}. 
 Eles exigem um maior conhecimento do desenvolvedor de como se programar para a \textit{web}, gerando menos componentes HTML e não gerando Javascript automaticamente. 
