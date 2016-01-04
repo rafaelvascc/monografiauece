@@ -88,7 +88,7 @@ A classe \textit{Person} agora possui uma propriedade do tipo \textit{Contact}, 
 
 A anotação \textit{@JoinColumn} configura a classe \textit{Person} para criar a coluna da chave estrangeira na sua tabela correspondente. Essa coluna tem o nome de \textit{contactId}. O \textit{Hibernate} detecta automaticamente as propriedades decoradas com \textit{@Id} e as utiliza como chaves estrangeiras em tabelas relacionadas. A Figura~\ref{fig:36} mostra o resultado de criação das tabelas no banco de dados \textit{MySQL}. 
 
-\figura{36.png}{Tabelas geradas pelo \textit{Hibernate}}{fig:36}
+\figura{36.png}{Tabelas geradas pelo \textit{Hibernate}}{fig:36}{1}
 
 \subsection{\textit{.NET}}
 
@@ -110,7 +110,7 @@ Por último, é necessário adicionar um \textit{DbSet} para \textit{Contact} no
 
 O resultado no banco é semelhante ao do projeto \textit{Java/Spring}, como mostra a Figura~\ref{fig:37}. Uma diferença que deve ser ressaltada é a criação da tabela \textit{\_\_migrationhistory}. Essa tabela é usada pelo \textit{Entity Framework} para armazenar dados sobre o histórico da estrutura do banco de dados. Assim o \textit{Entity Framework Migrations} sabe que alterações devem ser feitas na estrutura do banco quando as entidades são modificadas.
 
-\figura{37.png}{Tabelas geradas pelo \textit{Entity Framework}}{fig:37}
+\figura{37.png}{Tabelas geradas pelo \textit{Entity Framework}}{fig:37}{1}
 
 \section{Repositórios}
 
@@ -200,4 +200,41 @@ O relacionamento entre entidades no \textit{Hibernate} é feito com anotações 
 
 Repositórios em projetos \textit{Spring} com \textit{Hibernate} utilizam uma implementação de \textit{EntityManager} para manipular entidades, podendo usar \textit{Criteria Queries} ou \textit{JPQL} para gerar consultas. \textit{Criteria Queries} utilizam vários métodos para gerar uma consulta, que no fim resulta em um código complexo, de baixa legibilidade e de manutenção questionável. A linguagem \textit{JPQL} se assemelha a \textit{SQL} e é mais legível, mas tem a desvantagem de ser escrita com \textit{strings}, o que a torna mais propensa a erros. Em projetos com o \textit{Entity Framework}, a linguagem \textit{LINQ} é usada para gerar consultas. Essa linguagem é de fácil entendimento, e pode utilizar as vantagens do \textit{IntelliSense} (ferramenta de auto completar código do \textit{Visual Studio}), tornando a detecção de erros mais fácil e a escrita de código mais eficiente.
 
-Quanto ao controle de transações, o modo automático como o \textit{Spring Framework} lida com transações, o torna uma melhor opção nesse aspecto do que o \textit{Entity Framework}. 
+Quanto ao controle de transações, o modo automático como o \textit{Spring Framework} lida com transações, o torna uma melhor opção nesse aspecto do que o \textit{Entity Framework}.
+
+As tabelas~\ref{tab:tbl10} e ~\ref{tab:tbl11} mostram as vantagens e desvantagens de cada tecnologia em relação a criação de repositórios e entidades.
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl10} Criação de repositórios e entidades - Vantagens e desvantagens do ambiente Java.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                Linguagem \textit{JPQL} para a criação de \textit{queries} se assemelha ao \textit{SQL}. & Relacionamentos entre entidades e outras de suas características devem ser configuradas com anotações. \\
+				Controle de transações automático. & O \textit{JPQL} é escrito com \textit{Strings} comuns, facilitando a ocorrência de erros. \\
+				Mudanças no modelo das entidades podem ser refletidas automaticamente no banco de dados, sem perda de dados, pelo \textit{Hibernate}. & Mapeamento de \textit{URLs} para ações espalhados pelos \textit{controllers}.\\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl11} Criação de repositórios e entidades - Vantagens e desvantagens do ambiente .NET.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                Convenções para a criação de relacionamentos e outras características de entidades. & Necessária a criação do contexto do banco de dados para definir classes como entidades. \\
+				Linguagem \textit{LINQ} fortemente tipada para a criação de \textit{queries}. & Mudanças no banco de dados devem ser feitas utilizando o \textit{Entity Framework Migrations}.\\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}

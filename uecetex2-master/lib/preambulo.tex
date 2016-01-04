@@ -75,6 +75,12 @@
 \usepackage{placeins}
 \usepackage{xcolor}
 \usepackage{textcomp}
+\usepackage{multicol}
+
+\usepackage{array}
+\newcolumntype{L}[1]{>{\raggedright\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{C}[1]{>{\centering\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
+\newcolumntype{R}[1]{>{\raggedleft\let\newline\\\arraybackslash\hspace{0pt}}m{#1}}
 
 \graphicspath{ {figuras/} }
 
@@ -90,12 +96,12 @@
 \est{MySQL}
 }
 
-\newcommand{\figura}[3] {
+\newcommand{\figura}[4] {
 	\begin{figure}[h!]
 		\centering
 		\Caption{\label{#3} #2}	
 		\UECEfig{}{
-			\fbox{\includegraphics[scale=1]{#1}}
+			\fbox{\includegraphics[scale=#4]{#1}}
 		}{
 			\Fonte{Elaborado pelo autor}
 		}	

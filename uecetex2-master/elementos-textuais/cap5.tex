@@ -98,4 +98,39 @@ O \textit{Spring} é superior ao \textit{ASP.NET MVC 5} em se tratando de injeç
 
 Na próxima versão do \textit{ASP.NET}, também chamada de \textit{vNext}, será adicionado um \textit{IoC Container} nativo. Até o momento em que este trabalho foi realizado, o \textit{vNext} estava em fase de testes público e poderia passar por mudanças, então o uso do \textit{IoC Container} da próxima versão não foi considerado.
 
+As tabelas~\ref{tab:tbl8} e ~\ref{tab:tbl9} sumarizam as vantagens e desvantagens de cada tecnologia em relação a criação de classes de serviços e injeção de dependencias.
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl8} Criação de  classes de serviços e injeção de dependencias - Vantagens e desvantagens do ambiente Java.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                No futuro, a anotação \textit{@Service} pode adicionar funcionalidades à classes de serviço. & \\
+				Injeção de dependências nativa. & \\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl9} Criação de  classes de serviços e injeção de dependencias - Vantagens e desvantagens do ambiente .NET.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                  & Necessária configuração no \textit{Ninject} para injeção de dependências. \\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
+
 No próximo capítulo é abordada a criação do banco de dados a partir de entidades de negócio e acesso a dados usando repositórios do \textit{Spring} e a classe \textit{DbContext} do \textit{Entity Framework}.

@@ -8,20 +8,20 @@ O desenvolvedor cria páginas que são armazenadas em servidores (computadores q
 Quando o usuário digita o endereço de uma página no navegador ou clica em um \textit{link} que leva à uma página, uma requisição é enviada ao servidor onde está hospedanda a página. 
 O servidor então responde à requisição, enviando a página para o navegador do usuário, sendo exibida na tela do seu computador. A Figura~\ref{fig:requisicao} mostra o fluxo simplificado de uma requisição. 
 
-\figura{requisicao.jpg}{Exemplo de requisição para o servidor}{fig:requisicao}
+\figura{requisicao.jpg}{Exemplo de requisição para o servidor}{fig:requisicao}{1}
 
 Páginas da \textit{web} são escritas usando a linguagem HTML (\textit{Hipertext Markup Lanaguage}). 
 Essa linguagem define quais elementos devem aparecer no navegador do usuário, como uma caixa de texto ou um botão. 
 A aparência desses elementos é definida pela linguagem CSS (\textit{Cascading Style Sheet}).
 As versão mais atuais do HTML e do CSS são o HTML 5 e o CSS 3. A Figura~\ref{fig:htmlcss} mostra exemplos dessas linguagens.
 
-\figura{htmlcss.jpg}{Exemplo código HTML e CSS}{fig:htmlcss}
+\figura{htmlcss.jpg}{Exemplo código HTML e CSS}{fig:htmlcss}{1}
 
 Comportamentos podem ser adicionados à elementos da página, e até para a própria página, utilizando uma linguagem de \textit{script} que o navegador consiga interpretar.
 Uma linguagem de \textit{script} utilizada é o \textit{Javascript}. A Figura~\ref{fig:javascript} mostra uma função \textit{Javascript} que é executada quando se pressiona um botão.
 Esse é um exemplo simples, código \textit{Javascript} tem a capacidade de manipular uma página e seus elementos de várias maneiras diferentes e também permitir comunicação com o servidor.
 
-\figura{javascript.jpg}{Exemplo código Javascript}{fig:javascript}
+\figura{javascript.jpg}{Exemplo código Javascript}{fig:javascript}{1}
 
 Por fim, páginas da \textit{web} podem ser estáticas ou dinâmicas. 
 Páginas estáticas são arquivos HTML escritos pelo desenvolvedor \textit{web} de forma que seu conteúdo não é alterado pelo servidor ou pelo usuário.
@@ -47,7 +47,7 @@ O resultado pode ser um simples mensagem de sucesso ou falha das operações rea
 
 A Figura~\ref{fig:mvc} mostra o fluxo do padrão MVC:
 
-\figura{mvc.jpg}{O fluxo do padrão MVC}{fig:mvc}
+\figura{mvc.jpg}{O fluxo do padrão MVC}{fig:mvc}{1}
 
 \section{\textit{Frameworks}}
 
@@ -64,16 +64,16 @@ Quando se trata de desenvolvimento \textit{web}, \textit{frameworks} podem ser d
 Neles, elementos HTML e código Javascript são gerados pelo \textit{framework}, e esse componentes tem seu comportamento definido no lado servidor da aplicação.
 Quando um cliente faz uma requisição à uma aplicação \textit{web} que usa esse tipo de \textit{framework}, a requisição segue o fluxo mostrado pela Figura~\ref{fig:lixo}.
 
-\figura{lixo.jpg}{Fluxo de \textit{framework} baseado em componentes}{fig:lixo}
+\figura{lixo.jpg}{Fluxo de \textit{framework} baseado em componentes}{fig:lixo}{1}
 
 O ASP.NET WebForms e o JSF (Java Server Faces) são exemplos de \textit{frameworks} baseados em componentes. O uso dese tipo de framework não é recomendado para aplicações \textit{web} modernas, 
-pois a Microsoft descontinuou o ASP.NET WebForms e a empresa de consultoria ThoughtWorks (na qual Martin Fowler é cientista chefe) recomenda evitar esse tipo de \textit{framework}, 
+pois a empresa de consultoria ThoughtWorks (na qual Martin Fowler é cientista chefe) recomenda evitar esse tipo de \textit{framework}, 
 argumentando que suas equipes tiveram vários problemas ao usar o JSF.
 
 \textit{Frameworks} baseados em ações tratam requisições no \textit{Controller} e não na \textit{View}. 
 Eles exigem um maior conhecimento do desenvolvedor de como se programar para a \textit{web}, gerando menos componentes HTML e não gerando Javascript automaticamente. 
 As requisições nesse tipo de \textit{framework} são apssados do \textit{Controller} para o \textit{Model}, o \textit{Controller} então passa a resposta do \textit{Model} para a \textit{View} como mostra a Figura~\ref{fig:lixo}.
 
-\figura{certo.jpg}{Fluxo de \textit{framework} baseado em ações}{fig:certo}
+\figura{certo.jpg}{Fluxo de \textit{framework} baseado em ações}{fig:certo}{1}
 
 Os \textit{frameworks} \textit{Spring MVC} e \textit{ASP.NET MVC} são baseados em ações.

@@ -32,7 +32,7 @@ No \textit{Spring MVC} uma das maneiras de retornar uma página para o usuário 
 
 Agora é criada a página que essa primeira ação irá retornar. É criada uma pasta chamada \textit{person} dentro de \textit{WEB-INF} e dentro dessa pasta é criado o arquivo \textit{add.jsp}, como pode ser visto na Figura~\ref{fig:24}.
 
-\figura{24.png}{Primeira \textit{view} adicionada ao projeto \textit{Java}}{fig:24}
+\figura{24.png}{Primeira \textit{view} adicionada ao projeto \textit{Java}}{fig:24}{1}
 
 O conteúdo do arquivo \textit{add.jsp} é editado como no exemplo do código fonte~\ref{lst:10}.
 
@@ -44,15 +44,17 @@ A diretiva \textit{page} no cabeçalho da página (linha 1) diz ao servidor como
 
 Um \textit{controller} é adicionado ao projeto \textit{ASP.NET MVC} clicando com o botão direito do mouse na pasta \textit{Controllers}, em seguida selecionado as opções \textit{"Add"} e \textit{"Controller"}. A Figura~\ref{fig:25} ilustra a adição do \textit{controller}.
 
-\figura{25.png}{Adicionando um \textit{controller} no \textit{Visual Studio}}{fig:25}
+\figura{25.png}{Adicionando um \textit{controller} no \textit{Visual Studio}}{fig:25}{0.6}
 
 São exibidas diversas opções de modelos de \textit{controllers}, a opção usada é a \textit{"MVC 5 Controller – Empty"} e o \textit{controller} foi também nomeado como \textit{PersonController}. Uma das convenções do \textit{ASP.NET MVC} é que \textit{controllers} sempre tem que terminar com a palavra \textit{"Controller"}. Normalmente é recomendado que se nomeie \textit{controllers} com o nome da entidade que eles manipulam como prefixo, para facilitar a organização do código.
 
 Também é adicionada uma ação chamada \textit{Add} que retorna uma página. O código do \textit{controller} deve ficar como no código fonte~\ref{lst:11}. Note que \textit{PersonController} é subclasse da classe \textit{Controller}.
 
-\sharpcode{code/11.txt}{\textit{PersonController} em \textit{C\#}}{lst:11}
-
 A ação \textit{Add} retorna um objeto do tipo \textit{ActionResult}, que é uma classe pai de vários tipos de resultados no \textit{ASP.NET MVC} como \textit{JSONResult} e \textit{ViewResult}. O método \textit{View} retorna um \textit{ViewResult}, que é uma página \textit{web}. A ação \textit{Add} também está decorada com anotação \textit{HttpGet}, logo essa ação irá responder apenas ao método \textit{GET}.
+
+\newpage
+
+\sharpcode{code/11.txt}{\textit{PersonController} em \textit{C\#}}{lst:11}
 
 No \textit{ASP.NET MVC}, o mapeamento de endereço para \textit{controllers} e ações é centralizado pela tabela de rotas, não por anotações isoladas em cada \textit{controller} e método. Quem configura a tabela de rotas é a classe \textit{RouteConfig}, mostrada no código fonte~\ref{lst:12}.
 
@@ -62,11 +64,11 @@ A configuração da tabela de rotas começa ignorando qualquer requisição a ar
 
 Para adicionar uma \textit{view}, se clica com o botão direito do \textit{mouse} em uma ação e então na opção \textit{"Add View..."} como mostrado na Figura~\ref{fig:26}. 
 
-\figura{26.png}{Adicionando uma \textit{view} no \textit{ASP.NET MVC}}{fig:26}
+\figura{26.png}{Adicionando uma \textit{view} no \textit{ASP.NET MVC}}{fig:26}{1}
 
 Outra convenção do \textit{ASP.NET MVC} é que views devem ter o nome das ações que as retornam e ficar dentro de uma pasta com o nome do \textit{controller}, como na Figura~\ref{fig:27}. É usado o modelo \textit{"Empty"} na criação desta primeira \textit{view}. A extensão de arquivos de views em projetos \textit{ASP.NET MVC 5} é \textit{.cshtml}.
 
-\figura{27.png}{\textit{View} adicionada ao projeto \textit{ASP.NET MVC}}{fig:27}
+\figura{27.png}{\textit{View} adicionada ao projeto \textit{ASP.NET MVC}}{fig:27}{1}
 
 A pasta \textit{Shared} pode conter \textit{views} acessíveis à todos os \textit{controllers}. Em alguns modelos de projetos do \textit{Visual Studio} ela contém um arquivo chamado \textit{\_Layout.cshtml}. Esse arquivo é uma página modelo (ou \textit{layout}) usada quando se quer aproveitar uma mesma estrutura para várias \textit{views} diferentes. Essa pasta também pode armazenar \textit{Partial Views}, que são pedaços de \textit{views} e componentes que o desenvolvedor pode usar em diversas páginas. \textit{Layouts} e \textit{Partial Views} não são abordados nesse trabalho.
 
@@ -76,7 +78,7 @@ O conteúdo do arquivo \textit{Add.cshtml} é editado para que fique igual ao ex
 
 Tanto no projeto \textit{Java/Spring} como no projeto \textit{ASP.NET MVC}, quando acessada pelo Google Chrome, a view é exibida como na Figura~\ref{fig:28}. 
 
-\figura{28.png}{Resultado de exibição da \textit{view}}{fig:28}
+\figura{28.png}{Resultado de exibição da \textit{view}}{fig:28}{1}
 
 \section{Criando ações parametrizadas}
 
@@ -96,13 +98,13 @@ A anotação \textit{@ModelAttribute} (linha 4) permite que o \textit{Spring MVC
 
 A Figura~\ref{fig:29} mostra as ferramentas de desenvolvedor do \textit{Google Chrome} com um exemplo do que acontece quando se envia os dados da página ao servidor.
 
-\figura{29.png}{Enviando dados para o servidor}{fig:29}
+\figura{29.png}{Enviando dados para o servidor}{fig:29}{0.7}
 
 No código fonte~\ref{lst:7}, o atributo \textit{birthDate} da classe \textit{Person} foi decorado com a anotação \textit{@DateTimeFormat} para que aceite o formato de data “yyyy-MM-dd”. A Figura~\ref{fig:29} mostra que esse é o formato de data que o \textit{Google Chrome} envia para o servidor. Se o formato de data não estivesse configurado ou for enviado em outro padrão, o servidor enviaria uma reposta de erro 400 (\textit{Bad Request}).
 
 Quando chegam ao servidor, os dados são mapeados automaticamente para o parâmetro \textit{person} do método \textit{addPost} como mostrado na Figura~\ref{fig:30}. E a partir daí, o desenvolvedor pode trabalhar com os dados.
 
-\figura{30.png}{Objeto \textit{person} com parâmetros corretamente populados no projeto \textit{Java}}{fig:30}
+\figura{30.png}{Objeto \textit{person} com parâmetros corretamente populados no projeto \textit{Java}}{fig:30}{0.7}
 
 No código fonte~\ref{lst:14} retorno do método \textit{addPost} redireciona a requisição para outra ação que mostra uma página com uma tabela com todas pessoas adicionadas à lista (linha 11). As implementações dessa ação e página serão demonstradas em seções posteriores.
 
@@ -116,7 +118,7 @@ O \textit{ASP.NET MVC} não guarda o estado de objetos entre requisições, ent�
 
 Por convenção do \textit{ASP.NET MVC}, a ação do \textit{controller} que reponde ao método \textit{POST} deve ter o mesmo nome da \textit{view} a qual ele responde.  A única configuração necessária é decorar a ação com a anotação \textit{HttpPost}. O \textit{ASP.NET MVC} faz o mapeamento dos dados para o objeto \textit{person} de forma semelhante ao \textit{Spring MVC}, só que não é necessário especificar o formato do campo \textit{birthDate}. A Figura~\ref{fig:31} mostra o resultado do mapeamento.
 
-\figura{31.png}{Objeto \textit{person} no \textit{ASP.NET MVC} corretamente populado}{fig:31}
+\figura{31.png}{Objeto \textit{person} no \textit{ASP.NET MVC} corretamente populado}{fig:31}{1}
 
 Assim como no projeto \textit{Java/Spring}, o objeto \textit{person} é adicionado em uma lista e a ação redireciona o usuário para uma página que mostra todos os objetos da lista.
 
@@ -136,7 +138,7 @@ Para uma ação retornar um objeto \textit{JSON}, ela deve retornar um objeto \t
 
 Acessando a ação \textit{getOne} pelo navegador, é obtida a resposta exposta na Figura~\ref{fig:32}.
 
-\figura{32.png}{Resultado \textit{JSON} no projeto \textit{Java}}{fig:32}
+\figura{32.png}{Resultado \textit{JSON} no projeto \textit{Java}}{fig:32}{1}
 
 O atributo \textit{birthDate} é enviado ao navegador como um número que pode ser usado para criar um objeto \textit{Date} do \textit{Javascript}.
 
@@ -148,7 +150,7 @@ O \textit{ASP.NET MVC} pode trabalhar com objetos no formato \textit{JSON} sem p
 
 O método \textit{Json} no final da ação faz a conversão de objetos para o formato \textit{JSON}. Por padrão o \textit{ASP.NET MVC} só envia objetos \textit{JSON} usando o método \textit{HTTP POST}, para a habilitar o uso de \textit{HTTP GET} é necessário um parâmetro adicional (linha 10). A Figura~\ref{fig:33} mostra a resposta à ação \textit{GetOne}.
 
-\figura{33.png}{Resultado \textit{JSON} no projeto \textit{ASP.NET MVC}}{fig:33}
+\figura{33.png}{Resultado \textit{JSON} no projeto \textit{ASP.NET MVC}}{fig:33}{1}
 
 Aqui existe uma inconveniência. O modo como o \textit{ASP.NET} envia datas faz com que seja necessário mais código \textit{Javascript} para extrair o número que realmente representa a data e criar um objeto \textit{Date}.
 
@@ -166,6 +168,8 @@ O tipo de retorno do método \textit{listPage} e um objeto do tipo \textit{Model
 
 A ação começa com a verificação de existência e, se for o caso, criação da lista. Logo em seguida ele cria um objeto \textit{ModelAndView} que aponta para uma nova página que será criada dentro da pasta \textit{person}, \textit{list.jsp}. O método \textit{addObject} adiciona a lista \textit{persons} para que a página possa utilizá-la com o nome de referência \textit{personsList}. O Resultado então é retornado para o usuário. O código fonte~\ref{lst:19} mostra o conteúdo do arquivo da página \textit{list.jsp}.
 
+\newpage
+
 \jspcode{code/19.txt}{Código da página \textit{list.jsp}}{lst:19}
 
 A página começa com o cabeçalho padrão de páginas \textit{jsp}. Logo abaixo, o cabeçalho \textit{taglib} adiciona a referência à biblioteca \textit{JSTL} básica (linha 3). Essa biblioteca contém um conjunto de \textit{tags} \textit{JSTL}, pedaços de código \textit{Java} que ajudam a montar páginas dinâmicas. As \textit{tags} \textit{JSTL} são escritas na página como pedaços de código que lembram \textit{tags} \textit{HTML}, mas devem começar utilizando prefixo configurado no cabeçalho \textit{taglib} (no caso do exemplo acima, a letra "c"). Até o fim da \textit{tag} \textit{HTML} <thead>, o que está escrito na página é apenas \textit{HTML} puro (linhas 5 à 20). A parte onde o \textit{JSTL} entra em ação é dentro do corpo da tabela (linha 21). 
@@ -174,13 +178,15 @@ A \textit{tag} \textit{forEach} cria um pedaço de bloco \textit{HTML} para cada
 
 Dentro de cada iteração é criada uma nova linha para a tabela e, em cada linha, são criadas duas colunas: uma mostrando o atributo \textit{name} e outra o \textit{birthDate} do objeto \textit{person}. Note que não é necessário chamar os métodos \textit{getName} e \textit{getBirthDate}. É necessário apenas referenciar o nome do atributo que o desenvolvedor deseja mostrar na página. Depois de adicionar alguns objetos à lista, é obtido o resultado exposto na Figura~\ref{fig:34}.
 
-\figura{34.png}{Resultado da página \textit{list.jsp}}{fig:34}
+\figura{34.png}{Resultado da página \textit{list.jsp}}{fig:34}{1}
 
-O \textit{JSTL} possui muitas outras \textit{taglibs}. Para mais informações, consulte a documentação do \textit{JSTL} \cite(22).
+O \textit{JSTL} possui muitas outras \textit{taglibs}. Para mais informações, consulte a documentação do \textit{JSTL}.
 
 \subsection{\textit{.NET} (\textit{Razor})}
 
 O exemplo do código fonte~\ref{lst:20} mostra a ação que retorna a página que exibe o conteúdo da lista.
+
+\newpage
 
 \sharpcode{code/20.txt}{Ação que retorna a página \textit{list.cshtml}}{lst:20}
 
@@ -194,7 +200,7 @@ A primeira linha da página importa o \textit{namespace} \pacote{NetWebCrud.Mode
 
 O objeto \textit{Model} dentro do laço \textit{foreach} é a referência ao objeto que foi enviado para a página. \textit{Model} faz referência a qualquer tipo de objeto e a diretiva \textit{@model} no começo da página especifica seu tipo para que os recursos de auto completar do \textit{Visual Studio} estejam disponíveis e o \textit{ASP.NET MVC} possa gerar a página. O resultado pode ser visto na Figura~\ref{fig:35}.
 
-\figura{35.png}{Resultado da página \textit{list.cshtml}}{fig:35}
+\figura{35.png}{Resultado da página \textit{list.cshtml}}{fig:35}{1}
 
 Note que o \textit{ASP.NET MVC} exibe também a hora do atributo \textit{BirthDate}.
 
@@ -210,4 +216,43 @@ O \textit{ASP.NET MVC} dá suporte nativo para manipulação de objetos no forma
 
 A \textit{view engine} \textit{JSTL} utiliza uma sintaxe parecida com o \textit{HTML}, se integrando melhor ao código da página, enquanto o \textit{Razor} tem a vantagem da possibilidade de ser fortemente tipado e utilizar as vantagens do \textit{C\#} como a função de auto completar código do \textit{Visual Studio}. Em ambas as tecnologias o desenvolvedor pode estender as \textit{view engines}. Em projetos \textit{Java} novas \textit{taglibs} podem ser criadas e no \textit{ASP.NET MVC} podem ser feitas \textit{View Helpers} e \textit{Partial Views}. Em se trantando de \textit{views}, uma vantagem do \textit{ASP.NET MVC} em relação ao \textit{Java Enterprise Endition} é o suporte nativo à \textit{layouts} (também conhecidas como \textit{master pages}). Caso o desenvolvedor \textit{Java} queria usar \textit{layouts}, deve recorrer às bibliotecas de terceiros como o \textit{Sitemesh} ou utilizar outras \textit{view engines} como o \textit{FreeMarker}. E aqui se encontra a maior vantagem do \textit{Java Enterprise Edition} em relação à \textit{views}, o desenvolvedor pode escolher simplesmente utilizar outras \textit{view engines}.
 
+As tabelas~\ref{tab:tbl6} e ~\ref{tab:tbl7} mostram as vantagens e desvantagens de cada tecnologia em relação a criação de \textit{controllers} e \textit{views}.
+
 No próximo capítulo são abordados a criação de classes de negócio/serviços e injeção de dependências.
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl6} Criação de \textit{controllers} e \textit{views} - Vantagens e desvantagens do ambiente Java.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                Criação de \textit{controllers} mais flexivel. & Sem serialização nativa de objetos para o formato \textit{JSON}. \\
+				O \textit{JSTL} se integra melhor com o \textit{HTML}. & Sem suporte nativo para \textit{Master Pages}. \\
+				O desevolvedor pode escolher outras \textit{view engines}. & Mapeamento de \textit{URLs} para ações espalhados pelos \textit{controllers}.\\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl7} Criação de \textit{controllers} e \textit{views} - Vantagens e desvantagens do ambiente .NET.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                Serialização nativa de objetos para o formato \textit{JSON}. & Várias convenções devem ser seguidas para acriação de \textit{controllers}. \\
+				A linguagem \textit{Razor} pode fazer uso dos recursos de auto completar do \textit{Visual Studio}. & \\
+				Suporte natvo para \textit{Master Pages}. & \\
+				Mapeamento de \textit{URLs} para ações centralizado na tabela de rotas. & \\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}

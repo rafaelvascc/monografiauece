@@ -6,11 +6,11 @@ Nesse capitulo é mostrado como criar um novo projeto para uma aplicação \text
 
 O modelo de projeto usado nos exemplos desse trabalho é o \textit{Gradle Project}. Esse modelo de projeto está localizado na pasta \textit{Gradle} na árvore de novos projetos do \textit{Eclipse}. Na Figura~\ref{fig:gradleproject} pode-se observar a localização do modelo e a criação do novo projeto.
 
-\figura{gradleproject1.png}{Criando um projeto do \textit{Gradle}}{fig:gradleproject}
+\figura{gradleproject1.png}{Criando um projeto do \textit{Gradle}}{fig:gradleproject}{1}
 
 É criado um projeto com a estrutura mostrada na Figura~\ref{fig:gradletree}.
 
-\figura{gradleproject2.png}{Estrutura inicial de um projeto do \textit{Gradle}}{fig:gradletree}
+\figura{gradleproject2.png}{Estrutura inicial de um projeto do \textit{Gradle}}{fig:gradletree}{1}
 
 As pastas \arquivo{"src/main/java"} e \arquivo{"src/main/resources"} devem armazenar, respectivamente, código fonte \textit{Java} e recursos utilizados na aplicação.  As pastas \arquivo{"src/test/java"} e \arquivo{"src/test/resources"} são utilizadas para testes unitários. As pastas de testes não serão utilizadas nos exemplos e foram removidas. A pasta \textit{build} é para onde irão todos os artefatos gerados pelo projeto.
 
@@ -20,7 +20,7 @@ O arquivo \arquivo{build.gradle}, exibido no código fonte~\ref{lst:1}, é o arq
 
 A estrutura do projeto e o arquivo \arquivo{build.gradle} gerados devem ser modificados para servir à uma aplicação \textit{web}. É adicionada uma nova pasta, chamada de \textit{WebContent}, para armazenar conteúdo especifico para \textit{web} (páginas \textit{jsp/html}, arquivos \textit{javascript} e \textit{css}). Dentro dela deve ser criada uma pasta chamada \textit{WEB-INF} para armazenar páginas \textit{jsp}. Por padrão, usuários de sistemas \textit{web} \textit{Java Enterprise Edition} não possuem acesso direto à pasta \textit{WEB-INF}, então é um lugar seguro para armazenar páginas. Na Figura~\ref{fig:12} pode ser observada a estrutura do projeto com a pasta \textit{WEB-INF}.
 
-\figura{prrojetocomweninf.png}{Estrutura do projeto com a pasta \textit{WebContent}}{fig:12}
+\figura{prrojetocomweninf.png}{Estrutura do projeto com a pasta \textit{WebContent}}{fig:12}{1}
 
 Em seguida, é necessário modificar o arquivo \arquivo{build.gradle}. O \textit{Gradle} dispõe de vários \textit{plugins} que facilitam seu uso em diversas situações e servem a propósitos específicos. Para gerar arquivos \arquivo{.war} (artefatos de aplicações \textit{web}) e informar ao \textit{Gradle} que a pasta \textit{WebContent} armazenará o conteúdo especifico para \textit{web}, é utilizado o \textit{plugin} chamado \textit{war}. Para fazer com que o \textit{Eclipse} veja o projeto como um projeto para \textit{web} que possa ser enviado para o \textit{Tomcat}, é utilizado o \textit{plugin} \textit{eclipse-wtp}. O início do arquivo \arquivo{build.gradle} deverá ficar como no exemplo do código fonte~\ref{lst:2}.
 
@@ -28,7 +28,7 @@ Em seguida, é necessário modificar o arquivo \arquivo{build.gradle}. O \textit
 
 Com tudo devidamente configurado, é necessário atualizar o tipo de projeto para que o \textit{Eclipse} o veja como um projeto de uma aplicação \textit{web}. Pressionando Ctrl + Alt + Shift + R, o \textit{Eclipse} abrirá uma caixa de texto onde poderão ser executadas tarefas do \textit{Gradle}. Uma dessas tarefas é o comando \textit{"eclipse"} que gera arquivos adicionais para que o projeto possa ser detectado como uma aplicação \textit{web}. O comando é executado como na Figura~\ref{fig:13} e o \textit{Eclipse} agora poderá publicar a aplicação no \textit{Tomcat}.
 
-\figura{gradlecommand.png}{\textit{Gradle Task Quick Launcher}}{fig:13}
+\figura{gradlecommand.png}{\textit{Gradle Task Quick Launcher}}{fig:13}{1}
 
 Após executar esse comando, a estrutura do projeto mudará um pouco. As pastas destinadas a conter código \textit{Java} e bibliotecas usadas no projeto serão movidas para uma pasta chamada \textit{Java Resources}.
 
@@ -38,7 +38,7 @@ Para adicionar uma aplicação \textit{web} ao servidor \textit{Tomcat} configur
 
 Iniciando o \textit{Tomcat}, clicando nos botões \textit{"Start the server"} ou \textit{"Start the server in debug mode"} e, acessando o endereço da aplicação, é mostrado uma página de erro 404. Isso acontece porque ainda não existem as configurações do \textit{servlet} padrão, do \textit{Spring MVC} e ainda não foi criado nenhum \textit{controller} e nenhuma \textit{view}. Nesse capítulo ainda é demonstrado como configurar o \textit{servlet} padrão e o \textit{Spring MVC}. No capitulo 3 é demonstrado como se criam \textit{controllers} e \textit{views}.
 
-\figura{tomcatproject.png}{Adicionando um projeto \textit{web} ao \textit{Tomcat}}{fig:14}
+\figura{tomcatproject.png}{Adicionando um projeto \textit{web} ao \textit{Tomcat}}{fig:14}{1}
 
 \subsection{Adicionando dependências ao projeto}
 
@@ -64,7 +64,7 @@ Para fazer com que o \textit{Gradle} adquira as bibliotecas necessárias e suas 
 
 Com o arquivo \arquivo{build.gradle} alterado e salvo, o comando para baixar as dependências para o projeto está localizado no menu de contexto do projeto (clicando com o botão direito do \textit{mouse} sobre ele) no caminho \textit{Gradle/Refresh Dependencies}, que pode ser observado na Figura~\ref{fig:15}. O \textit{Gradle} irá adquirir todas as bibliotecas especificadas no arquivo \arquivo{build.gradle} e suas dependências automaticamente. O \textit{Spring MVC}, por exemplo, depende do \textit{Spring Core} para funcionar e o \textit{Hibernate JPA Support} precisa do \textit{Hibernate Core}. Todas as dependências do projeto ficam visíveis na seção \textit{Libraries/Gradle Dependencies}.
 
-\figura{refreshdependencies.png}{Atualizando dependências de um projeto \textit{Gradle}}{fig:15}
+\figura{refreshdependencies.png}{Atualizando dependências de um projeto \textit{Gradle}}{fig:15}{1}
 
 \subsection{Configurando a aplicação \textit{web}}
 
@@ -72,7 +72,7 @@ Existem duas maneiras de se configurar uma aplicação \textit{Java}, usando arq
 
 Os arquivos de configuração são armazenados no pacote \pacote{br.uece.webCrud.config}. Dentro desse pacote são criadas duas classes, \classe{AppInitializer} e \classe{SpringMvcConfig}, como mostra a Figura~\ref{fig:16}. 
 
-\figura{configpackage.png}{Estrutura do projeto \spring com pacote para arquivos de configuração}{fig:16}
+\figura{configpackage.png}{Estrutura do projeto \spring com pacote para arquivos de configuração}{fig:16}{1}
 
 A primeira configuração que deve ser feita é usar a classe \classe{DispatcherServlet} como o \textit{servlet} padrão e configurar o contexto da aplicação (configurações especificas do \textit{Spring Framework}). \textit{Servlets} são classes \textit{Java} que processam requisições para aplicação, elas podem servir páginas para o usuário, retornar objetos \textit{JSON} e redirecionar requisições para outros \textit{servlets}. Para mais informações sobre \textit{servlets} recomenda-se o livro \textit{Murach’s Java Servlets and JSP} \cite{10}.
 
@@ -119,15 +119,15 @@ O link \textit{"new project..."}, na tela inicial do Visual \textit{Studio Commu
 
 Um projeto no \textit{Visual Studio} faz parte de uma solução. Uma solução além de ser uma coleção de projetos, contém informações de dependências e configurações. A Figura~\ref{fig:17} ilustra a criação de um novo projeto. Os arquivos de solução junto com os de projeto são os equivalentes aos arquivos de projeto do \textit{Eclipse} e o arquivo \arquivo{build.gradle}.
 
-\figura{vsnewproject.png}{Criando um novo projeto no \textit{Visual Studio Community 2013}}{fig:17}
+\figura{vsnewproject.png}{Criando um novo projeto no \textit{Visual Studio Community 2013}}{fig:17}{0.7}
 
 O nome da solução de exemplo é \textit{"NetWebCrud"}. O \textit{Visual Studio} automaticamente dá o mesmo nome da solução para o primeiro projeto criado. O local de armazenamento dos arquivos também pode ser configurado nessa tela. Clicando no botão "OK", aparecerá o menu mostrado na Figura~\ref{fig:18}.
 
-\figura{vsnewproject2.png}{Opções de um novo projeto \textit{web} no \textit{Visual Studio}}{fig:18}
-
+\figura{vsnewproject2.png}{Opções de um novo projeto \textit{web} no \textit{Visual Studio}}{fig:18}{0.7}
+{1}
 Existem várias opções de projetos para \textit{web}. Para um projeto \textit{MVC} contendo apenas o mínimo necessário para seu funcionamento, é escolhido o modelo \textit{"Empty"} e é marcada a opção \textit{MVC}. A \textit{Microsoft} possui um serviço de hospedagem de aplicações, sites e máqinas virtuais na núvem chamdo de \textit{Microsoft Azure}. O desenvolvedor pode configurar o \textit{Visual Studio} para publicar sua aplicação automaticamente no \textit{Microsoft Azure} utilizando a opção \textit{"Host in the Cloud"}. Como os exemplos deste trabalho não utilizam o \textit{Microsoft Azure}, essa opção foi deixada desmarcada. Clicando em "OK", o \textit{Visual Studio} irá gerar um projeto com a estrutura apresentada pela Figura~\ref{fig:19}.
 
-\figura{19.png}{Estrutura de um projeto \textit{ASP.NET MVC 5}}{fig:19}
+\figura{19.png}{Estrutura de um projeto \textit{ASP.NET MVC 5}}{fig:19}{0.7}
 
 O \anmvc funciona seguindo o princípio de convenção à configuração. O desenvolvedor deve seguir várias convenções para o desenvolvimento de sua aplicação, em compensação, a quantidade de configuração necessária é mínima.
 
@@ -152,11 +152,11 @@ Do mesmo modo que o \textit{Gradle} pode adicionar bibliotecas externas ao proje
 
 O console do \textit{NuGet} pode ser acessado no menu \textit{TOOLS/NuGet Package Manager/Package Manager Console}, como mostra a Figura~\ref{fig:20}.
 
-\figura{20.png}{Acessando o console do \textit{NuGet}}{fig:20}
+\figura{20.png}{Acessando o console do \textit{NuGet}}{fig:20}{0.7}
 
 O console do \textit{NuGet} é exibido no \textit{Visual Studio} como mostra a Figura~\ref{fig:21}. Nele o desenvolvedor pode digitar comandos para procurar e adquirir bibliotecas para seus projetos.
 
-\figura{21.png}{Console do \textit{NuGet}}{fig:21}
+\figura{21.png}{Console do \textit{NuGet}}{fig:21}{0.6}
 
 Para instalar as bibliotecas citadas anteriormente, executa-se os seguintes comandos no console do \textit{NuGet}:
 
@@ -167,13 +167,13 @@ Para instalar as bibliotecas citadas anteriormente, executa-se os seguintes coma
 
 Quando o \textit{NuGet} terminar de baixar todos os arquivos, eles são adicionado ao projeto. A Figura~\ref{fig:22} ilustra a instalação das bibliotecas.
 
-\figura{22.png}{Instalação de dependências bem sucedidas}{fig:22}
+\figura{22.png}{Instalação de dependências bem sucedidas}{fig:22}{0.6}
 
 Ao terminar a instalação, os arquivos \arquivo{packages.config} e \arquivo{Web.config} são atualizados com as referências e configurações das novas bibliotecas.
 
 A instalação do \textit{Ninject Mvc 5} adiciona o arquivo \arquivo{NinJectWebCommon.cs} à pasta \textit{App\_Start}. Na Figura~\ref{fig:23} pode-se observar o arquivo adicional citado. O conteúdo e funcionalidade desse arquivo é abordado no capítulo 6.
 
-\figura{23.png}{Arquivo adicional do \textit{Ninject}}{fig:23}
+\figura{23.png}{Arquivo adicional do \textit{Ninject}}{fig:23}{1}
 
 \subsection{Adicionando informações de conexão com o banco de dados}
 
@@ -194,3 +194,38 @@ Uma maneira de tornar a configuração inicial de projetos \textit{Java} com \te
 As vantagens de criação de um novo projeto \textit{ASP.NET MVC} no \textit{Visual Studio} são os modelos de projetos que já vem prontos logo após a instalação. Não existe a necessidade de realizar tantas configurações iniciais, contudo menos aspectos do projeto são configuráveis. O desenvolvedor deve obedecer as convenções do \textit{ASP.NET MVC}.
 
 No próximo capitulo será mostrado como criar \textit{controllers} e \textit{views} nos dois tipos de projetos.
+
+As tabelas~\ref{tab:tbl4} e ~\ref{tab:tbl5} mostram as vantagens e desvantagens de cada tecnologia em relação a criação de projetos.
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl4} Criação de projetos - Vantagens e desvantagens do ambiente Java.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                Maior flexibilidade na escolha de bibliotecas, \textit{frameworks} e ferramentas. & Quantidade de configuração inicial consideravelmente maior que a do ambiente \textit{.NET}. \\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
+
+\begin{table}[h!]   
+    \centering
+    \Caption{\label{tab:tbl5} Criação de projetos - Vantagens e desvantagens do ambiente .NET.}
+    \UECEtab{}{
+        \begin{tabular}{| L{7cm} | L{7cm}|}
+            \toprule
+                Vantagens & Desvantagens \\
+            \midrule \midrule
+                Configuração inicial mínima. & Menor liberdade na escolha de \textit{frameworks} e ferramentas. \\
+				Modelos de projetos já prontos. & \\
+            \bottomrule
+        \end{tabular}
+    }{
+        \Fonte{Elaborado pelo autor}
+    }
+\end{table}
